@@ -76,38 +76,14 @@
             <h1>Check-ins</h1>
             <ol class="breadcrumb">
                 <li>
-                    <form action="" method="post" enctype="application/x-www-form-urlencoded">
-
-                            <ul class="list-unstyled">
-                                <li>
-                                    Name: <input type="text" name="name" value="{{name}}">
-                                </li>
-                                <li>
-                                    Provider:
-                                    <input value="{{provider}}" list="providers" name="provider"/>
-                                    <datalist id="providers">
-                                        <option value="{{provider}}"> {{provider}}</option>
-                                    </datalist>
-                                </li>
-
-                                <li>Time: <input type="time" name="time" value="{{time}}"/></li>
-                            </ul>
-
-
-                    <input class="button button-3d button-rounded button-green" name="submit" type="submit"  value="Make Appointment">
-
-                </form>
-                </li>
-
-                <li>
                     <button class="button button-3d button-rounded button-aqua" data-toggle="modal" data-target="#myModal">Upload CSV</button>
                 </li>
-                <li><div class="searchSpan pull-left">
+                <div class="searchSpan pull-left">
                     <form class="search-form" id="searchForm">
                         <input id="search" class="gate form-control search-input" type="text" placeholder="Search...">
                     </form>
                 </div>
-                </li>
+
                 <li><span id="time_span"></span></li>
             </ol>
         </div>
@@ -136,6 +112,47 @@
 
     </section>
 
+    <div class="container">
+        <br>
+        <div class="col_four_fifth divcenter vertical-middle">
+
+
+            <div class="clear"></div>
+
+            <form class="nobottommargin" method="post" action="" enctype="application/x-www-form-urlencoded">
+
+                <div class="form-process"></div>
+
+                <div class="col_one_fourth">
+                    <label for="template-contactform-name">Name</label>
+                    <input type="text" id="template-contactform-name" name="name"
+                           value="{{name}}" class="sm-form-control" />
+                </div>
+
+                <div class="col_one_fourth">
+                    <label for="template-contactform-time">Time</label>
+                    <input type="time" id="template-contactform-time" name="time" value="{{time}}" class="sm-form-control" />
+                </div>
+
+                <div class="col_one_fourth">
+                    <label for="template-contactform-provider">Provider</label>
+                    <input  list="template-contactform-provider" name="provider">
+                    <datalist id="template-contactform-provider">
+                        <option value="{{provider}}">
+                        <option value="hi">
+                    </datalist>
+
+                </div>
+                <div class="col_one_fourth col_last pull-left" style="top: 18px;">
+                    <input class="button button-3d button-large button-rounded button-green" name="submit" type="submit" value="Make New">
+                </div>
+            </form>
+
+        </div>
+        <div class="clear"></div>
+        <div class="line-dash"></div>
+    </div>
+
     <div class="container clearfix">
         <table class="table table-hover">
             <thead>
@@ -151,7 +168,7 @@
             {{#appts}}
             <tr>
                 <td class="name">{{visitor}}</td>
-                <td></td>
+                <td>{{time}}</td>
                 <td class="asignee">
                     <div class="sort-contacts-bytype-dropdown dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
