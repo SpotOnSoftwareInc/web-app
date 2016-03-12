@@ -35,22 +35,22 @@ exports.post = function(req, res, next){
 console.log('error is in here');
     if(req.files.userLogo){
 
-        businesses.findById(businessID,
-            function (err, results){
-
-                if(err){
-                    return next(err);
-                }
-
-                fs.unlink('public'+results.logo);
-            }
-        );
+        //businesses.findById(businessID,
+        //    function (err, results){
+        //
+        //        if(err){
+        //            return next(err);
+        //        }
+        //
+        //        fs.unlink('public'+results.logo);
+        //    }
+        //);
         console.log(req.files.userLogo.name);
         console.log(req.files.userLogo.originalname);
 
         businesses.updateById(businessID, {
                 $set: {
-                    logo: '/images/uploads/' + req.files.userLogo.name
+                    logo: '../images/uploads/' + req.files.userLogo.name
                 }
             },{
                 upsert: true
@@ -63,7 +63,7 @@ console.log('error is in here');
 
                 res.render('admin/registerprocess',{
                     success:'Succesfully uploaded file: '+req.files.userLogo.originalname,
-                    logo:'/images/uploads/'+req.files.userLogo.name
+                    logo:'../images/uploads/'+req.files.userLogo.name
                 });
 
             }
