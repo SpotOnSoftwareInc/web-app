@@ -83,7 +83,6 @@
                         <input id="search" class="gate form-control search-input" type="text" placeholder="Search...">
                     </form>
                 </div>
-
                 <li><span id="time_span"></span></li>
             </ol>
         </div>
@@ -172,11 +171,11 @@
                 <td class="asignee">
                     <div class="sort-contacts-bytype-dropdown dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="dropdown-label">{{provider}}</span><b class="caret"></b></a>
+                            <span class="dropdown-label">{{assignedTo}}</span><b class="caret"></b></a>
                         <ul class="dropdown-menu dropdown-menu-right">
-                            <li><a href="#"><i class="dropdown test"></i>Dr. Test test</a></li>
-                            <li><a href="#"><i class="dropdown peter"></i>Dr. Peter Parker</a></li>
-                            <li><a href="#"><i class="dropdown richard"></i>Dr. Richard Best</a></li>
+                            {{#providers.length}}
+                            {{#providers}}<li><a href="#"><i class="dropdown test"></i>{{.}}</a></li>{{/providers}}
+                            {{/providers.length}}
                         </ul>
                     </div>
                 </td>

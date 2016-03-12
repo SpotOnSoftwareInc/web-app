@@ -73,7 +73,7 @@ $('.name').click(function(){
             'value': name
         })
         .appendTo(this);
-    $('#txt_fullname').focus();Å
+    $('#txt_fullname').focus();
 });
 
 $(document).on('blur','#txt_fullname', function(){
