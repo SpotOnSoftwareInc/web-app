@@ -55,8 +55,10 @@ console.log('error is in here');
                 upsert: true
             }, function (err){
                 if (err) {
+                    console.log('ERROR IN UPLOAD LOGO');
                     return next(err);
                 }
+
 
                 res.render('admin/registerprocess',{
                     success:'Succesfully uploaded file: '+req.files.userLogo.originalname,
@@ -76,6 +78,7 @@ console.log('error is in here');
                 }
 
                 if(results.logo){
+                    console.log('ERROR IN ELSE OF UPLOAD LOGO');
 
                     res.render('admin/registerprocess',{
                         title:'Upload Logo',
