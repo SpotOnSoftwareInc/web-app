@@ -2,7 +2,6 @@ var fs = require('fs');
 var auth = require('../../../lib/auth');
 
 exports.get = function(req, res, next){
-    console.log('Get function uploadlogo');
     var db = req.db;
     var businesses = db.get('businesses');
     var businessID = req.user[0].business;
@@ -32,21 +31,7 @@ exports.post = function(req, res, next){
     var db = req.db;
     var businesses = db.get('businesses');
     var businessID = req.user[0].business;
-console.log('error is in here');
     if(req.files.userLogo){
-
-        //businesses.findById(businessID,
-        //    function (err, results){
-        //
-        //        if(err){
-        //            return next(err);
-        //        }
-        //
-        //        fs.unlink('public'+results.logo);
-        //    }
-        //);
-        console.log(req.files.userLogo.name);
-        console.log(req.files.userLogo.originalname);
 
         businesses.updateById(businessID, {
                 $set: {
@@ -56,7 +41,6 @@ console.log('error is in here');
                 upsert: true
             }, function (err){
                 if (err) {
-                    console.log('ERROR IN UPLOAD LOGO');
                     return next(err);
                 }
 
@@ -79,8 +63,6 @@ console.log('error is in here');
                 }
 
                 if(results.logo){
-                    console.log('ERROR IN ELSE OF UPLOAD LOGO');
-
                     res.render('admin/registerprocess',{
                         title:'Upload Logo',
                         logo:results.logo,

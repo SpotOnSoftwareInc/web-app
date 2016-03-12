@@ -111,8 +111,8 @@ module.exports = function (passport) {
     router.post('/imgtocloud', imgtocloud.post);
 
     //Setup the routes for business owner (Person purchasing the product)
-    router.get('/uploadlogo', uploadLogo.get);
-    router.post('/uploadlogo', uploadLogo.post);
+    //router.get('/uploadlogo', uploadLogo.get);
+    router.post('/registerprocess', uploadLogo.post);
 
     router.get('/:id/dashboard', updateBusiness, isLoggedInBusAdmin, dashboard.get);
     router.post('/:id/dashboard', updateBusiness, isLoggedInBusAdmin, dashboard.post);
