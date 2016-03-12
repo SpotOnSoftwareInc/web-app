@@ -82,6 +82,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(multer({
     dest: __dirname + '/public/images/uploads/',
     onFileUploadStart: function (file) {
+        console.log(file.path);
         console.log(file.mimetype);
         if (file.mimetype !== 'image/png' && file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg') {
             return false;

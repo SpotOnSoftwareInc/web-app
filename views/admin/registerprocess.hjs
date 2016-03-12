@@ -122,15 +122,16 @@
                         <div class="row col_last">
                             <div class="col-sm-6 col-md-4">
                                 <div class="thumbnail">
-                                  <!--<form method="post" action="uploadlogo" enctype="application/x-www-form-urlencoded" id="register-uploadlogo" name="register-uploadlogo" class="nobottommargin">-->
-                                    <img id="thumb" data-src="holder.js/300x200" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE1MCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE5cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MzAweDIwMDwvdGV4dD48L3N2Zz4=" alt="your image" style="display: block;"/>
-                                      <!--<img id="thumb" data-src={{logo}} src="{{logo}}" alt="your image" style="display: block;"/>-->
+                                  <form method="post" action="uploadlogo" enctype="multipart/form-data" id="register-uploadlogo" name="register-uploadlogo" class="nobottommargin">
+                                    <!--<img id="thumb" data-src="holder.js/300x200" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE1MCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE5cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MzAweDIwMDwvdGV4dD48L3N2Zz4=" alt="your image" style="display: block;"/>-->
+                                    <!--<img data-src="holder.js/300x200" id="thumb" alt="300x200" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE1MCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE5cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MzAweDIwMDwvdGV4dD48L3N2Zz4=" style="display: block;">-->
+                                      <img id="thumb" data-src={{logo}} src="{{logo}}" alt="your image" style="display: block;"/>
 
                                       <div class="caption">
                                         <h3>Upload Logo</h3>
                                         <label for="photo_title">Title:</label>
                                         <div class="form_controls">
-                                            <input id="photo_title" name="title" size="30" type="text" value="" placeholder="Image Title" />
+                                            <input id="photo_title" name="title" size="30" type="text" value="<%=photo.title%>" />
                                         </div>
                                         <input type='file' name="userLogo" onchange="readURL(this);" />
                                         <!--<button href="#" class="btn btn-primary" type="button" onclick="chooseFile();return;">Browse</button>-->
@@ -139,7 +140,7 @@
                                         <!--<input id="direct" name="direct" type="hidden" />-->
                                         <!--<a href="#" class="btn btn-primary" role="button">Save</a>-->
                                     </div>
-                                  <!--</form>-->
+                                  </form>
                                 </div>
                             </div>
                         </div>

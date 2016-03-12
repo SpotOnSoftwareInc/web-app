@@ -45,6 +45,7 @@ console.log('error is in here');
                 fs.unlink('public/'+results.logo);
             }
         );
+        console.log(req.files.userLogo.name);
 
         businesses.updateById(businessID, {
                 $set: {
