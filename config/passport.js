@@ -42,7 +42,6 @@ module.exports = function (passport) {
                 business.email === ''       ||
                 business.password === ''    ||
                 business.lname === '') {
-                console.log('Is this working????');
                 req.flash('Missing Parameters', 'Please fill in all fields');
                 return;
             }
@@ -109,8 +108,6 @@ module.exports = function (passport) {
             if (err) {
                 throw err;
             }
-            console.log('employee user is');
-            console.log(user);
             return done(null, user);
         });
     };
@@ -190,10 +187,14 @@ module.exports = function (passport) {
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
         function (req, email, password, done) { // callback with email and password from our form
-            console.log('LOCAL-LOGIN');
-            auth.validateLogin(req.db, email, password, function (user) {
-                console.log("woop");
+            //console.log('LOCAL-LOGIN');
+            console.log(email + " " + password);
+            auth.validateLogin(req.db, email, password, function (err,user) {
+                if(err){
+                    console.log(err + " SUPRISE");
+                }
                 if (!user) {
+                    console.log("Error: " + email + " " + password);
                     return done(null, false, req.flash("login", "Invalid Email/Password Combo"));
                 }
                 else {

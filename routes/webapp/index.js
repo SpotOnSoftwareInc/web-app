@@ -92,22 +92,30 @@ module.exports = function (passport) {
             },function(token, done) {
                 var db = req.db;
                 var employees = db.get('employees');
-                try {
+                employees.findAndModify(
+                    {email: req.body.email},
+                    {
+                        $set: {
+                            resetPasswordToken: token,
+                            resetPasswordExpires: Date.now() + 3600000
+                        }
+                    },
+                    { new: true },
+                    function(err, doc){
+                        if(err){
+                            console.log(err);
+                        } else if(!doc){
+                            req.flash('Error', "User with that email not found");
+                            //done("User not found", 'done');
+                            //res.redirect('/register');
+                        } else {
+                            done(null, token);
+                        }
+                    }
+                );
 
-                    employees.findAndModify({email: req.body.email},
-                        {
-                            $set: {
-                                resetPasswordToken: token,
-                                resetPasswordExpires: Date.now() + 3600000
-                            }
-                        });
-                } catch(e){
-                    req.flash('error', 'No account with that email address exists.');
-                    done(e, 'done');
-                    return res.redirect('/register');
-                }
                 console.log(req.body.email);
-                return done(null,token);
+
             },function(token, done) {
 
                 var transport = nodemailer.createTransport(smtpTransport({
@@ -117,8 +125,6 @@ module.exports = function (passport) {
                         pass : "sossossos"
                     }
                 }));
-
-                //var transporter = nodemailer.createTransport('smtps://ireceptionistcorp%40gmail.com:sossossos@smtp.gmail.com');
 
                 var mailOptions = {
                     to: req.body.email,
@@ -148,45 +154,34 @@ module.exports = function (passport) {
             function(done) {
                 var db = req.db;
                 var employees = db.get('employees');
-                var password = auth.hashPassword(req.body.password);
-                console.log("THIS IS MY PASSWORD OH NO: " + password);
-                try {
+                var pass = auth.hashPassword(req.body.password);
 
-                    //var user = employees.findAndModify({
-                    //    query: {resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } },
-                    //    update: {
-                    //        $set: {
-                    //            password: password,
-                    //            resetPasswordToken: undefined,
-                    //            resetPasswordExpires: undefined
-                    //        }
-                    //    },
-                    //    new: true
-                    //});
-                    employees.findAndModify({
-                            query: {resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } },
-                            update: { $unset: {registrationToken: 1},
-                                      $set: {password: password}
-                            },
-                            new: true
-                    },
-                        function (err,user){
-                            if (err) {
-                                throw err;
-                            }
-                            return done(null,user);
-
+                //resetPasswordExpires: { $gt: Date.now() }
+                employees.findAndModify(
+                    {resetPasswordToken: req.params.token },
+                    {
+                        $set: {
+                            password: pass,
+                            resetPasswordToken: undefined,
+                            resetPasswordExpires: undefined
                         }
-                    );
-                    console.log(user);
-                } catch(e){
-                    console.log("User not found");
-                    req.flash('error', 'Password reset token is invalid or has expired.');
-                    done(e, 'done');
-                    return res.redirect('/');
-                }
-                console.log("Success");
-                res.redirect('/register');
+                    },
+                    { new: true },
+                    function(err, doc){
+                        if(err){
+                            console.log(err);
+                        } else if(!doc){
+                            req.flash('Error', "User with that email not found");
+                            console.log('Expired reset password link');
+                            //done("User not found", 'done');
+                            //res.redirect('/register');
+                        } else {
+                            console.log('success');
+                            console.log(doc);
+                            res.redirect('/register');
+                        }
+                    }
+                );
             }
 
         ], function(err) {
