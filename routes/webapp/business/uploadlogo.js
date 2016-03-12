@@ -15,11 +15,11 @@ exports.get = function(req, res, next){
 
             if(results.logo){
 
-                res.render('business/uploadLogo',
+                res.render('admin/registerprocess',
                     {title:'Upload Logo',logo: results.logo});
             }
             else{
-                res.render('business/uploadLogo',
+                res.render('admin/registerprocess',
                     {title:'Upload Logo'});
             }
         }
@@ -32,7 +32,7 @@ exports.post = function(req, res, next){
     var db = req.db;
     var businesses = db.get('businesses');
     var businessID = req.user[0].business;
-
+console.log('error is in here');
     if(req.files.userLogo){
 
         businesses.findById(businessID,
@@ -57,7 +57,7 @@ exports.post = function(req, res, next){
                     return next(err);
                 }
 
-                res.render('business/uploadLogo',{
+                res.render('admin/registerprocess',{
                     success:'Succesfully uploaded file: '+req.files.userLogo.originalname,
                     logo:'/images/uploads/'+req.files.userLogo.name
                 });
@@ -76,14 +76,14 @@ exports.post = function(req, res, next){
 
                 if(results.logo){
 
-                    res.render('business/uploadLogo',{
+                    res.render('admin/registerprocess',{
                         title:'Upload Logo',
                         logo:results.logo,
                         error:'Please select a valid image(png,jpg) file to upload.'
                     });
                 }
                 else{
-                    res.render('business/uploadLogo',{
+                    res.render('admin/registerprocess',{
                         title:'Upload Logo',
                         error:'Please select a valid image(png,jpg) file to upload.'
                     });

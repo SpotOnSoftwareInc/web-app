@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="css/animate.css" type="text/css" />
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
 
+    <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="css/responsive.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lt IE 9]>
@@ -33,6 +36,10 @@
     <script type="text/javascript">
         !function(a,b){a("Keen","https://d26b395fwzu5fz.cloudfront.net/3.4.0/keen.min.js",b)}(function(a,b,c){var d,e,f;c["_"+a]={},c[a]=function(b){c["_"+a].clients=c["_"+a].clients||{},c["_"+a].clients[b.projectId]=this,this._config=b},c[a].ready=function(b){c["_"+a].ready=c["_"+a].ready||[],c["_"+a].ready.push(b)},d=["addEvent","setGlobalProperties","trackExternalLink","on"];for(var g=0;g<d.length;g++){var h=d[g],i=function(a){return function(){return this["_"+a]=this["_"+a]||[],this["_"+a].push(arguments),this}};c[a].prototype[h]=i(h)}e=document.createElement("script"),e.async=!0,e.src=b,f=document.getElementsByTagName("script")[0],f.parentNode.insertBefore(e,f)},this);
     </script>
+    <style>
+        article, aside, figure, footer, header, hgroup,
+        menu, nav, section { display: block; }
+    </style>
 </head>
 
 <body>
@@ -115,18 +122,25 @@
                         <div class="row col_last">
                             <div class="col-sm-6 col-md-4">
                                 <div class="thumbnail">
+                                  <form method="post" action="uploadlogo" enctype="multipart/form-data" id="register-uploadlogo" name="register-uploadlogo" class="nobottommargin">
+                                    <!--<img id="thumb" data-src="holder.js/300x200" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE1MCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE5cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MzAweDIwMDwvdGV4dD48L3N2Zz4=" alt="your image" style="display: block;"/>-->
+                                    <!--<img data-src="holder.js/300x200" id="thumb" alt="300x200" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE1MCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE5cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MzAweDIwMDwvdGV4dD48L3N2Zz4=" style="display: block;">-->
+                                      <img id="thumb" data-src={{logo}} src="{{logo}}" alt="your image" style="display: block;"/>
 
-
-
-                                    <img data-src="holder.js/300x200" id="thumb" alt="300x200" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE1MCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE5cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MzAweDIwMDwvdGV4dD48L3N2Zz4=" style="display: block;">
-                                    <div class="caption">
+                                      <div class="caption">
                                         <h3>Upload Logo</h3>
-                                        <!--<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>-->
-
-                                        <button class="btn btn-primary" type="button" onclick="chooseFile();">Browse</button>
-
-                                        <a href="#" class="btn btn-default" role="button">Save</a>
+                                        <label for="photo_title">Title:</label>
+                                        <div class="form_controls">
+                                            <input id="photo_title" name="title" size="30" type="text" value="<%=photo.title%>" />
+                                        </div>
+                                        <input type='file' name="userLogo" onchange="readURL(this);" />
+                                        <!--<button href="#" class="btn btn-primary" type="button" onclick="chooseFile();return;">Browse</button>-->
+                                        <!--<input type="button" id="regproc-upload" name="uploadimg" class="btn btn-primary" role="button"/>-->
+                                        <input class="btn btn-primary" href="/registerprocess" name="submit" type="submit"  value="Save">
+                                        <!--<input id="direct" name="direct" type="hidden" />-->
+                                        <!--<a href="#" class="btn btn-primary" role="button">Save</a>-->
                                     </div>
+                                  </form>
                                 </div>
                             </div>
                         </div>
@@ -335,9 +349,23 @@
 
 
             <script>
-                function chooseFile() {
-                    $("#fileInput").click();
+                function readURL(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+
+                        reader.onload = function (e) {
+                            $('#thumb')
+                                .attr('src', e.target.result)
+                                .width(300)
+                                .height(200);
+                        };
+
+                        reader.readAsDataURL(input.files[0]);
+                    }
                 }
+//                function chooseFile() {
+//                    $("#fileInput").click();
+//                }
             </script>
 
             <script>

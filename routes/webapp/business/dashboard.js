@@ -5,13 +5,13 @@ exports.get = function (req, res) {
     var database = req.db;
     var employeeDB = database.get('employees');
     var bid = req.user[0].business;
-
+    console.log(bid);
     employeeDB.find( { business: bid })
         .on('success', function(employees) {
 
             res.render('business/dashboard', {
                 emps: employees,
-                message: req.flash("permission")
+                message: req.flash("permission"),
             });
 
         });

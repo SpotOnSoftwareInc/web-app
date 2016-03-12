@@ -7,6 +7,7 @@ var register = require('./admin/register');
 var registerprocess = require('./admin/registerprocess');
 var login = require('./admin/login');
 var analytics = require('./admin/analytics');
+var imgtocloud = require('./admin/imgtocloud');
 
 //Define the controllers for business owner (Person purchasing the product) process
 var accountsettings = require('./business/accountsettings');
@@ -16,6 +17,7 @@ var addoneemployee = require('./business/addoneemployee');
 var formbuilder = require('./business/formbuilder');
 var dashboard = require('./business/dashboard');
 var businesssetting = require('./business/businesssetting');
+var uploadLogo = require('./business/uploadlogo');
 //var checkindesign = require('./business/checkindesign');
 //var customizeform = require('./business/customizeform');
 //var analytics = require('./business/analytics');
@@ -106,7 +108,12 @@ module.exports = function (passport) {
     router.get('/:id/admin', isLoggedInSaaSAdmin, admin.get);
     router.post('/:id/admin', isLoggedInSaaSAdmin, admin.post);
 
+    router.post('/imgtocloud', imgtocloud.post);
+
     //Setup the routes for business owner (Person purchasing the product)
+    router.get('/uploadlogo', uploadLogo.get);
+    router.post('/uploadlogo', uploadLogo.post);
+
     router.get('/:id/dashboard', updateBusiness, isLoggedInBusAdmin, dashboard.get);
     router.post('/:id/dashboard', updateBusiness, isLoggedInBusAdmin, dashboard.post);
 
@@ -263,8 +270,7 @@ function updateBusiness(req, res, next) {
 
 //router.get('/formbuilder',isLoggedInBusAdmin, formbuilder.get);
 
-//router.get('/uploadlogo', isLoggedInBusAdmin, uploadLogo.get);
-//router.post('/uploadlogo', isLoggedInBusAdmin, uploadLogo.post);
+
 
 
 

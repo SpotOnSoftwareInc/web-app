@@ -3,6 +3,8 @@
  */
 
 exports.get = function (req, res) {
+
+
     console.log('Inside register process get method');
     var businessDB = req.db.get('businesses');
     var bid = req.user[0].business;

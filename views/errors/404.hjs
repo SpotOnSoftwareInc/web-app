@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="SemiColonWeb" />
+
+	<!-- Stylesheets
+	============================================= -->
+	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="../css/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="../style.css" type="text/css" />
+	<link rel="stylesheet" href="../css/dark.css" type="text/css" />
+	<link rel="stylesheet" href="../css/font-icons.css" type="text/css" />
+	<link rel="stylesheet" href="../css/animate.css" type="text/css" />
+	<link rel="stylesheet" href="../css/magnific-popup.css" type="text/css" />
+
+	<link rel="stylesheet" href="../css/responsive.css" type="text/css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!--[if lt IE 9]>
+		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<![endif]-->
+
+	<!-- External JavaScripts
+	============================================= -->
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/plugins.js"></script>
+
+	<!-- Document Title
+	============================================= -->
+	<title>404 | Canvas</title>
+
+</head>
+
+<body class="stretched">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper" class="clearfix">
+		<!-- Page Title
+		============================================= -->
+		<section id="page-title">
+
+			<div class="container clearfix">
+				<h1><img src="../images/soslogo.jpg"  alt="Image" title="Image" /> Page Not Found </h1>
+
+				<ol class="breadcrumb">
+					<li><a href="/">Home</a></li>
+					<li class="active">404</li>
+				</ol>
+			</div>
+		</section><!-- #page-title end -->
+
+        <section>
+            <div class="vertical center">
+                <!--<video poster="../images/videos/explore.jpg" preload="auto" loop autoplay muted>-->
+                    <!--<source src='../images/videos/explore.mp4' type='video/mp4' />-->
+                    <!--<source src='../images/videos/explore.webm' type='video/webm' />-->
+                <!--</video>-->
+                <img src="../images/landing/mario-404.gif"  alt="Image" title="Image" />
+                <!--<div class="video-overlay" style="background-color: rgba(0,0,0,0.3);"></div>-->
+            </div>
+
+        </section>
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="icon-angle-up"></div>
+
+	<!-- Footer Scripts
+	============================================= -->
+	<script type="text/javascript" src="../js/functions.js"></script>
+
+</body>
+</html>
