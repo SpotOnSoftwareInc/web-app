@@ -26,7 +26,7 @@ console.log('I AM HERE');
 console.log('Connecting to DB: ' + mongoURI);
 var db = monk(mongoURI);
 
-var cloudinaryURI = process.env.CLOUDINARY_URL;
+//var cloudinaryURI = process.env.CLOUDINARY_URL;
 //cloudinary.config(cloudinaryURI);
 //cloudinary.config({
 //    cloud_name: 'ha9cind6w',
