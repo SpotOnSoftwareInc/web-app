@@ -75,6 +75,7 @@ module.exports = function (passport) {
                             email: email,
                             password: password,
                             companyName: companyName,
+                            companyAddress: '',
                             phone: '',
                             fname: fname,
                             //username: username,
