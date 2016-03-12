@@ -24,7 +24,7 @@ exports.get = function (req, res) {
 
     var bid = req.user[0].business.toString();
 
-    apptDB.find( { business: bid }, {state: 'waiting'} )
+    apptDB.find( { business: bid }, {status: 'waiting'} )
         .on('success', function(appointments) {
 
             res.render('staff/visitor', {

@@ -9,6 +9,7 @@ var multer = require('multer');
 var passport = require('passport');
 var async = require('async');
 var favicon = require('serve-favicon');
+//var cloudinary = require('cloudinary').v2;
 var app = express();
 
 global.__base = __dirname + '/';
@@ -24,6 +25,14 @@ var mongoURI = process.env.MONGOLAB_URI || development;
 console.log('I AM HERE');
 console.log('Connecting to DB: ' + mongoURI);
 var db = monk(mongoURI);
+
+//var cloudinaryURI = process.env.CLOUDINARY_URL;
+//cloudinary.config(cloudinaryURI);
+//cloudinary.config({
+//    cloud_name: 'ha9cind6w',
+//    api_key: '491512592115195',
+//    api_secret: 'U2kBkejmgyq8dEYQ8W72e9enMXA'
+//});
 
 //login config
 var businesses = db.get('businesses');
@@ -60,6 +69,14 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 //app.use(express.static(path.join(__dirname, 'static')));  GOLDTEAM
+
+
+
+//app.use(cloudinary({
+//    cloud_name: 'ha9cind6w',
+//    api_key: '491512592115195',
+//    api_secret: 'U2kBkejmgyq8dEYQ8W72e9enMXA'
+//}));
 
 //Not sure what this does but I believe it allows you to upload images
 app.use(multer({
@@ -107,6 +124,7 @@ app.all('*', function (req, res, next) {
 // Make our db accessible to our router
 app.use(function (req, res, next) {
     req.db = db;
+    //req.cloud = cloudinary;
     req.passport = passport;
     req.app = app;
     next();
@@ -120,6 +138,10 @@ app.use('/', webappRoutes);
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
+    res.render('errors/404', {
+        message: err.message,
+        error: err
+    });
     next(err);
 });
 
@@ -132,7 +154,7 @@ if (app.get('env') === development) {
         console.error(err);
         console.error(err.stack);
         res.status(err.status || 500);
-        res.render('error', {
+        res.render('errors/404', {
             message: err.message,
             error: err
         });
@@ -145,7 +167,7 @@ app.use(function (err, req, res) {
     console.error(err);
     console.error(err.stack);
     res.status(err.status || 500);
-    res.render('error', {
+    res.render('errors/404', {
         message: err.message,
         error: {}
     });
