@@ -9,7 +9,7 @@ var multer = require('multer');
 var passport = require('passport');
 var async = require('async');
 var favicon = require('serve-favicon');
-var cloudinary = require('cloudinary').v2;
+//var cloudinary = require('cloudinary').v2;
 var app = express();
 
 global.__base = __dirname + '/';
@@ -28,11 +28,11 @@ var db = monk(mongoURI);
 
 var cloudinaryURI = process.env.CLOUDINARY_URL;
 //cloudinary.config(cloudinaryURI);
-cloudinary.config({
-    cloud_name: 'ha9cind6w',
-    api_key: '491512592115195',
-    api_secret: 'U2kBkejmgyq8dEYQ8W72e9enMXA'
-});
+//cloudinary.config({
+//    cloud_name: 'ha9cind6w',
+//    api_key: '491512592115195',
+//    api_secret: 'U2kBkejmgyq8dEYQ8W72e9enMXA'
+//});
 
 //login config
 var businesses = db.get('businesses');
@@ -124,7 +124,7 @@ app.all('*', function (req, res, next) {
 // Make our db accessible to our router
 app.use(function (req, res, next) {
     req.db = db;
-    req.cloud = cloudinary;
+    //req.cloud = cloudinary;
     req.passport = passport;
     req.app = app;
     next();
