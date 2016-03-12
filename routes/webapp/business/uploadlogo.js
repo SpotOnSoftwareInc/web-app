@@ -42,7 +42,7 @@ console.log('error is in here');
                     return next(err);
                 }
 
-                fs.unlink('public/'+results.logo);
+                fs.unlink('public'+results.logo);
             }
         );
         console.log(req.files.userLogo.name);
