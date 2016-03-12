@@ -46,6 +46,7 @@ console.log('error is in here');
             }
         );
         console.log(req.files.userLogo.name);
+        console.log(req.files.userLogo.originalname);
 
         businesses.updateById(businessID, {
                 $set: {
