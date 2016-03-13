@@ -105,28 +105,28 @@
                                         <th>Client</th>
                                         <th>Billing Tier</th>
                                         <th>E-Mail</th>
+                                        <th>Address</th>
                                         <th>User Actions</th>
-                                    </tr>
+                                        <th>Remove</th>
+                                    </tr
                                     </thead>
                                     <tbody>
+                                    {{#bizz}}
                                     <tr>
-                                        <td>Dental Office</td>
-                                        <td>Free</td>
-                                        <td>dentists@dental.com</td>
-                                        <td><i class="i-circled i-small icon-user"></i><i class="i-circled i-small icon-cog" style="width: 10px; height: 10px;"></i></td>
+                                        <td>{{companyName}}</td>
+                                        <td>{{billingPlan}}</td>
+                                        <td>{{email}}</td>
+                                        <td>{{companyAddress}}</td>
+                                        <td><i class="i-circled i-small icon-user"></i></td>
+                                        <td>
+                                            <form method="post" action="">
+                                                <input type="hidden" name="bizzez" class="form-control" value="{{bizz}}" />
+                                                <input type="hidden" name="bizId" class="form-control" value="{{_id}}" />
+                                                <input class="i-circled i-small" value="X" id="remove" type="submit" style="border: 0px;">
+                                            </form>
+                                        </td>
                                     </tr>
-                                    <tr>
-                                        <td>Yoga Instructor</td>
-                                        <td>Premium</td>
-                                        <td>yoga@yoga.com</td>
-                                        <td><i class="i-circled i-small icon-ok"></i><i class="i-circled i-small icon-cog" style="width: 10px; height: 10px;"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td>item #3</td>
-                                        <td>billing #3</td>
-                                        <td>contact #3</td>
-                                        <td><i class="i-circled i-small icon-ok"></i><i class="i-circled i-small icon-cog" style="width: 10px; height: 10px;"></i></td>
-                                    </tr>
+                                    {{/bizz}}
                                     </tbody>
                                 </table>
 

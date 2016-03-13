@@ -3,44 +3,10 @@
  */
 
 function init(){
-    document.getElementById('searchForm').style.marginRight = "15px";
     _bindSearch();
 }
 
-function updateTime(){
-    var t_str = getTime();
-    document.getElementById('time_span').innerHTML = t_str;
-    document.getElementById('time_span').style.marginTop = "0px";
-}
-
-function getTime(){
-    var currentTime = new Date()
-    var hours = currentTime.getHours()
-    var minutes = currentTime.getMinutes()
-    var seconds = currentTime.getSeconds()
-    var what = false;
-    if (seconds < 10){
-        seconds = "0" + seconds
-    }
-    if (minutes < 10){
-        minutes = "0" + minutes
-    }
-    if(hours > 12){
-        hours -= 12;
-        what = true;
-    }
-    var t_str = hours + ":" + minutes + ":" + seconds + " ";
-    if(what){
-        t_str += "PM";
-    } else {
-        t_str += "AM";
-    }
-
-    return t_str;
-}
-
-setInterval(updateTime, 1000);
-
+// Binding the search function
 _bindSearch = function(){
     $('#search').click(function() {
             document.getElementById("search").value = "";
@@ -61,6 +27,45 @@ _bindSearch = function(){
         });
 }
 
+// Interval to constantly refresh the page for the time to change
+setInterval(updateTime, 1000);
+
+// Function to update the current time
+function updateTime(){
+    // Update the time
+    document.getElementById('time_span').innerHTML = getTime();
+}
+
+// Function to get the current time
+function getTime(){
+    //
+    var currentTime = new Date()
+    var hours = currentTime.getHours()
+    var minutes = currentTime.getMinutes()
+    var seconds = currentTime.getSeconds()
+    var isNoon = false;
+
+    if (seconds < 10){
+        seconds = "0" + seconds
+    }
+    if (minutes < 10){
+        minutes = "0" + minutes
+    }
+
+    if(hours > 12){
+        hours -= 12;
+        isNoon = true;
+    }
+    var t_str = hours + ":" + minutes + ":" + seconds + " ";
+    if(isNoon){
+        t_str += "PM";
+    } else {
+        t_str += "AM";
+    }
+
+    return t_str;
+}
+
 $('.name').click(function(){
     var name = $(this).text();
     $(this).html('');
@@ -73,7 +78,7 @@ $('.name').click(function(){
             'value': name
         })
         .appendTo(this);
-    $('#txt_fullname').focus();Å
+    $('#txt_fullname').focus();
 });
 
 $(document).on('blur','#txt_fullname', function(){
@@ -100,10 +105,12 @@ $(".button-green").click(function() {
 });
 
 function onceDone(str){
+    console.log("#" + str[0] + "-button");
     $("#" + str[0] + "-button").remove();
-    var one = '<button class="button button-3d button-mini button-rounded button-red"';
-    var two = ' id="' + str[0] + '-button">Check Out</button>';
-    var inner = one + two;
+    var zero = '<form id="formVis" method="post" action="deleteVisitor" enctype="application/x-www-form-urlencoded">';
+    var one = '<button name="visitorName" type="submit" class="button button-3d button-mini button-rounded button-red" value=' + str[0];
+    var two = ' id="' + str[0] + '-button">Check Out</button></form>';
+    var inner = zero  + one + two;
     $("#button-row-" + str[0]).append(inner);
 
     $("#button-row-" + str[0]).on("click", ".button-red", function() {
@@ -116,6 +123,10 @@ function onceDone(str){
         });
     });
 }
+
+// Global variables for keeping track of average
+var count = 1;
+var flag = false;
 
 function getTimeDiff(time){
     var countHr = $(".hr").text();
@@ -189,9 +200,6 @@ function getAvg(old, cur){
     }
     return avg;
 }
-
-var count = 1;
-var flag = false;
 
 $(document).ready(init());
 

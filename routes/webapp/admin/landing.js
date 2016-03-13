@@ -1,8 +1,5 @@
 exports.get = function (req, res, next) {
     console.log('Get function LANDING');
-	req.session.companyName = null;
-    req.session.fname = null;
-    req.session.email = null;
 
 	req.session.save(function (err) {
 
@@ -17,18 +14,21 @@ exports.get = function (req, res, next) {
 
 exports.post = function (req, res, next) {
     console.log('POST function LANDING');
+    //var database =  req.db;
+    //var businessDB = database.get('businesses');
     var companyName = req.body.companyName;
-    var fname = req.body.fname;
+    var name = req.body.name;
+    //var nameArr = name.split(' ');
+    //var fname = nameArr[0];
+    //var lname = nameArr[1];
     var email = req.body.email;
 
-    if (companyName === '' || fname === '' || email === '') {
+    if (companyName === '' || name === '' || email === '') {
 
-        res.redirect('/register');
+        res.redirect('/');
     } else {
 
-        req.session.companyName = companyName;
-        req.session.companyName = fname;
-        req.session.companyName = email;
+
 
         req.session.save(function (err) {
 

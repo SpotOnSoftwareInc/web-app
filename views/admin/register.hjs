@@ -97,8 +97,8 @@
                                         </div>
 
                                         <div class="col_full">
-                                            <label for="register-form-lastname">Last Name:</label>
-                                            <input type="text" id="register-form-lastname" name="lname" value="{{lname}}" class="form-control" placeholder="Last name" />
+                                            <label for="register-form-lname">Last Name:</label>
+                                            <input type="text" id="register-form-lname" name="lname" value="{{lname}}" class="form-control" placeholder="Last name" />
                                         </div>
 
                                         <div class="col_full">
@@ -233,6 +233,7 @@
 <!-- Footer Scripts
 ============================================= -->
 <script type="text/javascript" src="js/functions.js"></script>
+<script type="text/javascript" src="js/register.js"></script>
 
 </body>
 </html>

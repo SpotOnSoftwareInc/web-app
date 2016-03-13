@@ -18,7 +18,7 @@ module.exports = function (passport) {
 // we are using named strategies since we have one for login and one for signup
 // by default, if there was no name, it would just be called 'local'
 
-    // Adding a business
+
     passport.use('local-signup', new LocalStrategy({
 
             // by default, local strategy uses username and password, we will override with email
@@ -150,6 +150,7 @@ module.exports = function (passport) {
         passReqToCallback: true
     },
         function (req,email,password,done) {
+
             var db =req.db;
             var employee = db.get('employees');
 
@@ -176,6 +177,7 @@ module.exports = function (passport) {
     // we are using named strategies since we have one for login and one for signup
     // by default, if there was no name, it would just be called 'local'
 
+    //CALL THIS FUNCTION AT THE END OF REGISTER PROCESS
     passport.use('local-login', new LocalStrategy({
             // by default, local strategy uses username and password, we will override with email
             usernameField: 'email',

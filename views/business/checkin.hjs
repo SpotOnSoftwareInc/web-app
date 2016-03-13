@@ -30,55 +30,31 @@
     <script src='../js/cloudinary/js/jquery.fileupload.js' type='text/javascript'></script>
     <script src='../js/cloudinary/js/jquery.cloudinary.js' type='text/javascript'></script>
     <title>Admin - Home</title>
-    <style>
-        .button {
-            padding: 12px 20px 45px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            -webkit-transition-duration: 0.4s; /* Safari */
-            transition-duration: 0.4s;
-            cursor: pointer;
-        }
 
 
-        .button {
-            background-color: #c0c0c0;
-            color: black;
-            border: 2px solid #555555;
-        }
-
-        .button:hover {
-            background-color: #555555;
-            color: white;
-        }
-    </style>
     <script type="text/javascript">
         !function(a,b){a("Keen","https://d26b395fwzu5fz.cloudfront.net/3.4.0/keen.min.js",b)}(function(a,b,c){var d,e,f;c["_"+a]={},c[a]=function(b){c["_"+a].clients=c["_"+a].clients||{},c["_"+a].clients[b.projectId]=this,this._config=b},c[a].ready=function(b){c["_"+a].ready=c["_"+a].ready||[],c["_"+a].ready.push(b)},d=["addEvent","setGlobalProperties","trackExternalLink","on"];for(var g=0;g<d.length;g++){var h=d[g],i=function(a){return function(){return this["_"+a]=this["_"+a]||[],this["_"+a].push(arguments),this}};c[a].prototype[h]=i(h)}e=document.createElement("script"),e.async=!0,e.src=b,f=document.getElementsByTagName("script")[0],f.parentNode.insertBefore(e,f)},this);
     </script>
     <title>Check-in!!</title>
 </head>
 
-<body background="../images/landing/sloth3.jpg">
+<img src="../images/landing/checkinBG.jpg" id="bg" alt="">
+<script src="https://widget.prudio.com/client.js?appid=d38154d0-f086-4010-bcc4-a7985ea93114" async></script>
+<script src="../javascripts/checkin.js" type="text/javascript"></script>
+<link rel="stylesheet" href="../css/checkin.css" type="text/css" />
 
-
-
-<div style="height: 200px; width: 500px;  position:absolute; top:246px; left:535px;">
-
-    <p>  <input type="text" style=" font-size:25px"  name="LastName" size="16"/>  </p>
+<div>
+    <p>  <input type="text" name="LastName" id="text1"/>  </p>
 </div>
 
 
-<div style=" height: 200px; width: 500px;  position:absolute; top:330px; left:535px;">
-
-    <p>  <input type="text" style=" font-size:25px"  name="Cellphone" size="16"/>  </p>
+<div>
+    <p>  <input type="text" name="Cellphone" id="text2"/>  </p>
 </div>
 
 
-<div style="height: 50px; width: 130px;  position:absolute; top:420px; left:540px;">
-    <input type="button" class="button" data-toggle="modal" data-target=".bs-example-modal-lg"value="Check in">
+<div>
+    <input type="button" class="button" data-toggle="modal" data-target=".bs-example-modal-lg"value="Check in" id="button1">
 
     <!-- Large modal -->
     <!--<button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>-->
@@ -98,6 +74,11 @@
             </div>
         </div>
     </div>
+    <form method="post" action="checkin" enctype="application/x-www-form-urlencoded">
+        <input type="text" name="fullName" placeholder="John Smith"/>
+        <input type="text" name="phone" placeholder="123-456-7890"/>
+        <input class="btn custom-button" type="submit" value="checkin" href="/checkin" name="submit">
+    </form>
 
     <script type="text/javascript">
         $('[data-toggle=popover]').popover();
@@ -105,7 +86,7 @@
 </div>
 
 <!-- Footer Scripts
-	============================================= -->
+    ============================================= -->
 <script type="text/javascript" src="../js/functions.js"></script>
 <script src="../js/testing.js" type="text/javascript"></script>
 

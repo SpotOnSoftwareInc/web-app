@@ -8,6 +8,8 @@ var registerprocess = require('./admin/registerprocess');
 var login = require('./admin/login');
 var reset = require('./admin/reset');
 var analytics = require('./admin/analytics');
+var imgtocloud = require('./admin/imgtocloud');
+
 //Define the controllers for business owner (Person purchasing the product) process
 var accountsettings = require('./business/accountsettings');
 var addemployees = require('./business/addemployees');
@@ -15,12 +17,14 @@ var getemployees = require('./business/getemployees');
 var addoneemployee = require('./business/addoneemployee');
 var formbuilder = require('./business/formbuilder');
 var dashboard = require('./business/dashboard');
+var dashboard2 = require('./business/dashboard2');
 var businesssetting = require('./business/businesssetting');
 var nodemailer = require('nodemailer');
 var smtpTransport = require("nodemailer-smtp-transport");
 var async = require('async');
 var crypto = require('crypto');
 var auth = require('../../lib/auth.js');
+var uploadLogo = require('./business/uploadlogo');
 //var checkindesign = require('./business/checkindesign');
 //var customizeform = require('./business/customizeform');
 //var analytics = require('./business/analytics');
@@ -36,12 +40,8 @@ var visitorassigned = require('./provider/visitorassigned');
 var visitor = require('./staff/visitor');
 
 //Define the controllers for visitor (person checkin in) process
-var checkin = require('./visitor/checkin');
-
-
-
-
-
+var checkin = require('./business/checkin');
+var deleteVisitor = require('./staff/deleteVisitor');
 module.exports = function (passport) {
 
     /**
@@ -71,8 +71,6 @@ module.exports = function (passport) {
                 res.redirect('/admin');
             }
         });
-
-
 
     router.get('/registerprocess', registerprocess.get);
     router.post('/registerprocess', registerprocess.post);
@@ -213,9 +211,17 @@ module.exports = function (passport) {
         });
 
     router.get('/:id/admin', isLoggedInSaaSAdmin, admin.get);
+    router.post('/:id/admin', isLoggedInSaaSAdmin, admin.post);
+
+    router.post('/imgtocloud', imgtocloud.post);
 
     //Setup the routes for business owner (Person purchasing the product)
+    router.get('/uploadlogo', uploadLogo.get);
+    router.post('/uploadlogo', uploadLogo.post);
+
     router.get('/:id/dashboard', updateBusiness, isLoggedInBusAdmin, dashboard.get);
+    router.post('/:id/dashboard', updateBusiness, isLoggedInBusAdmin, dashboard.post);
+    router.post('/:id/dashboard2', updateBusiness, isLoggedInBusAdmin, dashboard2.post);
 
     router.get('/:id/accountSettings', updateBusiness, isLoggedInBusAdmin, accountsettings.get);
     router.post('/:id/accountSettings', isLoggedInBusAdmin, accountsettings.post);
@@ -243,9 +249,13 @@ module.exports = function (passport) {
 
     //setup the routes for staff
     router.get('/:id/visitor', updateBusiness, isLoggedInStaff, visitor.get);
+    router.post('/:id/visitor', updateBusiness, isLoggedInStaff, visitor.post);
+    router.post('/:id/deleteVisitor', deleteVisitor.post);
 
     //setup the routes for visitor
     router.get('/:id/checkin', isLoggedInVisitor, checkin.get);
+
+    router.post('/:id/checkin', isLoggedInVisitor, checkin.post);
 
     router.get('/logout', function(req, res){
         req.logout();
@@ -256,7 +266,7 @@ module.exports = function (passport) {
 // User will be denied access if session is not correct
 function isLoggedInSaaSAdmin(req, res, next) {
         //if user(saas admin) is authenticated in the session, carry on
-        if (req.isAuthenticated() && (req.user[0].role === 'saasAdmin')){
+        if (req.isAuthenticated() && (req.user[0].role === 'saasAdmin') || req.user[0].role === 'busAdmin'){
             return next();
         }
         // if they aren't redirect them to the home page
@@ -368,8 +378,7 @@ function updateBusiness(req, res, next) {
 
 //router.get('/formbuilder',isLoggedInBusAdmin, formbuilder.get);
 
-//router.get('/uploadlogo', isLoggedInBusAdmin, uploadLogo.get);
-//router.post('/uploadlogo', isLoggedInBusAdmin, uploadLogo.post);
+
 
 
 

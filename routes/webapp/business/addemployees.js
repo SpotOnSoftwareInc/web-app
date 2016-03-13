@@ -8,7 +8,7 @@ var ObjectId = require('mongodb').ObjectID;
  * Takes a req and res parameters and is inputted into function to get employee, notemployee, and business data.
  *
  * @param req and res The two parameters passed in to get the apprporiate employee,
-  * @returns The appropriate data about the employee
+ * @returns The appropriate data about the employee
  */
 exports.get = function(req,res){
     console.log('Get function addemployees');
@@ -67,8 +67,6 @@ exports.get = function(req,res){
  * @returns The appropriate data about the employee
  */
 exports.post = function(req,res){
-
-    console.log('breaks here');
        var parsed = baby.parse(req.body.csvEmployees);
        var rows = parsed.data;
        var database =  req.db;
@@ -130,7 +128,6 @@ exports.post = function(req,res){
 
         }
         res.redirect('../' + req.user[0].business + '/dashboard');
-        //res.redirect('/');
 }
 
 
