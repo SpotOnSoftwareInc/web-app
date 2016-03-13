@@ -109,6 +109,7 @@ module.exports = function (passport) {
                             //done("User not found", 'done');
                             //res.redirect('/register');
                         } else {
+                            console.log("Success");
                             done(null, token);
                         }
                     }
@@ -155,9 +156,9 @@ module.exports = function (passport) {
                 var db = req.db;
                 var employees = db.get('employees');
                 var pass = auth.hashPassword(req.body.password);
-
+                console.log(req.body.password);
                 //resetPasswordExpires: { $gt: Date.now() }
-                employees.findAndModify(
+                employees.update(
                     {resetPasswordToken: req.params.token },
                     {
                         $set: {
@@ -166,7 +167,6 @@ module.exports = function (passport) {
                             resetPasswordExpires: undefined
                         }
                     },
-                    { new: true },
                     function(err, doc){
                         if(err){
                             console.log(err);
@@ -177,7 +177,6 @@ module.exports = function (passport) {
                             //res.redirect('/register');
                         } else {
                             console.log('success');
-                            console.log(doc);
                             res.redirect('/register');
                         }
                     }
@@ -188,6 +187,8 @@ module.exports = function (passport) {
             res.redirect('/');
         });
     });
+
+    //router.post('/reset/:token', passport.authenticate('changepw'));
 
 
 

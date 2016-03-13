@@ -7,6 +7,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var auth = require('../lib/auth');
 var ObjectId = require('mongodb').ObjectID;
 var async = require('async');
+var bcrypt = require('bcrypt-nodejs');
 //need this since we are passing in a passport dependency in app.js line 58
 module.exports = function (passport) {
 
@@ -84,8 +85,8 @@ module.exports = function (passport) {
             smsNotify: true,
             emailNotify: true,
             role: 'busAdmin',
-            resetPasswordToken: String,
-            resetPasswordExpires: Date
+            resetPasswordToken: undefined,
+            resetPasswordExpires: undefined
         };
         console.log("Adding Employee: ");
         console.log(employee);
@@ -149,16 +150,13 @@ module.exports = function (passport) {
         passReqToCallback: true
     },
         function (req,email,password,done) {
-
-
-
             var db =req.db;
             var employee = db.get('employees');
 
             password = auth.hashPassword(password);
 
             employee.findAndModify({
-             query: {registrationToken: req.query.token},
+             query: {registrationToken: req.params.token},
              update: { $unset: {registrationToken: 1},
                 $set: {password: password} },
              new: true},
@@ -171,6 +169,46 @@ module.exports = function (passport) {
             );
         }
     ));
+
+    //passport.use('changepw', new LocalStrategy({
+    //    usernameField: 'email',
+    //    passwordField: 'password',
+    //    passReqToCallback: true
+    //},
+    //    function (req, email, password, done) {
+    //        console.log('In passport');
+    //        var db = req.db;
+    //        var employees = db.get('employees');
+    //        var pass = auth.hashPassword(req.body.password);
+    //
+    //        //resetPasswordExpires: { $gt: Date.now() }
+    //        employees.findAndModify(
+    //            {resetPasswordToken: req.params.token },
+    //            {
+    //                $set: {
+    //                    password: pass,
+    //                    resetPasswordToken: undefined,
+    //                    resetPasswordExpires: undefined
+    //                }
+    //            },
+    //            { new: true },
+    //            function(err, doc){
+    //                if(err){
+    //                    console.log(err);
+    //                } else if(!doc){
+    //                    req.flash('Error', "User with that email not found");
+    //                    console.log('Expired reset password link');
+    //                    //done("User not found", 'done');
+    //                    //res.redirect('/register');
+    //                } else {
+    //                    console.log('success');
+    //                    res.redirect('/register');
+    //                    return done(null, doc);
+    //                }
+    //            }
+    //        );
+    //    }
+    //));
 
 
 
@@ -188,22 +226,46 @@ module.exports = function (passport) {
         },
         function (req, email, password, done) { // callback with email and password from our form
             //console.log('LOCAL-LOGIN');
-            console.log(email + " " + password);
-            auth.validateLogin(req.db, email, password, function (err,user) {
-                if(err){
-                    console.log(err + " SUPRISE");
-                }
-                if (!user) {
-                    console.log("Error: " + email + " " + password);
-                    return done(null, false, req.flash("login", "Invalid Email/Password Combo"));
-                }
-                else {
-                    console.log('LOCAL-LOGIN SUCCESS');
-                    return done(null,user);
+            var employees = req.db.get('employees');
+            var a = bcrypt.hashSync("pizza",bcrypt.genSaltSync(8));
+            if(bcrypt.compareSync("pizza",a)){
+                console.log("bcrypt works");
+            } else {
+                console.log("BCRYPT DOES NOT WORK");
+            }
+            //auth.validateLogin(req.db, email, password, function (err,user) {
+            //    if(err){
+            //        console.log(err + " SUPRISE");
+            //    }
+            //    if (!user) {
+            //        console.log("Error: " + email + " " + password);
+            //        return done(null, false, req.flash("login", "Invalid Email/Password Combo"));
+            //    }
+            //    else {
+            //        console.log('LOCAL-LOGIN SUCCESS');
+            //        return done(null,user);
+            //        }
+            //});
+
+            employees.findOne({email: email},
+                function (err,employee){
+                    console.log("Im here");
+                    if(err){
+                        console.error('validateLogin DB Error: ' + err);
+                    } else if(!employee){
+                        // error
                     }
-            });
+                    if(bcrypt.compareSync(password, employee.password)){
+                        console.log("Success");
+                        return done(null, employee);
+                    } else {
+                        console.log("Failure");
+                        return done(null, employee);
+                    }
+                }
+            );
+
         }
     ));
-
 
 };
