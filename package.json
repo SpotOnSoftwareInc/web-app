@@ -42,7 +42,6 @@
     "underscore": "^1.8.1"
   },
   "devDependencies": {
-    "browser-sync": "^2.1.1",
     "check-pages": "^0.7.1",
     "gulp": "^3.8.11",
     "gulp-apidoc": "^0.1.2",
