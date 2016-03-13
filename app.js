@@ -7,7 +7,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var multer = require('multer');
 var passport = require('passport');
-var async = require('async');
+// var async = require('async');
 var favicon = require('serve-favicon');
 //var cloudinary = require('cloudinary').v2;
 var app = express();
@@ -35,7 +35,7 @@ var db = monk(mongoURI);
 //});
 
 //login config
-var businesses = db.get('businesses');
+// var businesses = db.get('businesses');
 var employee = db.get('employees');
 
 //passport functions to Serialize and Deserialize users

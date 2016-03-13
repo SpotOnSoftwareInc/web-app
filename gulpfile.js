@@ -52,11 +52,11 @@ gulp.task('clean', function () {
     .pipe(plugins.clean());
 });
 
-// gulp.task('lint', function() {
-//   return gulp.src('./*.js')
-//     .pipe(plugins.jshint())
-//     .pipe(plugins.jshint.reporter('jshint-stylish'));
-// });
+gulp.task('lint', function() {
+  return gulp.src('./*.js')
+    .pipe(plugins.jshint())
+    .pipe(plugins.jshint.reporter('jshint-stylish'));
+});
 
 gulp.task('vendor', function() {
   return gulp.src('./public/javascripts/*.js')
