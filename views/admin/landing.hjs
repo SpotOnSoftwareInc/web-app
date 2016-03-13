@@ -39,38 +39,8 @@
     ============================================= -->
     <title>iReceptionist</title>
 
-    <style>
+    <link rel="stylesheet" href="../css/admin/landing.css" type="text/css" />
 
-        .revo-slider-emphasis-text {
-            font-size: 64px;
-            font-weight: 700;
-            letter-spacing: -1px;
-            font-family: 'Raleway', sans-serif;
-            padding: 15px 20px;
-            border-top: 2px solid #FFF;
-            border-bottom: 2px solid #FFF;
-        }
-
-        .revo-slider-desc-text {
-            font-size: 20px;
-            font-family: 'Lato', sans-serif;
-            width: 650px;
-            text-align: center;
-            line-height: 1.5;
-        }
-
-        .revo-slider-caps-text {
-            font-size: 16px;
-            font-weight: 400;
-            letter-spacing: 3px;
-            font-family: 'Raleway', sans-serif;
-        }
-
-        .tp-video-play-button { display: none !important; }
-
-        .tp-caption { white-space: nowrap; }
-
-    </style>
     <script type="text/javascript">
         !function(a,b){a("Keen","https://d26b395fwzu5fz.cloudfront.net/3.4.0/keen.min.js",b)}(function(a,b,c){var d,e,f;c["_"+a]={},c[a]=function(b){c["_"+a].clients=c["_"+a].clients||{},c["_"+a].clients[b.projectId]=this,this._config=b},c[a].ready=function(b){c["_"+a].ready=c["_"+a].ready||[],c["_"+a].ready.push(b)},d=["addEvent","setGlobalProperties","trackExternalLink","on"];for(var g=0;g<d.length;g++){var h=d[g],i=function(a){return function(){return this["_"+a]=this["_"+a]||[],this["_"+a].push(arguments),this}};c[a].prototype[h]=i(h)}e=document.ting a teElement("script"),e.async=!0,e.src=b,f=document.getElementsByTagName("script")[0],f.parentNode.insertBefore(e,f)},this);
     </script>
@@ -169,78 +139,7 @@
 
         </div>
 
-        <script>
-            jQuery(document).ready(function($){
-                swiperSlider = new Swiper('.swiper-parent',{
-                    paginationClickable: false,
-                    slidesPerView: 1,
-                    grabCursor: true,
-                    onSwiperCreated: function(swiper){
-                        $('[data-caption-animate]').each(function(){
-                            var $toAnimateElement = $(this);
-                            var toAnimateDelay = $(this).attr('data-caption-delay');
-                            var toAnimateDelayTime = 0;
-                            if( toAnimateDelay ) { toAnimateDelayTime = Number( toAnimateDelay ) + 750; } else { toAnimateDelayTime = 750; }
-                            if( !$toAnimateElement.hasClass('animated') ) {
-                                $toAnimateElement.addClass('not-animated');
-                                var elementAnimation = $toAnimateElement.attr('data-caption-animate');
-                                setTimeout(function() {
-                                    $toAnimateElement.removeClass('not-animated').addClass( elementAnimation + ' animated');
-                                }, toAnimateDelayTime);
-                            }
-                        });
-                        SEMICOLON.slider.swiperSliderMenu();
-                    },
-                    onSlideChangeStart: function(swiper){
-                        $('#slide-number-current').html(swiper.activeIndex + 1);
-                        $('[data-caption-animate]').each(function(){
-                            var $toAnimateElement = $(this);
-                            var elementAnimation = $toAnimateElement.attr('data-caption-animate');
-                            $toAnimateElement.removeClass('animated').removeClass(elementAnimation).addClass('not-animated');
-                        });
-                        SEMICOLON.slider.swiperSliderMenu();
-                    },
-                    onSlideChangeEnd: function(swiper){
-                        $('#slider').find('.swiper-slide').each(function(){
-                            if($(this).find('video').length > 0) { $(this).find('video').get(0).pause(); }
-                        });
-                        $('#slider').find('.swiper-slide:not(".swiper-slide-active")').each(function(){
-                            if($(this).find('video').length > 0) {
-                                if($(this).find('video').get(0).currentTime != 0 ) $(this).find('video').get(0).currentTime = 0;
-                            }
-                        });
-                        if( $('#slider').find('.swiper-slide.swiper-slide-active').find('video').length > 0 ) { $('#slider').find('.swiper-slide.swiper-slide-active').find('video').get(0).play(); }
-
-                        $('#slider .swiper-slide.swiper-slide-active [data-caption-animate]').each(function(){
-                            var $toAnimateElement = $(this);
-                            var toAnimateDelay = $(this).attr('data-caption-delay');
-                            var toAnimateDelayTime = 0;
-                            if( toAnimateDelay ) { toAnimateDelayTime = Number( toAnimateDelay ) + 300; } else { toAnimateDelayTime = 300; }
-                            if( !$toAnimateElement.hasClass('animated') ) {
-                                $toAnimateElement.addClass('not-animated');
-                                var elementAnimation = $toAnimateElement.attr('data-caption-animate');
-                                setTimeout(function() {
-                                    $toAnimateElement.removeClass('not-animated').addClass( elementAnimation + ' animated');
-                                }, toAnimateDelayTime);
-                            }
-                        });
-                    }
-                });
-
-                $('#slider-arrow-left').on('click', function(e){
-                    e.preventDefault();
-                    swiperSlider.swipePrev();
-                });
-
-                $('#slider-arrow-right').on('click', function(e){
-                    e.preventDefault();
-                    swiperSlider.swipeNext();
-                });
-
-                $('#slide-number-current').html(swiperSlider.activeIndex + 1);
-                $('#slide-number-total').html(swiperSlider.slides.length);
-            });
-        </script>
+    <script src="../js/admin/landing.js" type="text/javascript"></script>
 
     </section>
 
@@ -302,40 +201,7 @@
                             <canvas id="lineChartCanvas" width="1094" height="600" style="width: 547px; height: 300px;"></canvas>
                         </div>
 
-                        <script type="text/javascript">
-                            jQuery(window).load( function(){
-                                var lineChartData = {
-                                    labels : ["January","February","March","April","May","June","July"],
-                                    datasets : [
-                                        {
-                                            fillColor : "rgba(255,51,255,0.5)",
-                                            strokeColor : "rgba(220,220,220,1)",
-                                            pointColor : "rgba(220,220,220,1)",
-                                            pointStrokeColor : "#fff",
-                                            data : [65,59,90,81,56,55,40]
-                                        },
-                                        {
-                                            fillColor : "rgba(151,187,205,0.5)",
-                                            strokeColor : "rgba(151,187,205,1)",
-                                            pointColor : "rgba(151,187,205,1)",
-                                            pointStrokeColor : "#fff",
-                                            data : [28,48,40,19,96,27,100]
-                                        }
-                                    ]
-                                };
-
-                                var globalGraphSettings = {animation : Modernizr.canvas};
-
-                                function showLineChart(){
-                                    var ctx = document.getElementById("lineChartCanvas").getContext("2d");
-                                    new Chart(ctx).Line(lineChartData,globalGraphSettings);
-                                }
-
-                                $('#lineChart').appear( function(){ $(this).css({ opacity: 1 });
-                                    setTimeout(showLineChart,300); },{accX: 0, accY: -155},'easeInCubic');
-
-                            });
-                        </script>
+                        <!-- reporting js here -->
 
                     </div>
 
@@ -626,7 +492,6 @@
 <!-- Footer Scripts
 ============================================= -->
 <script type="text/javascript" src="js/functions.js"></script>
-<script type="text/javascript" src="js/landing.js"></script>
 
 </body>
 </html>
