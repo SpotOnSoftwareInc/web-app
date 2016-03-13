@@ -107,7 +107,7 @@
 
                 <div class="col_one_fourth">
                     <label for="template-contactform-time">Time</label>
-                    <input type="time" id="template-contactform-time" name="time" value="{{time}}" class="sm-form-control" />
+                    <input type="time" id="template-contactform-time" name="apptTime" value="{{apptTime}}" class="sm-form-control" />
                 </div>
 
                 <div class="col_one_fourth">
@@ -133,9 +133,9 @@
             <thead>
             <tr>
                 <th>Name</th>
-                <th>Time</th>
+                <th>Check in Time</th>
                 <th>Assignee</th>
-                <th>Appointment</th>
+                <th>Appointment Time</th>
                 <th>Status</th>
                 <th>Check In</th>
             </tr>
@@ -143,8 +143,11 @@
             <tbody id="all">
             {{#appts}}
             <tr id="tr-{{_id}}">
+                <!--Name-->
                 <td class="name" id="{{_id}}">{{visitor}}</td>
-                <td id="{{_id}}-status">Not Checked in</td>
+                <!--time-->
+                <td id="{{_id}}-status">{{checkinTime}}</td>
+                <!--assignee-->
                 <td class="asignee">
                     <div class="sort-contacts-bytype-dropdown dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -156,10 +159,12 @@
                         </ul>
                     </div>
                 </td>
-                <td>{{time}}</td>
-                <td> </td>
+                <!--appoiontment time-->
+                <td>{{apptTime}}</td>
+                <!--status-->
+                <td>{{state}}</td>
                 <td id="button-row-{{_id}}">
-                    <button id="{{_id}}-button" class="button button-3d button-mini button-rounded button-green">Checkin</button>
+                    <button id="{{_id}}-button" class="button button-3d button-mini button-rounded button-green">Sent to provider</button>
                 </td>
             </tr>
             {{/appts}}

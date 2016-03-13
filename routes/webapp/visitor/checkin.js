@@ -12,3 +12,20 @@
 //        //containerBg: style.rgbObjectToCSS(business.style.containerBg)
 //    });
 //};
+
+exports.post = function (req,res) {
+    console.log("Someone checking in");
+
+    var appointmentDB = req.db.get('appointment');
+    var bid = req.user[0].business.toString();
+    var name = req.body.name;
+    var curtime = new Date();
+
+    appointmentDB.findAndModify({name: name}, { $set: {
+        checkinTime: curtime,
+        state: 'waiting'
+
+    } });
+
+    res.redirect('../' + bid + 'checkin');
+};

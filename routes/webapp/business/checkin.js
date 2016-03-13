@@ -21,31 +21,25 @@ exports.get = function (req, res, next) {
 };
 
 exports.post = function(req,res, next) {
-    console.log("add visitor to db");
+    console.log("Someone checking in");
 
     var appointmentDB = req.db.get('appointment');
-    var bid = req.user[0].business;
-
-    var time = req.body.time;
-    var provider = req.body.provider;
+    var bid = req.user[0].business.toString();
     var name = req.body.name;
-    var email = req.body.email;
-    var phone = req.body.phone;
+    console.log(name);
+    var curtime = new Date();
 
-    console.log(req.body);
+    appointmentDB.findAndModify({
+        query : {business: bid},
+        update: {
 
-    appointmentDB.insert({
-        privider: provider,
-        time: time,
-        visitor: name,
-        business: bid,
-        email: email,
-        phone: phone,
-        state: 'waiting'
+                //checkinTime: curtime,
+                state: 'waiting'
+
+        }
     });
 
-    res.redirect('../' + req.user[0].business + '/checkin');
-
+    res.redirect('../' + bid + '/checkin');
 
 };
 

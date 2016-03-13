@@ -24,8 +24,16 @@ exports.get = function (req, res) {
 
     var bid = req.user[0].business.toString();
 
-    apptDB.find( { business: bid }, {status: 'waiting'} )
+    apptDB.find( { business: bid }, {state: 'waiting'} )
         .on('success', function(appointments) {
+
+            var i;
+            for(i = 0; i < appointments.length; i++) {
+                console.log(appointments[i].checkinTime);
+                if (appointments[i].checkinTime == 0) {
+                    appointments[i].checkinTime = 'Not Checked in';
+                }
+            }
 
             res.render('staff/visitor', {
                 appts: appointments,
@@ -38,20 +46,22 @@ exports.get = function (req, res) {
 
 
 exports.post = function (req, res) {
+    console.log("making appointment");
 
     var appointmentDB = req.db.get('appointment');
     var bid = req.user[0].business.toString();
 
-    var time = req.body.time;
+    var apptTime = req.body.apptTime;
     var provider = req.body.provider;
     var name = req.body.name;
 
     appointmentDB.insert({
+        checkinTime: 0,
         privider: provider,
-        time: time,
+        apptTime: apptTime,
         visitor: name,
         business: bid,
-        state: 'waiting'
+        state: 'Appointment Made'
     });
 
     res.redirect('../'+ bid +'/visitor');
