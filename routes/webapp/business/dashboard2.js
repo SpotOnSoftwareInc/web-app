@@ -17,8 +17,7 @@ exports.post = function (req, res) {
     {
         console.log("!!!!!new email and phone!!!!!!");
         employeeDB.findAndModify({
-            query: {fname: req.user[0].fname,
-                _id: bid},
+            query: {_id: bid},
             update: {email: newEmail,
                 phone: newPhone}
         });
