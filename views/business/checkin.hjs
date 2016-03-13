@@ -40,8 +40,8 @@
 
 <img src="../images/landing/checkinBG.jpg" id="bg" alt="">
 <script src="https://widget.prudio.com/client.js?appid=d38154d0-f086-4010-bcc4-a7985ea93114" async></script>
-<script src="../javascripts/checkin.js" type="text/javascript"></script>
-<link rel="stylesheet" href="../css/checkin.css" type="text/css" />
+<script src="../js/business/checkin.js" type="text/javascript"></script>
+<link rel="stylesheet" href="../css/business/checkin.css" type="text/css" />
 
 <div>
     <p>  <input type="text" name="LastName" id="text1"/>  </p>
