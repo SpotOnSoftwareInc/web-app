@@ -1,3 +1,6 @@
+/**
+ * Created by sean on 3/12/2016.
+ */
 var fs = require('fs');
 var auth = require('../../../lib/auth');
 
@@ -6,11 +9,11 @@ exports.post = function(req, res, next){
     var db = req.db;
     var businesses = db.get('businesses');
     var businessID = req.user[0].business;
-    if(req.files.userLogo){
+    if(req.files.userTheme){
 
         businesses.updateById(businessID, {
                 $set: {
-                    logo: '../images/uploads/' + req.files.userLogo.name
+                    theme: '../images/uploads/' + req.files.userTheme.name
                 }
             },{
                 upsert: true
@@ -18,7 +21,7 @@ exports.post = function(req, res, next){
                 if (err) {
                     return next(err);
                 }
-                res.redirect('/registerprocess');
+                res.redirect('/registerprocess#ptab3');
             }
 
         );
@@ -32,11 +35,11 @@ exports.post = function(req, res, next){
                 }
 
                 if(results.logo){
-                    res.redirect('/registerprocess');
+                    res.redirect('/registerprocess#ptab3');
 
                 }
                 else{
-                    res.redirect('/registerprocess');
+                    res.redirect('/registerprocess#ptab3');
                 }
             }
         );

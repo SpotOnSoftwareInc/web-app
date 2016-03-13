@@ -17,6 +17,7 @@ var formbuilder = require('./business/formbuilder');
 var dashboard = require('./business/dashboard');
 var businesssetting = require('./business/businesssetting');
 var uploadLogo = require('./business/uploadlogo');
+var uploadTheme = require('./business/uploadtheme');
 //var checkindesign = require('./business/checkindesign');
 //var customizeform = require('./business/customizeform');
 //var analytics = require('./business/analytics');
@@ -111,6 +112,8 @@ module.exports = function (passport) {
     //Setup the routes for business owner (Person purchasing the product)
     //router.get('/uploadlogo', uploadLogo.get);
     router.post('/uploadlogo', uploadLogo.post);
+
+    router.post('/uploadtheme', uploadTheme.post);
 
     router.get('/:id/dashboard', updateBusiness, isLoggedInBusAdmin, dashboard.get);
     router.post('/:id/dashboard', updateBusiness, isLoggedInBusAdmin, dashboard.post);
