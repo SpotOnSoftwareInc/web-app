@@ -31,9 +31,13 @@ exports.post = function (req, res) {
 
     businessDB.findAndModify({
         query: {_id: bid},
-        update: {companyName: companyName,
-            companyAddress: companyAddress,
-            phone: phone}
+        update: {
+            $set: {
+                companyName: companyName,
+                companyAddress: companyAddress,
+                phone: phone
+            }
+        }
     });
 
     res.render('admin/registerprocess', {
