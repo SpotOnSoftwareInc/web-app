@@ -7,7 +7,6 @@ var register = require('./admin/register');
 var registerprocess = require('./admin/registerprocess');
 var login = require('./admin/login');
 var analytics = require('./admin/analytics');
-var imgtocloud = require('./admin/imgtocloud');
 
 //Define the controllers for business owner (Person purchasing the product) process
 var accountsettings = require('./business/accountsettings');
@@ -24,6 +23,8 @@ var uploadLogo = require('./business/uploadlogo');
 //var billing = require('./business/billing');
 var admin = require('./admin/admin');
 var forgotpassword = require('./business/forgotpassword');
+var checkin = require('./business/checkin');
+
 
 //Define the controllers for provider (Doctors or person to see visitor) process
 //var visitorassigned = require('./provider/visitorassigned');
@@ -33,7 +34,6 @@ var visitorassigned = require('./provider/visitorassigned');
 var visitor = require('./staff/visitor');
 
 //Define the controllers for visitor (person checkin in) process
-var checkin = require('./business/checkin');
 
 
 
@@ -112,7 +112,7 @@ module.exports = function (passport) {
 
     //Setup the routes for business owner (Person purchasing the product)
     //router.get('/uploadlogo', uploadLogo.get);
-    router.post('/registerprocess', uploadLogo.post);
+    router.post('/uploadlogo', uploadLogo.post);
 
     router.get('/:id/dashboard', updateBusiness, isLoggedInBusAdmin, dashboard.get);
     router.post('/:id/dashboard', updateBusiness, isLoggedInBusAdmin, dashboard.post);

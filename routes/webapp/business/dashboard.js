@@ -11,7 +11,7 @@ exports.get = function (req, res) {
 
             res.render('business/dashboard', {
                 emps: employees,
-                message: req.flash("permission"),
+                message: req.flash("permission")
             });
 
         });
