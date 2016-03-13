@@ -170,48 +170,6 @@ module.exports = function (passport) {
         }
     ));
 
-    //passport.use('changepw', new LocalStrategy({
-    //    usernameField: 'email',
-    //    passwordField: 'password',
-    //    passReqToCallback: true
-    //},
-    //    function (req, email, password, done) {
-    //        console.log('In passport');
-    //        var db = req.db;
-    //        var employees = db.get('employees');
-    //        var pass = auth.hashPassword(req.body.password);
-    //
-    //        //resetPasswordExpires: { $gt: Date.now() }
-    //        employees.findAndModify(
-    //            {resetPasswordToken: req.params.token },
-    //            {
-    //                $set: {
-    //                    password: pass,
-    //                    resetPasswordToken: undefined,
-    //                    resetPasswordExpires: undefined
-    //                }
-    //            },
-    //            { new: true },
-    //            function(err, doc){
-    //                if(err){
-    //                    console.log(err);
-    //                } else if(!doc){
-    //                    req.flash('Error', "User with that email not found");
-    //                    console.log('Expired reset password link');
-    //                    //done("User not found", 'done');
-    //                    //res.redirect('/register');
-    //                } else {
-    //                    console.log('success');
-    //                    res.redirect('/register');
-    //                    return done(null, doc);
-    //                }
-    //            }
-    //        );
-    //    }
-    //));
-
-
-
     // =========================================================================
     // LOCAL LOGIN =============================================================
     // =========================================================================
@@ -227,26 +185,6 @@ module.exports = function (passport) {
         function (req, email, password, done) { // callback with email and password from our form
             //console.log('LOCAL-LOGIN');
             var employees = req.db.get('employees');
-            var a = bcrypt.hashSync("pizza",bcrypt.genSaltSync(8));
-            if(bcrypt.compareSync("pizza",a)){
-                console.log("bcrypt works");
-            } else {
-                console.log("BCRYPT DOES NOT WORK");
-            }
-            //auth.validateLogin(req.db, email, password, function (err,user) {
-            //    if(err){
-            //        console.log(err + " SUPRISE");
-            //    }
-            //    if (!user) {
-            //        console.log("Error: " + email + " " + password);
-            //        return done(null, false, req.flash("login", "Invalid Email/Password Combo"));
-            //    }
-            //    else {
-            //        console.log('LOCAL-LOGIN SUCCESS');
-            //        return done(null,user);
-            //        }
-            //});
-
             employees.findOne({email: email},
                 function (err,employee){
                     console.log("Im here");

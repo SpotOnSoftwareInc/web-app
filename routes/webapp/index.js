@@ -85,6 +85,7 @@ module.exports = function (passport) {
     router.post('/forgotpw', function(req, res, next){
         async.waterfall([
             function(done) {
+                // Generate a unique token
                 crypto.randomBytes(20, function (err, buf) {
                     var token = buf.toString('hex');
                     done(err, token);
@@ -92,6 +93,8 @@ module.exports = function (passport) {
             },function(token, done) {
                 var db = req.db;
                 var employees = db.get('employees');
+
+                // Find user in db and set token and expire time of token
                 employees.findAndModify(
                     {email: req.body.email},
                     {
@@ -102,23 +105,17 @@ module.exports = function (passport) {
                     },
                     { new: true },
                     function(err, doc){
-                        if(err){
-                            console.log(err);
-                        } else if(!doc){
-                            req.flash('Error', "User with that email not found");
-                            //done("User not found", 'done');
-                            //res.redirect('/register');
+                        if(err || !doc){
+                            res.redirect('/register');
                         } else {
-                            console.log("Success");
                             done(null, token);
                         }
                     }
                 );
-
-                console.log(req.body.email);
-
             },function(token, done) {
+                // Send a reset password link to the user
 
+                // Login to our email
                 var transport = nodemailer.createTransport(smtpTransport({
                     service:'gmail',
                     auth : {
@@ -127,6 +124,7 @@ module.exports = function (passport) {
                     }
                 }));
 
+                // Customize the message and message properties
                 var mailOptions = {
                     to: req.body.email,
                     from: 'iReceptionistCorp@gmail.com',
@@ -137,10 +135,9 @@ module.exports = function (passport) {
                     'If you did not request this, please ignore this email and your password will remain unchanged.\n'
                 };
 
-                //s
+                // Send the user an email
                 transport.sendMail(mailOptions, function(err) {
                     req.flash('info', 'An e-mail has been sent to ' + req.body.email + ' with further instructions.');
-                    console.log(err);
                     done(err, 'done');
                 });
             }
@@ -155,11 +152,13 @@ module.exports = function (passport) {
             function(done) {
                 var db = req.db;
                 var employees = db.get('employees');
+                // TODO: Need logic to make sure password and confirm password are the same before moving on
+
                 var pass = auth.hashPassword(req.body.password);
-                console.log(req.body.password);
-                //resetPasswordExpires: { $gt: Date.now() }
+
+                // Update users password with the new password and invalidate the token and expire time
                 employees.update(
-                    {resetPasswordToken: req.params.token },
+                    {resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } },
                     {
                         $set: {
                             password: pass,
@@ -168,28 +167,18 @@ module.exports = function (passport) {
                         }
                     },
                     function(err, doc){
-                        if(err){
-                            console.log(err);
-                        } else if(!doc){
-                            req.flash('Error', "User with that email not found");
-                            console.log('Expired reset password link');
-                            //done("User not found", 'done');
-                            //res.redirect('/register');
-                        } else {
-                            console.log('success');
-                            res.redirect('/register');
+                        if(err || ! doc){
+                           // Error: user does not exist
                         }
+                        // Password reset successfully
+                        res.redirect('/register');
                     }
                 );
             }
-
         ], function(err) {
             res.redirect('/');
         });
     });
-
-    //router.post('/reset/:token', passport.authenticate('changepw'));
-
 
 
     router.get('/login', login.get);
