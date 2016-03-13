@@ -26,6 +26,35 @@ exports.post = function (req, res) {
             }
         });
     }
+    else if((req.body.newEmail != "") && (req.body.newPhone == ""))
+    {
+        console.log("only a new email");
+        employeeDB.findAndModify({
+            query: {_id: uid},
+            update: {
+                $set: {
+                    email: newEmail
+                }
+            }
+        })
+    }
+    else if((req.body.newEmail == "") && (req.body.newPhone != ""))
+    {
+        console.log("only a new phone");
+        employeeDB.findAndModify({
+            query: {_id: uid},
+            update: {
+                $set: {
+                    phone: newPhone
+                }
+            }
+        })
+    }
+    else if((req.body.newEmail == "") && (req.body.newPhone == ""))
+    {
+        console.log("no new email no new phone");
+        res.redirect('../' + req.user[0].business + '/dashboard');
+    }
 
 
     //Remove that employee
