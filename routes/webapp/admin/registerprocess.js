@@ -16,6 +16,7 @@ exports.get = function (req, res) {
             res.render('admin/registerprocess', {
                 companyName: newBiz.companyName,
                 businessdb: '/' + newBiz._id + '/dashboard',
+                checkinFrame: '/' + newBiz._id + '/checkin',
                 companyAddress: newBiz.companyAddress,
                 phone: newBiz.phone,
                 theme: newBiz.theme,

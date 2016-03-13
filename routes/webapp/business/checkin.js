@@ -38,7 +38,7 @@ exports.post = function(req,res, next) {
     console.log(req.body);
 
     appointmentDB.insert({
-        privider: provider,
+        provider: provider,
         time: time,
         visitor: name,
         business: bid,

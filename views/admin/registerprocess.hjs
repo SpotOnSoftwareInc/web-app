@@ -229,7 +229,7 @@
                     <div id="ptab3">
                         <div id="Manage-Theme">
 
-                            <div class=" nobottommargin clearfix">
+                            <div class=" nobottommargin clearfix center">
 
                                 <h1 class="center">Visitor Experience</h1>
 
@@ -239,7 +239,7 @@
 
                                 <!-- Theme Items
                                 ============================================= -->
-                                <div class="container text-center">
+                                <div class="container text-center center">
                                     <div>
                                         <a href="#" class="button button-desc button-border button-rounded center"
                                            data-toggle="modal" data-target="#templateModal">
@@ -261,19 +261,22 @@
                                                 <!--<a href="#" class="button button-medium button-center">Upload New</a>-->
                                             <!--</div>-->
                                         <!--</div>-->
-                                        <img id="themeing" data-src={{theme}} src="{{theme}}" alt="your image" style="display: block;"/>
+                                        <img id="themeing" data-src={{theme}} src="{{theme}}" alt="your image" style="display: block; width: 50%; "/>
 
-                                        <div class="caption">
+                                        <div class="caption center">
                                             <label for="photo_title">Title:</label>
-                                            <div class="form_controls">
+                                            <div class="form_controls text-center">
                                                 <input id="theme_title" name="title" size="30" type="text" value="" placeholder="Image Title"/>
-                                                <input type='file' name="userTheme" onchange="readURL(this);" />
+                                                <input type='file' name="userTheme" onchange="readURL(this);" style="text-align:center !important;"/>
                                             </div>
                                         </div>
                                         <div>
                                             <hr>
                                             <input href="/registerprocess#ptab3" name="submit" type="submit" class="button button-xlarge button-center" value="Save Changes">
+                                        </div>
                                     </form>
+                                    <p>What your visitors will see:</p>
+                                    <iframe src='{{checkinFrame}}'></iframe>
 
 
 
@@ -403,8 +406,8 @@
 
                             $('#themeing')
                                 .attr('src', e.target.result)
-                                .width(600)
-                                .height(400);
+                                .width(420)
+                                .height(280);
                         };
 
                         reader.readAsDataURL(input.files[0]);
