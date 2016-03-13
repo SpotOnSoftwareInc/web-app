@@ -178,6 +178,8 @@ module.exports = function (passport) {
     // by default, if there was no name, it would just be called 'local'
 
     //CALL THIS FUNCTION AT THE END OF REGISTER PROCESS
+    // TODO: Handle incorrect password gracefully
+
     passport.use('local-login', new LocalStrategy({
             // by default, local strategy uses username and password, we will override with email
             usernameField: 'email',
@@ -194,13 +196,13 @@ module.exports = function (passport) {
                         console.error('validateLogin DB Error: ' + err);
                     } else if(!employee){
                         // error
-                    }
-                    if(bcrypt.compareSync(password, employee.password)){
+                        console.log("User does not exist");
+                    } else if(bcrypt.compareSync(password, employee.password)){
                         console.log("Success");
                         return done(null, employee);
                     } else {
                         console.log("Failure");
-                        return done(null, employee);
+                        return done(null, "Invalid login");
                     }
                 }
             );
