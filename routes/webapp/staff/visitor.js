@@ -54,15 +54,6 @@ exports.post = function (req, res) {
         state: 'waiting'
     });
 
-    appointmentDB.find( { business: bid }, {state: 'waiting'} )
-        .on('success', function(appointments) {
-
-            res.render('staff/visitor', {
-                appts: appointments,
-
-                message: req.flash("Fetched all appointments")
-            });
-
-        })
+    res.redirect('../'+ bid +'/visitor');
 
 };

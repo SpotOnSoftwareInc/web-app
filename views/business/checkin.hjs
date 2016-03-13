@@ -43,18 +43,19 @@
 <script src="../javascripts/checkin.js" type="text/javascript"></script>
 <link rel="stylesheet" href="../css/checkin.css" type="text/css" />
 
-<div>
-    <p>  <input type="text" name="LastName" id="text1"/>  </p>
-</div>
+<form method="post" action="" enctype="application/x-www-form-urlencoded">
+    <div>
+        <p>  <input type="text" name="name" value="{{name}}" placeholder="John Smith" id="text1"/>  </p>
+    </div>
 
 
-<div>
-    <p>  <input type="text" name="Cellphone" id="text2"/>  </p>
-</div>
+    <div>
+        <p>  <input type="text" name="phone" value="{{phone}}" placeholder="123-456-7890"  id="text2"/>  </p>
+    </div>
 
 
-<div>
-    <input type="button" class="button" data-toggle="modal" data-target=".bs-example-modal-lg"value="Check in" id="button1">
+    <div>
+    <input type="submit" class="button" data-toggle="modal" data-target=".bs-example-modal-lg" value="Check in" id="button1">
 
     <!-- Large modal -->
     <!--<button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>-->
@@ -74,16 +75,17 @@
             </div>
         </div>
     </div>
-    <form method="post" action="checkin" enctype="application/x-www-form-urlencoded">
-        <input type="text" name="fullName" placeholder="John Smith"/>
-        <input type="text" name="phone" placeholder="123-456-7890"/>
-        <input class="btn custom-button" type="submit" value="checkin" href="/checkin" name="submit">
-    </form>
+    <!--<form method="post" action="" enctype="application/x-www-form-urlencoded">-->
+        <!--<input type="text" name="name" value="{{name}}" placeholder="John Smith"/>-->
+        <!--<input type="text" name="phone" value="{{phone}}" placeholder="123-456-7890"/>-->
+        <!--<input class="btn custom-button" type="submit" value="checkin" href="/checkin" name="submit">-->
+    <!--</form>-->
 
     <script type="text/javascript">
         $('[data-toggle=popover]').popover();
     </script>
 </div>
+</form>
 
 <!-- Footer Scripts
     ============================================= -->

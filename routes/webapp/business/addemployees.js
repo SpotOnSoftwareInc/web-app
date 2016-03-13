@@ -12,8 +12,8 @@ var ObjectId = require('mongodb').ObjectID;
  */
 exports.get = function(req,res){
     console.log('Get function addemployees');
-	    var database =  req.db;
-        var employeeDB = database.get('employees');
+
+        var employeeDB = req.db.get('employees');
         var employee;
         var notemployee;
         var businessID = req.user[0].business.toString();

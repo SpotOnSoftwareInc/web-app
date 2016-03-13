@@ -71,6 +71,8 @@ module.exports = function (passport) {
             }
         });
 
+
+
     router.get('/registerprocess', registerprocess.get);
     router.post('/registerprocess', registerprocess.post);
 

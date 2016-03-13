@@ -112,7 +112,7 @@
         </div>
 
     </section>
-1
+
     <!-- Content
     ============================================= -->
     <section id="content">
@@ -175,10 +175,13 @@
                         </section>
 
                     </div>-->
+
                     <div id="Add-Employees">
                         <div class="container clearfix">
 
                                 <div class="col_four_fifth divcenter vertical-middle">
+
+
                                     <div class="clear"></div>
 
                                     <form class="nobottommargin" method="post" action="addoneemployee" enctype="application/x-www-form-urlencoded">
@@ -279,6 +282,9 @@
                             </div>
                         </div>
                     </div>
+
+
+
                     <div id="Manage-Theme">
 
                         <div class=" nobottommargin clearfix">
