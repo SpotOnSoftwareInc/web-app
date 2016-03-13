@@ -40,11 +40,7 @@ var visitor = require('./staff/visitor');
 
 //Define the controllers for visitor (person checkin in) process
 var checkin = require('./business/checkin');
-
-
-
-
-
+var deleteVisitor = require('./staff/deleteVisitor');
 module.exports = function (passport) {
 
     /**
@@ -74,8 +70,6 @@ module.exports = function (passport) {
                 res.redirect('/admin');
             }
         });
-
-
 
     router.get('/registerprocess', registerprocess.get);
     router.post('/registerprocess', registerprocess.post);
@@ -150,6 +144,7 @@ module.exports = function (passport) {
     //setup the routes for staff
     router.get('/:id/visitor', updateBusiness, isLoggedInStaff, visitor.get);
     router.post('/:id/visitor', updateBusiness, isLoggedInStaff, visitor.post);
+    router.post('/:id/deleteVisitor', deleteVisitor.post);
 
     //setup the routes for visitor
     router.get('/:id/checkin', isLoggedInVisitor, checkin.get);
