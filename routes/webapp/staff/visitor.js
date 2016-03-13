@@ -57,7 +57,7 @@ exports.post = function (req, res) {
 
     appointmentDB.insert({
         checkinTime: 0,
-        privider: provider,
+        provider: provider,
         apptTime: apptTime,
         visitor: name,
         business: bid,
