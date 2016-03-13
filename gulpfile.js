@@ -6,7 +6,7 @@ var childProcess = require('child_process');
 //var concat = require('gulp-concat');
 //var uglify = require('gulp-uglify');
 //var rename = require('gulp-rename');
-var server = require('gulp-express');
+// var server = require('gulp-express');
 var browserSync = require('browser-sync');
 var mongobackup = require('mongobackup');
 
@@ -52,11 +52,11 @@ gulp.task('clean', function () {
     .pipe(plugins.clean());
 });
 
-gulp.task('lint', function() {
-  return gulp.src('./*.js')
-    .pipe(plugins.jshint())
-    .pipe(plugins.jshint.reporter('jshint-stylish'));
-});
+// gulp.task('lint', function() {
+//   return gulp.src('./*.js')
+//     .pipe(plugins.jshint())
+//     .pipe(plugins.jshint.reporter('jshint-stylish'));
+// });
 
 gulp.task('vendor', function() {
   return gulp.src('./public/javascripts/*.js')
