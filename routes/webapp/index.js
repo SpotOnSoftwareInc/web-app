@@ -16,6 +16,12 @@ var getemployees = require('./business/getemployees');
 var addoneemployee = require('./business/addoneemployee');
 var formbuilder = require('./business/formbuilder');
 var dashboard = require('./business/dashboard');
+
+
+var dashboard2 = require('./business/dashboard2');
+
+
+
 var businesssetting = require('./business/businesssetting');
 var uploadLogo = require('./business/uploadlogo');
 //var checkindesign = require('./business/checkindesign');
@@ -116,6 +122,7 @@ module.exports = function (passport) {
 
     router.get('/:id/dashboard', updateBusiness, isLoggedInBusAdmin, dashboard.get);
     router.post('/:id/dashboard', updateBusiness, isLoggedInBusAdmin, dashboard.post);
+    router.post('/:id/dashboard2', updateBusiness, isLoggedInBusAdmin, dashboard2.post);
 
     router.get('/:id/accountSettings', updateBusiness, isLoggedInBusAdmin, accountsettings.get);
     router.post('/:id/accountSettings', isLoggedInBusAdmin, accountsettings.post);

@@ -143,7 +143,7 @@
                                     <li class="side-panel-trigger"><a href="#SMS-and-Email" style="padding: 8px;"><i class="icon-gift"></i>SMS and Email<i class="icon-chevron-right"></i></a></li>
                                     <li class="side-panel-trigger"><a href="#Analytics" style="padding: 8px;"><i class="icon-tint"></i>Analytics<i class="icon-chevron-right"></i></a></li>
                                     <!--<li class="side-panel-trigger"><a href="#Design-Checkin-Page" style="padding: 8px;"><i class="icon-gift"></i>Design Checkin Page<i class="icon-chevron-right"></i></a></li>-->
-
+                                    <li class="side-panel-trigger"><a href="#Settings" style="padding: 8px;"><i class="icon-tint"></i>Settings<i class="icon-chevron-right"></i></a></li>
                                 </ul>
                             </nav>
 
@@ -175,13 +175,10 @@
                         </section>
 
                     </div>-->
-
                     <div id="Add-Employees">
                         <div class="container clearfix">
 
                                 <div class="col_four_fifth divcenter vertical-middle">
-
-
                                     <div class="clear"></div>
 
                                     <form class="nobottommargin" method="post" action="addoneemployee" enctype="application/x-www-form-urlencoded">
@@ -261,17 +258,18 @@
                                             <td>{{lname}}</td>
                                             <td>{{email}}</td>
                                             <td>{{role}}</td>
-                                            <td><form method="post" action="">
-                                                <input type="hidden" name="emps"  class="form-control" value="{{emps}}" />
-                                                <input type="hidden" name="empID" class="form-control" value="{{_id}}" />
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn dropdown-toggle btn-primary" data-toggle="dropdown">Edit <span class="caret"></span></button>
-                                                    <ul class="dropdown-menu" role="menu">
-                                                        <li><input value="Remove" id="remove" type="submit" style="width: 174px;"></li>
-                                                        <li><a href="#" type="submit">Another action</a></li>
-                                                    </ul>
-                                                </div>
-                                            </form>
+                                            <td>
+                                                <form method="post" action="">
+                                                    <input type="hidden" name="emps"  class="form-control" value="{{emps}}" />
+                                                    <input type="hidden" name="empID" class="form-control" value="{{_id}}" />
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn dropdown-toggle btn-primary" data-toggle="dropdown">Edit <span class="caret"></span></button>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            <li><input value="Remove" id="remove" type="submit" style="width: 174px;"></li>
+                                                            <li><a href="#" type="submit">Another action</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </form>
                                             </td>
                                         </tr>
                                         {{/emps}}
@@ -281,9 +279,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
                     <div id="Manage-Theme">
 
                         <div class=" nobottommargin clearfix">
@@ -326,7 +321,6 @@
                             </div><!-- #theme end -->
                         </div>
                     </div><!-- Visitor Experience end -->
-
                     <div id="Billing-Options">
 
                         <h3>Billing Options</h3>
@@ -465,7 +459,6 @@
                         </div>
 
                     </div>
-
                     <div id="SMS-and-Email">
 
                         <h3>Notifications</h3>
@@ -475,18 +468,69 @@
 
                     <h3>Analytics</h3>
 
+                    </div>
+
+                    <div id="Settings">
+                        <div class="container clearfix">
+                            <div class="col_two_third col_last nobottommargin">
+                                <h3>Settings</h3>
+
+                                <p>Manage your account settings here</p>
+
+                                <form id="register-form" name="register-form" class="nobottommargin" action="dashboard2" method="post">
+
+                                    <div class="col_half">
+                                        <label for="register-form-name">Current E-mail:</label>
+                                        <p id="register-form-name">{{emailz}}</p>
+                                    </div>
+
+                                    <div class="col_half col_last">
+                                        <label for="register-form-email">Phone:</label>
+                                        <p id="register-form-email">{{phone}}</p>
+                                    </div>
+
+                                    <div class="clear"></div>
+
+                                    <div class="col_half">
+                                        <label for="register-form-username">Update E-mail:</label>
+                                        <input type="text" id="register-form-username" name="newEmail" value="" class="form-control" />
+                                    </div>
+
+                                    <div class="col_half col_last">
+                                        <label for="register-form-phone">Update Phone:</label>
+                                        <input type="text" id="register-form-phone" name="newPhone" value="" class="form-control" />
+                                    </div>
+
+                                    <div class="clear"></div>
+
+                                    <div class="col_half">
+                                        <label for="register-form-password">New Password:</label>
+                                        <input type="password" id="register-form-password" name="register-form-password" value="" class="form-control" />
+                                    </div>
+
+                                    <div class="col_half col_last">
+                                        <label for="register-form-repassword">Re-confirm New Password:</label>
+                                        <input type="password" id="register-form-repassword" name="register-form-repassword" value="" class="form-control" />
+                                    </div>
+
+                                    <div class="clear"></div>
+
+                                    <div class="col_full nobottommargin">
+                                        <button type="submit" class="button button-3d button-black nomargin" id="register-form-submit" name="register-form-submit" value="">Update</button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        <div class=" nobottommargin clearfix"></div>
+                        </div>
+
+                    </div>
                 </div>
 
-                    <!--<div id="Design-Checkin-Page">-->
-
-                        <!--<h3>Design Checkin Page</h3>-->
-
-                    <!--</div>-->
-
-
                 </div>
 
-            </div>
+            <div></div>
 
             <script>
                 $(function() {
