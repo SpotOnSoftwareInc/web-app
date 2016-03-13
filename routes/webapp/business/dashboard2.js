@@ -12,14 +12,18 @@ exports.post = function (req, res) {
     //console.log(req.body.newEmail);
     var employeeDB = req.db.get('employees');
 
-    var bid = req.user[0].business;
+    var uid = req.user[0]._id;
     if((req.body.newEmail != "") && (req.body.newPhone != ""))
     {
         console.log("!!!!!new email and phone!!!!!!");
         employeeDB.findAndModify({
-            query: {_id: bid},
-            update: {email: newEmail,
-                phone: newPhone}
+            query: {_id: uid},
+            update: {
+                $set: {
+                    email: newEmail,
+                    phone: newPhone
+                }
+            }
         });
     }
 
