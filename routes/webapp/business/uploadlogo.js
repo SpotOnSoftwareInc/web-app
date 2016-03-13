@@ -45,7 +45,7 @@ exports.post = function(req, res, next){
                 }
 
 
-                res.redirect('/registerprocess',{
+                res.render('admin/registerprocess',{
                     success:'Succesfully uploaded file: '+req.files.userLogo.originalname,
                     logo:'../images/uploads/'+req.files.userLogo.name
                 });
