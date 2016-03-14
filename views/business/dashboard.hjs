@@ -119,9 +119,6 @@
 
 
         <div class="content-wrap container clearfix">
-
-
-
             <div id="side-navigation">
                 <div class="body-overlay"></div>
                 <div id="side-panel" class="dark">
@@ -242,7 +239,7 @@
                                 <div class="line-dash"></div>
                             <!--<h3>Currently Registered Staff</h3>-->
                                 <div class="col_four_fifth divcenter middle">
-                                    <table class="table table-striped divcenter">
+                                    <table class="table table-hover">
                                         <thead>
                                         <tr>
                                             <th>Name</th>
@@ -266,11 +263,7 @@
                                                     <input type="hidden" name="emps"  class="form-control" value="{{emps}}" />
                                                     <input type="hidden" name="empID" class="form-control" value="{{_id}}" />
                                                     <div class="btn-group">
-                                                        <button type="button" class="btn dropdown-toggle btn-primary" data-toggle="dropdown">Edit <span class="caret"></span></button>
-                                                        <ul class="dropdown-menu" role="menu">
-                                                            <li><input value="Remove" id="remove" type="submit" style="width: 174px;"></li>
-                                                            <li><a href="#" type="submit">Another action</a></li>
-                                                        </ul>
+                                                        <button value="Remove" id="remove" type="submit" class="button button-3d button-mini button-rounded button-red">Remove</button>
                                                     </div>
                                                 </form>
                                             </td>
@@ -630,8 +623,6 @@
         </div>
     </div>
 </div>
-
-
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

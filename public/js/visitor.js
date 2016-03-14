@@ -25,7 +25,7 @@ _bindSearch = function(){
                     $(this).show();
             });
         });
-}
+};
 
 // Interval to constantly refresh the page for the time to change
 setInterval(updateTime, 1000);
@@ -39,10 +39,10 @@ function updateTime(){
 // Function to get the current time
 function getTime(){
     //
-    var currentTime = new Date()
-    var hours = currentTime.getHours()
-    var minutes = currentTime.getMinutes()
-    var seconds = currentTime.getSeconds()
+    var currentTime = new Date();
+    var hours = currentTime.getHours();
+    var minutes = currentTime.getMinutes();
+    var seconds = currentTime.getSeconds();
     var isNoon = false;
 
     if (seconds < 10){
@@ -89,10 +89,9 @@ $(document).on('blur','#txt_fullname', function(){
 
 $(".dropdown-menu-right a").click(function() {
     var group = $(this).text();
-    var id = this.closest('ul').id;
-    var res = id.split("-");
-    var str = res[0] + "_dropdown";
-    $('#' + str).text(group);
+    var temp = this.closest(".dropdown").id;
+    var arr = temp.split("-");
+    $('.dropdown-' + arr[1]).text(group);
 });
 
 $(".button-green").click(function() {
