@@ -6,13 +6,22 @@ exports.get = function (req, res) {
 
 
     console.log('Inside register process get method');
-    var businessDB = req.db.get('businesses');
-    var bid = req.user[0].business;
+    var businessDB = req.db.get('businesses'),
+        bid = req.user[0].business;
+
+
 
     businessDB.findById(bid)
         .on('success', function(newBiz) {
             res.render('admin/registerprocess', {
-                companyName: newBiz.companyName
+                companyName: newBiz.companyName,
+                businessdb: '/' + newBiz._id + '/dashboard',
+                checkinFrame: '/' + newBiz._id + '/checkin',
+                companyAddress: newBiz.companyAddress,
+                phone: newBiz.phone,
+                theme: newBiz.theme,
+                logo: newBiz.logo
+
             });
         });
 };
@@ -31,16 +40,20 @@ exports.post = function (req, res) {
 
     businessDB.findAndModify({
         query: {_id: bid},
-        update: {companyName: companyName,
-            companyAddress: companyAddress,
-            phone: phone}
-    });
+        update: {
+            $set: {
+                companyName: companyName,
+                companyAddress: companyAddress,
+                phone: phone
+        }
+    }});
 
-    res.render('admin/registerprocess', {
-        companyName: companyName,
-        companyAddress: companyAddress,
-        phone: phone
-    });
+    //res.render('admin/registerprocess', {
+    //    companyName: companyName,
+    //    companyAddress: companyAddress,
+    //    phone: phone
+    //});
+    res.redirect('/registerprocess');
 
     //res.end(fname + companyName + email + password + username);
 

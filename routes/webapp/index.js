@@ -8,7 +8,6 @@ var registerprocess = require('./admin/registerprocess');
 var login = require('./admin/login');
 var reset = require('./admin/reset');
 var analytics = require('./admin/analytics');
-var imgtocloud = require('./admin/imgtocloud');
 
 //Define the controllers for business owner (Person purchasing the product) process
 var accountsettings = require('./business/accountsettings');
@@ -25,12 +24,15 @@ var async = require('async');
 var crypto = require('crypto');
 var auth = require('../../lib/auth.js');
 var uploadLogo = require('./business/uploadlogo');
+var uploadTheme = require('./business/uploadtheme');
 //var checkindesign = require('./business/checkindesign');
 //var customizeform = require('./business/customizeform');
 //var analytics = require('./business/analytics');
 //var billing = require('./business/billing');
 var admin = require('./admin/admin');
 var forgotpassword = require('./business/forgotpassword');
+var checkin = require('./business/checkin');
+
 
 //Define the controllers for provider (Doctors or person to see visitor) process
 //var visitorassigned = require('./provider/visitorassigned');
@@ -40,7 +42,6 @@ var visitorassigned = require('./provider/visitorassigned');
 var visitor = require('./staff/visitor');
 
 //Define the controllers for visitor (person checkin in) process
-var checkin = require('./business/checkin');
 var deleteVisitor = require('./staff/deleteVisitor');
 module.exports = function (passport) {
 
@@ -71,6 +72,8 @@ module.exports = function (passport) {
                 res.redirect('/admin');
             }
         });
+
+
 
     router.get('/registerprocess', registerprocess.get);
     router.post('/registerprocess', registerprocess.post);
@@ -213,11 +216,11 @@ module.exports = function (passport) {
     router.get('/:id/admin', isLoggedInSaaSAdmin, admin.get);
     router.post('/:id/admin', isLoggedInSaaSAdmin, admin.post);
 
-    router.post('/imgtocloud', imgtocloud.post);
-
     //Setup the routes for business owner (Person purchasing the product)
-    router.get('/uploadlogo', uploadLogo.get);
+    //router.get('/uploadlogo', uploadLogo.get);
     router.post('/uploadlogo', uploadLogo.post);
+
+    router.post('/uploadtheme', uploadTheme.post);
 
     router.get('/:id/dashboard', updateBusiness, isLoggedInBusAdmin, dashboard.get);
     router.post('/:id/dashboard', updateBusiness, isLoggedInBusAdmin, dashboard.post);

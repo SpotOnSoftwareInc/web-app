@@ -36,7 +36,6 @@
 
 <body class="stretched sticky-footer">
 
-
 <div class="wrapper">
     <!-- Header
         ============================================= -->
@@ -59,7 +58,7 @@
                 <nav id="primary-menu">
 
                     <ul class="one-page-menu">
-                        <li><a href="/logout"><div>Log out</div></a></li>
+                        <li><a href="/logout"><div id="logout">Log out</div></a></li>
                     </ul>
 
                 </nav><!-- #primary-menu end -->
@@ -90,12 +89,7 @@
     </section>
 
     <div class="container">
-        <br>
         <div class="col_four_fifth divcenter vertical-middle">
-
-
-            <div class="clear"></div>
-
             <form class="nobottommargin" method="post" action="" enctype="application/x-www-form-urlencoded">
 
                 <div class="form-process"></div>
@@ -164,31 +158,9 @@
                 </td>
             </tr>
             {{/appts}}
-
-            <!--
-            <tr id="tr-kappa">
-                <td class="name" id="kappa">Kappa Pride</td>
-                <td id="kappa-status"></td>
-                <td class="asignee">
-                    <div class="sort-contacts-bytype-dropdown dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="kappa-sort"><span id="kappa_dropdown" class="dropdown-label">Dr. Richard Best</span><b class="caret"></b></a>
-                        <ul class="dropdown-menu dropdown-menu-right" id="kappa-toggle">
-                            <li><a href="#"><i class="dropdown test"></i>Dr. Test test</a></li>
-                            <li><a href="#"><i class="dropdown peter"></i>Dr. Peter Parker</a></li>
-                            <li><a href="#"><i class="dropdown richard"></i>Dr. Richard Best</a></li>
-                        </ul>
-                    </div>
-
-                </td>
-                <td>None</td>
-                <td id="button-row-kappa"><button class="button button-3d button-mini button-rounded button-green"id="kappa-button">Checkin</button></td>
-            </tr>
-            -->
-
             </tbody>
         </table>
     </div>
-
 
     <!-- Footer
     ============================================= -->

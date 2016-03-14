@@ -19,28 +19,26 @@ exports.get = function (req, res) {
         });
 };
 
+//exports.getLogo
+
 exports.post = function (req, res) {
     console.log("Post Function for dashboard page to delete employees ");
     //Removing an employeee
     console.log(req.body);
+    var myFunction = req.body.myFunction;
     var eid = req.body.empID.toString();
     var employees = req.body.emps;
     var employeeDB = req.db.get('employees');
     var bid = req.user[0].business;
 
+    if(myFunction == 'remove'){
+        console.log('HEEERR');
+    }
     //Remove that employee
     employeeDB.remove({_id: eid});
 
     // Re-render all the remaining emps
-    employeeDB.find( { business: bid })
-        .on('success', function(employees) {
-
-            res.render('business/dashboard', {
-                emps: employees,
-                message: req.flash("permission")
-            });
-
-        });
+    res.redirect('../'+ bid +'/dashboard');
 
     //
 };
