@@ -19,6 +19,8 @@ exports.get = function (req, res) {
         });
 };
 
+//exports.getLogo
+
 exports.post = function (req, res) {
     console.log("Post Function for dashboard page to delete employees ");
     //Removing an employeee

@@ -8,22 +8,23 @@ var ObjectId = require('mongodb').ObjectID;
 exports.get = function (req, res, next) {
     console.log("get function checkin");
 
-    //var business = req.session.business;
-    res.render('business/checkin', {
-        //companyName: business.companyName,
-        //bg: business.style.bg,
-        //logo: business.logo,
-        //buttonBg: style.rgbObjectToCSS(business.style.buttonBg),
-        //buttonText: style.rgbObjectToCSS(business.style.buttonText),
-        //containerText: style.rgbObjectToCSS(business.style.containerText),
-        //containerBg: style.rgbObjectToCSS(business.style.containerBg)
+    var bid = req.user[0].business;
+    var db = req.db;
+    var businesses = db.get('businesses');
+    businesses.findById(bid, function (err, result) {
+        if (err) {
+            return next(err);
+        }
+        var dbBusiness = result;
+
+        res.render('business/checkin', {
+            theme: dbBusiness.theme
+        });
     });
 };
 
 exports.post = function(req,res, next) {
-    console.log("Someone checking in");
-
-    // On checkin should also send text or email to provider
+    console.log("add visitor to db");
 
     var appointmentDB = req.db.get('appointment');
     var bid = req.user[0].business.toString();

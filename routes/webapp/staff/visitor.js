@@ -66,6 +66,7 @@ exports.post = function (req, res) {
         provider: provider,
         apptTime: apptTime,
         visitor: name,
+        businessInfo: bizInfo,
         business: bid,
         state: 'Appointment Made'
     });
