@@ -47,11 +47,13 @@ exports.post = function (req, res) {
     var name = req.body.name;
 
     appointmentDB.insert({
-        privider: provider,
+        provider: provider,
+        providers: providers,
         time: time,
         visitor: name,
+        businessInfo: bizInfo,
         business: bid,
-        state: 'waiting'
+        state: 'Appointment Made'
     });
 
     res.redirect('../'+ bid +'/visitor');
