@@ -85,7 +85,9 @@ exports.post = function(req,res){
 			    lname = nameArr[1],
                 email = nameArr[2],
                 role = nameArr[3],
-                token = randomToken();
+                token = randomToken(),
+                defaultPW = 'canthackus',
+                password = auth.hashPassword(defaultPW);
 
             employeeDB.insert({
                 business: ObjectId(businessID),
@@ -93,7 +95,7 @@ exports.post = function(req,res){
                 lname: lname,
                 email: email,
                 registrationToken : token,
-                password: '',
+                password: password,
                 phone: '',
                 smsNotify: true,
                 emailNotify: true,
