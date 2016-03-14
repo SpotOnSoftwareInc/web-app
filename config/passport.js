@@ -226,7 +226,7 @@ module.exports = function (passport) {
         function (req, email, password, done) { // callback with email and password from our form
             console.log('LOCAL-LOGIN');
 
-            auth.lvalidateLogin(req.db, email, password, function(user){
+            auth.validateLogin(req.db, email, password, function(user){
                 if(!user) {
                     return done(null, false, password);
                 }
