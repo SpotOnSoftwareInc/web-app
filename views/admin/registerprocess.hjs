@@ -24,6 +24,7 @@
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
     <![endif]-->
 
+
     <!-- External JavaScripts
     ============================================= -->
     <script type="text/javascript" src="js/jquery.js"></script>
@@ -287,7 +288,13 @@
                         <a href="#" class="button button-3d nomargin fright tab-linker" rel="4">Continue</a>
                     </div>
                     <div id="ptab4">
-                        <p></p>
+                        <h3>Notification Options</h3>
+                        <div class="switch">
+                            <form action="post">
+                                <label>email notifications <input value="idk" type="checkbox" name="emailCheckbox" checked></input></label>
+                            </form>
+                        </div>
+
                         <a href="#" class="button button-3d nomargin tab-linker" rel="3">Previous</a>
                         <a href="#" class="button button-3d nomargin fright tab-linker" rel="5">Continue</a>
                     </div>

@@ -31,12 +31,14 @@ exports.post = function (req, res) {
     var companyName = req.body.companyName;
     var companyAddress = req.body.companyAddress;
     var phone = req.body.phone;
-
+    var emailNotif = document.getElementsByName("emailCheckbox")[0].checked;
     var businessDB = req.db.get('businesses');
     var bid = req.user[0].business;
 
     console.log('Inside register process post method');
-    console.log(businessDB);
+    console.log("notifications for " + emailNotif + " email??");
+    console.log(companyName + " is req.body.companyName");
+    //console.log(businessDB);
 
     businessDB.findAndModify({
         query: {_id: bid},
@@ -44,7 +46,8 @@ exports.post = function (req, res) {
             $set: {
                 companyName: companyName,
                 companyAddress: companyAddress,
-                phone: phone
+                phone: phone,
+                emailNotify: emailNotif
         }
     }});
 
