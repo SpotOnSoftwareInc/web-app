@@ -6,7 +6,7 @@ exports.get = function (req, res) {
     var database = req.db;
     var apptDB = database.get('appointment');
 
-    var bid = req.user[0].business;
+    var bid = req.user[0].business.toString();
     var fullName = req.user[0].fname + " " + req.user[0].lname;
 
     console.log("Provider: " + fullName);
