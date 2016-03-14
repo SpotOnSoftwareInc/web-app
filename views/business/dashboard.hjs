@@ -100,23 +100,10 @@
 
     </header><!-- #header end -->
 
-    <section id="page-title">
-
-        <div class="container clearfix">
-            <h1>Manage Staff</h1>
-            <ol class="breadcrumb">
-                <li>
-                    <button class="button button-3d button-rounded button-aqua" data-toggle="modal" data-target="#myModal">Upload CSV</button>
-                </li>
-            </ol>
-        </div>
-
-    </section>
 
     <!-- Content
     ============================================= -->
     <section id="content">
-
 
         <div class="content-wrap container clearfix">
             <div id="side-navigation">
@@ -174,6 +161,10 @@
                     </div>-->
 
                     <div id="Add-Employees">
+                        <div class="container clearfix">
+                            <h1>Manage Staff</h1>
+                            <button class="button button-3d button-rounded button-aqua" data-toggle="modal" data-target="#myModal">Upload CSV</button>
+                        </div>
                         <div class="container clearfix">
 
                                 <div class="col_four_fifth divcenter vertical-middle">
