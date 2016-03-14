@@ -26,11 +26,12 @@ exports.post = function(req,res){
         console.log('ADD EACH IN  ADDAPPOINTMENTS');
         console.log(appointmentTime);
         appointmentDB.insert({
-            business: ObjectId(businessID),
+            checkinTime: 0,
             provider: provider,
-            appointmentTime: appointmentTime,
+            apptTime: appointmentTime,
             visitor: name,
             businessInfo: '',
+            business: businessID,
             state: 'Appointment Made'
         });
     }
