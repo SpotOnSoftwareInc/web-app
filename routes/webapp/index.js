@@ -201,7 +201,7 @@ module.exports = function (passport) {
             }
             else if (req.user.role === 'staff') {
                 console.log("Loggin in as staff");
-                res.redirect('/' + req.user._id + '/visitor');
+                res.redirect('/' + req.user.business + '/visitor');
             }
             else if (req.user.role === 'visitor') {
                 console.log("Loggin in as visitor");
