@@ -100,23 +100,10 @@
 
     </header><!-- #header end -->
 
-    <section id="page-title">
-
-        <div class="container clearfix">
-            <h1>Manage Staff</h1>
-            <ol class="breadcrumb">
-                <li>
-                    <button class="button button-3d button-rounded button-aqua" data-toggle="modal" data-target="#myModal">Upload CSV</button>
-                </li>
-            </ol>
-        </div>
-
-    </section>
 
     <!-- Content
     ============================================= -->
     <section id="content">
-
 
         <div class="content-wrap container clearfix">
             <div id="side-navigation">
@@ -174,6 +161,10 @@
                     </div>-->
 
                     <div id="Add-Employees">
+                        <div class="container clearfix">
+                            <h1>Manage Staff</h1>
+                            <button class="button button-3d button-rounded button-aqua" data-toggle="modal" data-target="#myModal">Upload CSV</button>
+                        </div>
                         <div class="container clearfix">
 
                                 <div class="col_four_fifth divcenter vertical-middle">
@@ -632,11 +623,11 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Upload CSV</h4>
             </div>
+            <form method="post" action="addemployees" enctype="application/x-www-form-urlencoded">
             <div class="modal-body">
                 <div class="row text-center">
-                    <form method="post" action="addemployees" enctype="application/x-www-form-urlencoded">
+
                         <textarea rows="10" cols="35" class="add-email" type="text" name="csvEmployees" placeholder="CSV of Employees EMAILS" required></textarea>
-                    </form>
                 </div>
             </div>
             <!--/need a form here to execute csv via post method-->
@@ -645,6 +636,8 @@
                 <input class="btn custom-button" name="submit" type="submit" href="/addemployees" value="Upload">
                 <!--<input class="btn custom-button" name="submit" type="submit" href="/addemployees" value="Upload">-->
             </div>
+            </form>
+
         </div>
     </div>
 </div>
