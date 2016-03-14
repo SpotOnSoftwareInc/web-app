@@ -6,41 +6,49 @@ var sendgrid  = require('sendgrid')('robobetty', 'NoKcE0FGE4bd');
 var ObjectId = require('mongodb').ObjectID;
 
 exports.get = function (req, res, next) {
-    console.log("get function checkin")
+    console.log("get function checkin");
 
-    //var business = req.session.business;
-    res.render('business/checkin', {
-        //companyName: business.companyName,
-        //bg: business.style.bg,
-        //logo: business.logo,
-        //buttonBg: style.rgbObjectToCSS(business.style.buttonBg),
-        //buttonText: style.rgbObjectToCSS(business.style.buttonText),
-        //containerText: style.rgbObjectToCSS(business.style.containerText),
-        //containerBg: style.rgbObjectToCSS(business.style.containerBg)
+    var bid = req.user[0].business;
+    var db = req.db;
+    var businesses = db.get('businesses');
+    businesses.findById(bid, function (err, result) {
+        if (err) {
+            return next(err);
+        }
+        var dbBusiness = result;
+
+        res.render('business/checkin', {
+            theme: dbBusiness.theme
+        });
     });
 };
 
 exports.post = function(req,res, next) {
     console.log("add visitor to db");
-    var parsed = req.body.fullName.split(" ");
-    console.log(parsed);
-    var fname = parsed[0];
-    var lname = parsed[1];
-    var database =  req.db;
-    var visitorDB = database.get('visitor');
-    var businessID = req.user[0].business;
 
+    var appointmentDB = req.db.get('appointment');
+    var bid = req.user[0].business;
 
-    console.log(businessID);
-    visitorDB.insert({
-        business: ObjectId(businessID),
-        fullName: fname + " " + lname,
-        email: "",
-        apptTime: "",
-        assignee: "",
-        //values of role saasAdmin, busAdmin, provider, staff, visitor
-        role: 'visitor'
+    var time = req.body.time;
+    var provider = req.body.provider;
+    var name = req.body.name;
+    var email = req.body.email;
+    var phone = req.body.phone;
+
+    console.log(req.body);
+
+    appointmentDB.insert({
+        provider: provider,
+        time: time,
+        visitor: name,
+        business: bid,
+        email: email,
+        phone: phone,
+        state: 'waiting'
     });
+
     res.redirect('../' + req.user[0].business + '/checkin');
-}
+
+
+};
 

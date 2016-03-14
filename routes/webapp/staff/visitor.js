@@ -1,19 +1,12 @@
 /**
  * Created by sean on 2/26/2016.
  */
-
-
 /**
  * Takes a req and res parameters and is inputted into function to get employee, notemployee, and business data.
  *
  * @param req and res The two parameters passed in to get the apprporiate employee,
  * @returns The appropriate data about the employee
  */
-//exports.get = function(req, res) {
-//    console.log('Get function');
-//    res.render('staff/visitor',{
-//    });
-//};
 var async = require('async');
 
 
@@ -33,36 +26,28 @@ exports.get = function (req, res) {
             });
 
         })
-    };
-
-
+};
 
 exports.post = function (req, res) {
 
-    var appointmentDB = req.db.get('appointment');
-    var bid = req.user[0].business.toString();
-
-    var time = req.body.time;
-    var provider = req.body.provider;
-    var name = req.body.name;
+    var appointmentDB = req.db.get('appointment'),
+        bid = req.user[0].business,
+        arrivalTime = '',
+        appointmentTime = req.body.time,
+        provider = req.body.provider,
+        name = req.body.name,
+        bizInfo = '';
 
     appointmentDB.insert({
-        privider: provider,
-        time: time,
+        provider: provider,
+        appointmentTime: appointmentTime,
+        arrivalTime: arrivalTime,
         visitor: name,
+        businessInfo: bizInfo,
         business: bid,
-        state: 'waiting'
+        state: 'Appointment Made'
     });
 
-    appointmentDB.find( { business: bid }, {state: 'waiting'} )
-        .on('success', function(appointments) {
-
-            res.render('staff/visitor', {
-                appts: appointments,
-
-                message: req.flash("Fetched all appointments")
-            });
-
-        })
+    res.redirect('../'+ bid +'/visitor');
 
 };
