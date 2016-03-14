@@ -36,7 +36,7 @@ exports.post = function (req, res) {
     employeeDB.remove({_id: eid});
 
     // Re-render all the remaining emps
-    res.redirect('../'+ bid +'/dashboard#Billing-Options');
+    res.redirect('../'+ bid +'/dashboard');
 
     //
 };

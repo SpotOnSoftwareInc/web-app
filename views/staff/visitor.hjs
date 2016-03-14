@@ -58,7 +58,7 @@
                 <nav id="primary-menu">
 
                     <ul class="one-page-menu">
-                        <li><a href="/logout"><div>Log out</div></a></li>
+                        <li><a href="/logout"><div id="logout">Log out</div></a></li>
                     </ul>
 
                 </nav><!-- #primary-menu end -->
@@ -89,12 +89,7 @@
     </section>
 
     <div class="container">
-        <br>
         <div class="col_four_fifth divcenter vertical-middle">
-
-
-            <div class="clear"></div>
-
             <form class="nobottommargin" method="post" action="" enctype="application/x-www-form-urlencoded">
 
                 <div class="form-process"></div>
@@ -163,11 +158,9 @@
                 </td>
             </tr>
             {{/appts}}
-
             </tbody>
         </table>
     </div>
-
 
     <!-- Footer
     ============================================= -->
