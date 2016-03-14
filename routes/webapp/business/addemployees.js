@@ -13,10 +13,10 @@ var ObjectId = require('mongodb').ObjectID;
 exports.get = function(req,res){
     console.log('Get function addemployees');
 
-        var employeeDB = req.db.get('employees');
-        var employee;
-        var notemployee;
-        var businessID = req.user[0].business.toString();
+        var employeeDB = req.db.get('employees'),
+            employee,
+            notemployee,
+            businessID = req.user[0].business.toString();
 
         async.parallel({
             employee: function(cb){
@@ -67,28 +67,21 @@ exports.get = function(req,res){
  * @returns The appropriate data about the employee
  */
 exports.post = function(req,res){
-       var parsed = baby.parse(req.body.csvEmployees);
-       var rows = parsed.data;
-       var database =  req.db;
-       var employeeDB = database.get('employees');
-       var businessID = req.user[0].business.toString();
-        console.log(businessID);
-        //console.log(req);
+        var parsed = baby.parse(req.body.csvEmployees),
+            rows = parsed.data,
+            database =  req.db,
+            employeeDB = database.get('employees'),
+            businessID = req.user[0].business.toString();
 
         for(var i = 0; i < rows.length; i++){
-            var username = rows[i][0];
-            console.log(rows[i][0]);
-            //console.log(rows[i][1]);
-            //var email = rows[i][1];
-            var nameArr = username.split(' ');
-			var fname = nameArr[0];
-            console.log(fname);
-			var lname = nameArr[1];
-            console.log(lname);
-            var email = nameArr[2];
-            console.log(email);
-            var role = nameArr[3];
-            var token = randomToken();
+            var username = rows[i][0],
+                nameArr = username.split(' '),
+			    fname = nameArr[0],
+			    lname = nameArr[1],
+                email = nameArr[2],
+                role = nameArr[3],
+                token = randomToken();
+
             employeeDB.insert({
                 business: ObjectId(businessID),
                 fname: fname,
@@ -128,9 +121,9 @@ exports.post = function(req,res){
 
         }
         res.redirect('../' + req.user[0].business + '/dashboard');
+};
+
+
+function randomToken() {
+    return crypto.randomBytes(24).toString('hex');
 }
-
-
- function randomToken() {
-        return crypto.randomBytes(24).toString('hex');
-    }

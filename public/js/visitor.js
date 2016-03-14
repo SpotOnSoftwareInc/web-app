@@ -4,7 +4,40 @@
 
 function init(){
     _bindSearch();
+    updateStatus();
 }
+
+function updateStatus(){
+    for(var i = 0; i < $(".state").length; i++){
+        var curr = $(".state")[i];
+        // the current user id
+        var id = (curr.id).split("-")[1];
+        var button = id + "-button";
+
+        var curState = curr.innerHTML;
+
+        // TODO KURT - Change the Appointment Made to being checked in status
+        if(curState == "Appointment Made"){
+            $("#" + button).remove();
+            var zero = '<form id="formVis" method="post" action="deleteVisitor" enctype="application/x-www-form-urlencoded">';
+            var one = '<button name="visitorName" type="submit" class="button button-3d button-mini button-rounded button-red" value=' + id;
+            var two = ' id="' + id + '-button">Check Out</button></form>';
+            var inner = zero  + one + two;
+            $("#button-row-" + id).append(inner);
+
+            $("#button-row-" + id).on("click", ".button-red", function() {
+                console.log(this);
+                var id = this.id;
+                var res = id.split("-");
+                var tar = "tr-" + res[0];
+                $("#" + tar).fadeOut(600, function(){
+                    getTimeDiff(res[0]);
+                    $("#" + tar).remove();
+                });
+            });
+        }
+    }
+};
 
 // Binding the search function
 _bindSearch = function(){
@@ -25,7 +58,7 @@ _bindSearch = function(){
                     $(this).show();
             });
         });
-}
+};
 
 // Interval to constantly refresh the page for the time to change
 setInterval(updateTime, 1000);
@@ -39,10 +72,10 @@ function updateTime(){
 // Function to get the current time
 function getTime(){
     //
-    var currentTime = new Date()
-    var hours = currentTime.getHours()
-    var minutes = currentTime.getMinutes()
-    var seconds = currentTime.getSeconds()
+    var currentTime = new Date();
+    var hours = currentTime.getHours();
+    var minutes = currentTime.getMinutes();
+    var seconds = currentTime.getSeconds();
     var isNoon = false;
 
     if (seconds < 10){
@@ -89,10 +122,9 @@ $(document).on('blur','#txt_fullname', function(){
 
 $(".dropdown-menu-right a").click(function() {
     var group = $(this).text();
-    var id = this.closest('ul').id;
-    var res = id.split("-");
-    var str = res[0] + "_dropdown";
-    $('#' + str).text(group);
+    var temp = this.closest(".dropdown").id;
+    var arr = temp.split("-");
+    $('.dropdown-' + arr[1]).text(group);
 });
 
 $(".button-green").click(function() {
@@ -101,6 +133,8 @@ $(".button-green").click(function() {
     var str = res[0] + "-status";
     $(this).fadeOut(onceDone(res));
     var time = getTime();
+    // TODO KURT
+    // Post the current time to the checkInTime variable
     $("#" + str).text(time);
 });
 

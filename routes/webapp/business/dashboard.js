@@ -40,5 +40,4 @@ exports.post = function (req, res) {
     // Re-render all the remaining emps
     res.redirect('../'+ bid +'/dashboard');
 
-    //
 };

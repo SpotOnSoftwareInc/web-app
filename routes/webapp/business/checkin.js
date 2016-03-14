@@ -27,28 +27,55 @@ exports.post = function(req,res, next) {
     console.log("add visitor to db");
 
     var appointmentDB = req.db.get('appointment');
-    var bid = req.user[0].business;
-
-    var time = req.body.time;
-    var provider = req.body.provider;
+    var bid = req.user[0].business.toString();
     var name = req.body.name;
-    var email = req.body.email;
-    var phone = req.body.phone;
+    console.log(name);
+    var curtime = getTime();
 
-    console.log(req.body);
-
-    appointmentDB.insert({
-        provider: provider,
-        time: time,
-        visitor: name,
-        business: bid,
-        email: email,
-        phone: phone,
-        state: 'waiting'
+    appointmentDB.findAndModify({
+        query : {business: bid, visitor: name },
+        update: {
+            $set: {
+                checkinTime: curtime,
+                state: 'waiting'
+            }
+        }
+    },
+    function(err,doc){
+        console.log(doc);
     });
 
-    res.redirect('../' + req.user[0].business + '/checkin');
-
+    res.redirect('../' + bid + '/checkin');
 
 };
 
+
+
+function getTime(){
+    //
+    var currentTime = new Date();
+    var hours = currentTime.getHours();
+    var minutes = currentTime.getMinutes();
+    var seconds = currentTime.getSeconds();
+    var isNoon = false;
+
+    if (seconds < 10){
+        seconds = "0" + seconds
+    }
+    if (minutes < 10){
+        minutes = "0" + minutes
+    }
+
+    if(hours > 12){
+        hours -= 12;
+        isNoon = true;
+    }
+    var t_str = hours + ":" + minutes + ":" + seconds + " ";
+    if(isNoon){
+        t_str += "PM";
+    } else {
+        t_str += "AM";
+    }
+
+    return t_str;
+}
