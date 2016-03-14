@@ -36,7 +36,7 @@ exports.get = function (req, res) {
                 }
             }
 
-            employeeDB.find( { business: bid4emp }, {role: 'provider'})
+            employeeDB.find( { business: bid4emp, role: 'provider' })
                 .on('success', function(providers) {
 
                     res.render('staff/visitor', {
