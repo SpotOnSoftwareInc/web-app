@@ -5,6 +5,7 @@ var router = express.Router();
 var landing = require('./admin/landing');
 var register = require('./admin/register');
 var registerprocess = require('./admin/registerprocess');
+var registerprocess4 = require('./admin/registerprocess4');
 var login = require('./admin/login');
 var analytics = require('./admin/analytics');
 
@@ -71,7 +72,7 @@ module.exports = function (passport) {
 
     router.get('/registerprocess', registerprocess.get);
     router.post('/registerprocess', registerprocess.post);
-
+    router.post('/registerprocess4', registerprocess4.post);
     router.get('/login', login.get);
     router.post('/login', passport.authenticate('local-login'),
         //Direct type of user to correct page upon signup
@@ -115,6 +116,7 @@ module.exports = function (passport) {
     router.get('/:id/dashboard', updateBusiness, isLoggedInBusAdmin, dashboard.get);
     router.post('/:id/dashboard', updateBusiness, isLoggedInBusAdmin, dashboard.post);
     router.post('/:id/dashboard2', updateBusiness, isLoggedInBusAdmin, dashboard2.post);
+
 
     router.get('/:id/accountSettings', updateBusiness, isLoggedInBusAdmin, accountsettings.get);
     router.post('/:id/accountSettings', isLoggedInBusAdmin, accountsettings.post);

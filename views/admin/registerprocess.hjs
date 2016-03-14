@@ -225,7 +225,7 @@
                             </div>
                         </div>
                         <a href="#" class="button button-3d nomargin tab-linker" rel="1">Previous</a>
-                        <a href="#" class="button button-3d nomargin fright tab-linker" rel="3">Continue</a>
+                        <a href="#" class="button button-3d nomargin fright tab-linker" rel="3">Continue</>
                     </div>
                     <div id="ptab3">
                         <div id="Manage-Theme">
@@ -289,14 +289,12 @@
                     </div>
                     <div id="ptab4">
                         <h3>Notification Options</h3>
-                        <div class="switch">
-                            <form action="post">
-                                <label>email notifications <input value="idk" type="checkbox" name="emailCheckbox" checked></input></label>
-                            </form>
-                        </div>
+                        <form method="post" action="registerprocess4">
+                            <label>email notifications <input value="idk" type="checkbox" name="emailCheckbox" checked></input></label>
+                            <a href="#" class="button button-3d nomargin tab-linker" rel="3">Previous</a>
+                            <button href="#" type="submit" class="button button-3d nomargin fright tab-linker" rel="5">Continue</button>
+                        </form>
 
-                        <a href="#" class="button button-3d nomargin tab-linker" rel="3">Previous</a>
-                        <a href="#" class="button button-3d nomargin fright tab-linker" rel="5">Continue</a>
                     </div>
                     <div id="ptab5">
                         <div class="alert alert-success">
