@@ -102,15 +102,17 @@
 
                 <div class="col_one_fourth">
                     <label for="template-contactform-time">Time</label>
-                    <input type="time" id="template-contactform-time" name="time" value="{{time}}" class="sm-form-control" />
+                    <input type="time" id="template-contactform-time" name="apptTime" value="{{apptTime}}" class="sm-form-control" />
                 </div>
 
                 <div class="col_one_fourth">
                     <label for="template-contactform-provider">Provider</label>
                     <input id="inputProvider" list="template-contactform-provider" name="provider">
                     <datalist id="template-contactform-provider">
-                        <option value="{{provider}}">
-                        <option value="hi">
+                        {{#providers}}
+                        <option value="{{fname}}">
+                        {{/providers}}
+
                     </datalist>
 
                 </div>
@@ -128,9 +130,9 @@
             <thead>
             <tr>
                 <th>Name</th>
-                <th>Time</th>
+                <th>Check in Time</th>
                 <th>Assignee</th>
-                <th>Appointment</th>
+                <th>Appointment Time</th>
                 <th>Status</th>
                 <th>Check In</th>
             </tr>
@@ -138,23 +140,28 @@
             <tbody id="all">
             {{#appts}}
             <tr id="tr-{{_id}}">
+                <!--Name-->
                 <td class="name" id="{{_id}}">{{visitor}}</td>
-                <td id="{{_id}}-status">Not Checked in</td>
+                <!--time-->
+                <td id="{{_id}}-status">{{checkinTime}}</td>
+                <!--assignee-->
                 <td class="asignee">
                     <div class="sort-contacts-bytype-dropdown dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="dropdown-label">{{assignedTo}}</span><b class="caret"></b></a>
+                            <span class="dropdown-label">{{provider}}</span><b class="caret"></b></a>
                         <ul class="dropdown-menu dropdown-menu-right">
-                            {{#providers.length}}
-                            {{#providers}}<li><a href="#"><i class="dropdown test"></i>{{.}}</a></li>{{/providers}}
-                            {{/providers.length}}
+                            {{#providers}}
+                            <li><a href="#"><i class="dropdown test"></i>{{fname}}</a></li>
+                            {{/providers}}
                         </ul>
                     </div>
                 </td>
-                <td>{{time}}</td>
-                <td> </td>
+                <!--appoiontment time-->
+                <td>{{apptTime}}</td>
+                <!--status-->
+                <td>{{state}}</td>
                 <td id="button-row-{{_id}}">
-                    <button id="{{_id}}-button" class="button button-3d button-mini button-rounded button-green">Checkin</button>
+                    <button id="{{_id}}-button" class="button button-3d button-mini button-rounded button-green">Sent to provider</button>
                 </td>
             </tr>
             {{/appts}}
