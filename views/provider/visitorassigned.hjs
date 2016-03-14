@@ -28,7 +28,7 @@
 
     <!-- Document Title
     ============================================= -->
-    <title>Vistors</title>
+    <title>Visitors</title>
 
 </head>
 
@@ -127,7 +127,7 @@
         <tr id="tr-{{_id}}">
             <td class="name" id="{{_id}}">{{visitor}}</td>
             <td>{{checkinTime}}</td>
-            <td>{{appointmentTime}}</td>
+            <td>{{apptTime}}</td>
             <td id="button-row-{{_id}}">
                 <button id="{{_id}}-button" class="button button-3d button-mini button-rounded button-green">Checkin</button>
             </td>
