@@ -183,22 +183,29 @@
 
 
 <!-- Modal -->
+<!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document" id="modalCSV">
+    <div class="modal-dialog" role="document" style="top: 235px;">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Upload CSV</h4>
             </div>
-            <div class="modal-body">
-                    <textarea rows="15" cols="50" id="csvVisitor" name="csvVisitor" placeholder="Enter CSV here"></textarea>
-            </div>
-            <!--/need a form here to execute csv via post method-->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <!--<input class="btn custom-button" name="submit" type="submit" href="/addemployees" value="Upload">-->
-            </div>
+            <form method="post" action="addappointments" enctype="application/x-www-form-urlencoded">
+                <div class="modal-body">
+                    <div class="row text-center">
+
+                        <textarea rows="10" cols="35" class="add-email" type="text" name="csvEmployees" placeholder="CSV of Employees EMAILS" required></textarea>
+                    </div>
+                </div>
+                <!--/need a form here to execute csv via post method-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input class="btn custom-button" name="submit" type="submit" href="/addappointments" value="Upload">
+                    <!--<input class="btn custom-button" name="submit" type="submit" href="/addemployees" value="Upload">-->
+                </div>
+            </form>
+
         </div>
     </div>
 </div>
