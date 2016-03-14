@@ -61,16 +61,27 @@ exports.post = function (req, res) {
     console.log(provider);
     var name = req.body.name;
     var bizInfo = '';
+    var callingFunc = req.body.callingFunc;
+    var vid = req.body.vid;
 
-    appointmentDB.insert({
-        checkinTime: 0,
-        provider: provider,
-        apptTime: apptTime,
-        visitor: name,
-        businessInfo: bizInfo,
-        business: bid,
-        state: 'Appointment Made'
-    });
+    console.log(vid);
+
+    if (callingFunc == 'insert') {
+        appointmentDB.insert({
+            checkinTime: 0,
+            provider: provider,
+            apptTime: apptTime,
+            visitor: name,
+            businessInfo: bizInfo,
+            business: bid,
+            state: 'Appointment Made'
+        });
+    }
+
+    if (callingFunc == 'changeProv'){
+        console.log(vid);
+
+    }
 
     res.redirect('../'+ bid +'/visitor');
 

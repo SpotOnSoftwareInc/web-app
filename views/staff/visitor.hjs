@@ -122,6 +122,7 @@
 
                 </div>
                 <div class="col_one_fourth col_last pull-left" id="addApptButton">
+                    <input type="hidden" name="callingFunc" value="insert">
                     <input id="addButton" class="button button-3d button-large button-rounded button-green" name="submit" type="submit" value="Add Appt">
                 </div>
             </form>
@@ -151,15 +152,20 @@
                 <td id="{{_id}}-status">{{checkinTime}}</td>
                 <!--assignee-->
                 <td class="asignee">
+                    <form method="post" action="" enctype="application/x-www-form-urlencoded">
                     <div class="sort-contacts-bytype-dropdown dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <span class="dropdown-label">{{provider}}</span><b class="caret"></b></a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             {{#providers}}
+                            <input type="hidden" name="callingFunc" value="changeProv">
+                            <input type="hidden" name="vid" value="{{_id}}">
+                            <li><input name="submit" type="submit" value="{{fname}}"/></li>
                             <li><a href="#"><i class="dropdown test"></i>{{fname}}</a></li>
                             {{/providers}}
                         </ul>
                     </div>
+                    </form>
                 </td>
                 <!--appoiontment time-->
                 <td>{{apptTime}}</td>
