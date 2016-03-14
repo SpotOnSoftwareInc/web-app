@@ -48,6 +48,8 @@ exports.post = function(req,res, next) {
 
 };
 
+
+
 function getTime(){
     //
     var currentTime = new Date();

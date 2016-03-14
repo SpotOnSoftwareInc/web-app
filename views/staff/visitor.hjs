@@ -114,8 +114,10 @@
                     <label for="template-contactform-provider">Provider</label>
                     <input id="inputProvider" list="template-contactform-provider" name="provider">
                     <datalist id="template-contactform-provider">
-                        <option value="{{provider}}">
-                        <option value="hi">
+                        {{#providers}}
+                        <option value="{{fname}}">
+                        {{/providers}}
+
                     </datalist>
 
                 </div>
@@ -151,11 +153,11 @@
                 <td class="asignee">
                     <div class="sort-contacts-bytype-dropdown dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="dropdown-label">{{assignedTo}}</span><b class="caret"></b></a>
+                            <span class="dropdown-label">{{provider}}</span><b class="caret"></b></a>
                         <ul class="dropdown-menu dropdown-menu-right">
-                            {{#providers.length}}
-                            {{#providers}}<li><a href="#"><i class="dropdown test"></i>{{.}}</a></li>{{/providers}}
-                            {{/providers.length}}
+                            {{#providers}}
+                            <li><a href="#"><i class="dropdown test"></i>{{fname}}</a></li>
+                            {{/providers}}
                         </ul>
                     </div>
                 </td>

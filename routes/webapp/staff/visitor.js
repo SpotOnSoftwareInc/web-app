@@ -21,8 +21,9 @@ exports.get = function (req, res) {
     console.log('Get function VisitorQueue');
     var database = req.db;
     var apptDB = database.get('appointment');
-
+    var employeeDB = database.get('employees');
     var bid = req.user[0].business.toString();
+    var bid4emp = req.user[0].business;
 
     apptDB.find( { business: bid }, {state: 'waiting'} )
         .on('success', function(appointments) {
@@ -35,11 +36,15 @@ exports.get = function (req, res) {
                 }
             }
 
-            res.render('staff/visitor', {
-                appts: appointments,
-                message: req.flash("Fetched all appointments")
-            });
+            employeeDB.find( { business: bid4emp }, {role: 'provider'})
+                .on('success', function(providers) {
 
+                    res.render('staff/visitor', {
+                        appts: appointments,
+                        providers :providers,
+                        message: req.flash("Fetched all appointments")
+                    });
+                })
         })
     };
 
@@ -53,6 +58,7 @@ exports.post = function (req, res) {
 
     var apptTime = req.body.apptTime;
     var provider = req.body.provider;
+    console.log(provider);
     var name = req.body.name;
 
     appointmentDB.insert({
