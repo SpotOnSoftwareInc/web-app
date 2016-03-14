@@ -239,7 +239,7 @@ module.exports = function (passport) {
                         return next(null, employee);
                     } else {
                         console.log("Failure");
-                        return next(null, "Invalid login");
+                        return next(null, employee);
                     }
                 }
             );
