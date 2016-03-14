@@ -1,12 +1,12 @@
 var auth = require('../../../lib/auth');
 
 exports.get = function (req, res) {
-    console.log('Get function getemployees');
+    console.log('Get function dashboard');
     var database = req.db;
     var employeeDB = database.get('employees');
     var bid = req.user[0].business;
-    //console.log("also find business owner ID lol");
-    employeeDB.find( { business: bid })
+    console.log("also find business owner ID lol");
+    employeeDB.find( { business: bid , password: { $ne: '' } })
         .on('success', function(employees) {
             console.log(req.user[0]);
             res.render('business/dashboard', {

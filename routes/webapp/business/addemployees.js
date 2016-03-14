@@ -3,6 +3,11 @@ var baby = require('babyparse');
 var async = require('async');
 var sendgrid  = require('sendgrid')('robobetty', 'NoKcE0FGE4bd');
 var ObjectId = require('mongodb').ObjectID;
+var auth = require('../../../lib/auth');
+var bcrypt = require('bcrypt-nodejs');
+var nodemailer = require('nodemailer');
+var smtpTransport = require("nodemailer-smtp-transport");
+
 
  /**
  * Takes a req and res parameters and is inputted into function to get employee, notemployee, and business data.
@@ -102,9 +107,9 @@ exports.post = function(req,res){
                     pass : "sossossos"
                 }
             }));
-
+            console.log('BREAKING HERE');
             var mailOptions = {
-                to: req.body.email,
+                to: email,
                 from: 'iReceptionistCorp@gmail.com',
                 subject: 'Welcome to iReceptionist',
                 text: 'Hello,\n\n' +
@@ -113,10 +118,11 @@ exports.post = function(req,res){
                 'http://' + req.headers.host + '/reset/' + token + '\n\n' +
                 'If you did not request this, please ignore this email and your password will remain unchanged.\n'
             };
+            console.log('BREAKING HERE 2');
             transport.sendMail(mailOptions, function(err) {
-                req.flash('info', 'An e-mail has been sent to ' + req.body.email + ' with further instructions.');
-                console.log(err);
-                done(err, 'done');
+                //req.flash('info', 'An e-mail has been sent to ' + email + ' with further instructions.');
+                    console.log(err);
+                //done(err, 'done');
             });
 
         }

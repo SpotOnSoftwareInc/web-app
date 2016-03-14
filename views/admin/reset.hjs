@@ -91,45 +91,6 @@
                         </div>
                     </form>
                 </div><!-- Password Form End -->
-
-                <!-- Username Retrieval
-                ============================================= -->
-                <!--<div class="col_half">-->
-                <!--<div class="fancy-title title-dotted-border">-->
-                <!--<h3>Forgot Your Username?</h3>-->
-                <!--</div>-->
-                <!--<div id="contact-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Verification Sent Successfully!"></div>-->
-                <!--<form class="nobottommargin" id="template-contactform" name="template-contactform" action="include/sendemail.php" method="post">-->
-                <!--<div class="form-process"></div>-->
-                <!--<div class="clear"></div>-->
-                <!--<div class="col_two_third">-->
-                <!--<label for="template-contactform-subject">Email <small>*</small></label>-->
-                <!--<input type="text" id="template-contactform-subject" name="template-contactform-subject" value="" class="required sm-form-control" />-->
-                <!--</div>-->
-                <!--<div class="clear"></div>-->
-                <!--<div class="col_full">-->
-                <!--<button name="submit" type="submit" id="submit-button" tabindex="5" value="Submit" class="button button-3d nomargin">Submit</button>-->
-                <!--</div>-->
-                <!--</form>-->
-                <!--<script type="text/javascript">-->
-                <!--$("#template-contactform").validate({-->
-                <!--submitHandler: function(form) {-->
-                <!--$('.form-process').fadeIn();-->
-                <!--$(form).ajaxSubmit({-->
-                <!--target: '#contact-form-result',-->
-                <!--success: function() {-->
-                <!--$('.form-process').fadeOut();-->
-                <!--$('#template-contactform').find('.sm-form-control').val('');-->
-                <!--$('#contact-form-result').attr('data-notify-msg', $('#contact-form-result').html()).html('');-->
-                <!--SEMICOLON.widget.notifications($('#contact-form-result'));-->
-                <!--}-->
-                <!--});-->
-                <!--}-->
-                <!--});-->
-                <!--</script>-->
-                <!--</div>&lt;!&ndash; Username Form End &ndash;&gt;-->
-
-
             </div>
         </div>
     </section><!-- #content end -->
