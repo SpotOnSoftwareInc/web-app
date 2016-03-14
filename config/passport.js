@@ -8,6 +8,9 @@ var auth = require('../lib/auth');
 var ObjectId = require('mongodb').ObjectID;
 var async = require('async');
 var bcrypt = require('bcrypt-nodejs');
+var nodemailer = require('nodemailer');
+var smtpTransport = require("nodemailer-smtp-transport");
+var crypto = require('crypto');
 //need this since we are passing in a passport dependency in app.js line 58
 module.exports = function (passport) {
 
@@ -109,8 +112,43 @@ module.exports = function (passport) {
             if (err) {
                 throw err;
             }
-            return done(null, user);
+            // Send a reset password link to the user
+
+            // Generate unique token
+            crypto.randomBytes(20, function (err, buf) {
+                var token = buf.toString('hex');
+                return sendWelcomeMail(req,token,user,done);
+            });
         });
+    };
+
+    var sendWelcomeMail = function(req,token,user,done){
+        // Login to our email
+        var transport = nodemailer.createTransport(smtpTransport({
+            service:'gmail',
+            auth : {
+                user : "ireceptionistcorp@gmail.com",
+                pass : "sossossos"
+            }
+        }));
+
+        // Customize the message and message properties
+        var mailOptions = {
+            to: req.body.email,
+            from: 'iReceptionistCorp@gmail.com',
+            subject: 'Welcome to iReceptionist',
+            text: 'You are receiving this because this email is now registered for our service.\n\n' +
+            'Please click on the following link, or paste this into your browser to create your own password:\n\n' +
+            'http://' + req.headers.host + '/reset/' + token + '\n\n' +
+            'If you did not request this, please ignore this email.\n'
+        };
+
+        // Send the user an email
+        transport.sendMail(mailOptions, function(err) {
+            req.flash('info', 'An e-mail has been sent to ' + req.body.email + ' with further instructions.');
+            done(err, 'done');
+        });
+        return done(null, user);
     };
 
     var addBusiness = function(req, business, done){
@@ -150,7 +188,6 @@ module.exports = function (passport) {
         passReqToCallback: true
     },
         function (req,email,password,done) {
-
             var db =req.db;
             var employee = db.get('employees');
 

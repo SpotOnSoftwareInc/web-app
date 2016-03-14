@@ -156,7 +156,7 @@ module.exports = function (passport) {
 
                 // Update users password with the new password and invalidate the token and expire time
                 employees.update(
-                    {resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } },
+                    {resetPasswordToken: req.params.token },
                     {
                         $set: {
                             password: pass,
