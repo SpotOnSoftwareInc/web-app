@@ -13,7 +13,7 @@ exports.get = function (req, res) {
     console.log("Business: " + bid);
 
     //apptDB.find( { business: bid }, { provider: fullName }, {state: 'Waiting'} )
-    appDB.find( { $and: [ { business: bid }, { provider: fullName }, {state: 'Waiting'} ] } )
+    apptDB.find( { $and: [ { business: bid }, { provider: fullName }, {state: 'Waiting'} ] } )
         .on('success', function(appointments) {
 
             res.render('provider/visitorassigned', {
