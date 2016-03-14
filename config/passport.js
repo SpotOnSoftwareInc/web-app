@@ -226,33 +226,34 @@ module.exports = function (passport) {
         function (req, email, password, done) { // callback with email and password from our form
             console.log('LOCAL-LOGIN');
 
-            auth.validateLogin(req.db, email, password, function(user){
-                if(!user) {
-                    return done(null, false, password);
-                }
-                else {
-                    console.log("LOCAL-LOGIN SUCCESS");
-                    return done(null,user);
-                }
-            } );
-            //var employees = req.db.get('employees');
-            //employees.findOne({email: email},
-            //    function (err,employee){
-            //        console.log("Im here");
-            //        if(err){
-            //            console.error('validateLogin DB Error: ' + err);
-            //        } else if(!employee){
-            //            // error
-            //            console.log("User does not exist");
-            //        } else if(bcrypt.compareSync(password, employee.password)){
-            //            console.log("Success");
-            //            return next(null, employee);
-            //        } else {
-            //            console.log("Failure");
-            //            return done(null, employee);
-            //        }
+            //auth.validateLogin(req.db, email, password, function(user){
+            //    if(!user) {
+            //        console.log("user null in validate login");
+            //        return done(null, false, password);
             //    }
-            //);
+            //    else {
+            //        console.log("LOCAL-LOGIN SUCCESS");
+            //        return done(null,user);
+            //    }
+            //} );
+            var employees = req.db.get('employees');
+            employees.findOne({email: email},
+                function (err,employee){
+                    console.log("Im here");
+                    if(err){
+                        console.error('validateLogin DB Error: ' + err);
+                    } else if(!employee){
+                        // error
+                        console.log("User does not exist");
+                    } else if(bcrypt.compareSync(password, employee.password)){
+                        console.log("Success");
+                        return next(null, employee);
+                    } else {
+                        console.log("Failure");
+                        return done(null, employee);
+                    }
+                }
+            );
 
         }
     ));
