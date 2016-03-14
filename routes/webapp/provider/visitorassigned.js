@@ -6,8 +6,11 @@ exports.get = function (req, res) {
     var database = req.db;
     var apptDB = database.get('appointment');
 
-    var bid = req.user[0].business.toString();
+    var bid = req.user[0].business;
     var fullName = req.user[0].fname + " " + req.user[0].lname;
+
+    console.log("Provider: " + fullName);
+    console.log("Business: " + bid);
 
     apptDB.find( { business: bid }, { provider: fullName }, {state: 'Waiting'} )
         .on('success', function(appointments) {
