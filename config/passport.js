@@ -247,7 +247,7 @@ module.exports = function (passport) {
                         console.log("User does not exist");
                     } else if(bcrypt.compareSync(password, employee.password)){
                         console.log("Success");
-                        return next(null, employee);
+                        return done(null, employee);
                     } else {
                         console.log("Failure");
                         return done(null, employee);
