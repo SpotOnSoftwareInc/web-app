@@ -9,7 +9,7 @@ exports.get = function (req, res) {
     var bid = req.user[0].business.toString();
     var fullName = req.user[0].fname + " " + req.user[0].lname;
 
-    apptDB.find( { business: bid }, { provider: fullName }, {state: 'Waiting'} )
+    apptDB.find( { business: bid }, {provider: fullName}, {status: 'waiting'} )
         .on('success', function(appointments) {
 
             res.render('provider/visitorassigned', {
