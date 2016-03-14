@@ -54,12 +54,13 @@ exports.post = function (req, res) {
     console.log("making appointment");
 
     var appointmentDB = req.db.get('appointment');
-    var bid = req.user[0].business.toString();
 
+    var bid = req.user[0].business.toString();
     var apptTime = req.body.apptTime;
     var provider = req.body.provider;
     console.log(provider);
     var name = req.body.name;
+    var bizInfo = '';
 
     appointmentDB.insert({
         checkinTime: 0,
