@@ -159,7 +159,7 @@
                 <!--appoiontment time-->
                 <td>{{apptTime}}</td>
                 <!--status-->
-                <td>{{state}}</td>
+                <td class="state" id="state-{{_id}}">{{state}}</td>
                 <td id="button-row-{{_id}}">
                     <button id="{{_id}}-button" class="button button-3d button-mini button-rounded button-green">Sent to provider</button>
                 </td>
