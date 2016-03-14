@@ -189,15 +189,15 @@ module.exports = function (passport) {
         function(req, res) {
             if (req.user.role === 'busAdmin') {
                 console.log("Loggin in as Business Admin");
-                res.redirect('/' + req.user._id + '/dashboard');
+                res.redirect('/' + req.user.business + '/dashboard');
             }
             else if (req.user.role === 'saasAdmin') {
                 console.log("Loggin in as SAAS Admin");
-                res.redirect('/' + req.user._id + '/admin');
+                res.redirect('/' + req.user.business + '/admin');
             }
             else if (req.user.role === 'provider') {
                 console.log("Loggin in as Provider");
-                res.redirect('/' + req.user._id + '/visitorassigned');
+                res.redirect('/' + req.user.business + '/visitorassigned');
             }
             else if (req.user.role === 'staff') {
                 console.log("Loggin in as staff");
@@ -205,7 +205,7 @@ module.exports = function (passport) {
             }
             else if (req.user.role === 'visitor') {
                 console.log("Loggin in as visitor");
-                res.redirect('/' + req.user._id + '/checkin');
+                res.redirect('/' + req.user.business + '/checkin');
             }
             else {
                 res.redirect('/register');
