@@ -89,10 +89,9 @@ $(document).on('blur','#txt_fullname', function(){
 
 $(".dropdown-menu-right a").click(function() {
     var group = $(this).text();
-    var id = this.closest('ul').id;
-    var res = id.split("-");
-    var str = res[0] + "_dropdown";
-    $('#' + str).text(group);
+    var temp = this.closest(".dropdown").id;
+    var arr = temp.split("-");
+    $('.dropdown-' + arr[1]).text(group);
 });
 
 $(".button-green").click(function() {
