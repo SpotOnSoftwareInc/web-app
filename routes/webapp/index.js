@@ -34,6 +34,7 @@ var visitorassigned = require('./provider/visitorassigned');
 
 //Define the controllers for staff (receptionist person to assist visitors)process
 var visitor = require('./staff/visitor');
+var addappointments = require('./staff/addappointments');
 
 //Define the controllers for visitor (person checkin in) process
 var deleteVisitor = require('./staff/deleteVisitor');
@@ -124,6 +125,8 @@ module.exports = function (passport) {
 
     router.get('/:id/addemployees',isLoggedInBusAdmin, addemployees.get);
     router.post('/:id/addemployees', isLoggedInBusAdmin, addemployees.post);
+
+    router.post('/:id/addappointments', isLoggedInBusAdmin, addappointments.post);
 
     router.get('/:id/addoneemployee',isLoggedInBusAdmin, addoneemployee.get);
     router.post('/:id/addoneemployee', isLoggedInBusAdmin, addoneemployee.post);

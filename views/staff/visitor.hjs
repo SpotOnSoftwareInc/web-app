@@ -58,7 +58,7 @@
                 <nav id="primary-menu">
 
                     <ul class="one-page-menu">
-                        <li><a href="/logout"><div>Log out</div></a></li>
+                        <li><a href="/logout"><div id="logout">Log out</div></a></li>
                     </ul>
 
                 </nav><!-- #primary-menu end -->
@@ -89,12 +89,7 @@
     </section>
 
     <div class="container">
-        <br>
         <div class="col_four_fifth divcenter vertical-middle">
-
-
-            <div class="clear"></div>
-
             <form class="nobottommargin" method="post" action="" enctype="application/x-www-form-urlencoded">
 
                 <div class="form-process"></div>
@@ -155,13 +150,14 @@
                     <form method="post" action="" enctype="application/x-www-form-urlencoded">
                     <div class="sort-contacts-bytype-dropdown dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="dropdown-label">{{provider}}</span><b class="caret"></b></a>
+                            <span class="dropdown-{{_id}}">{{provider}}</span><b class="caret"></b></a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             {{#providers}}
                             <input type="hidden" name="callingFunc" value="changeProv">
                             <input type="hidden" name="vid" value="{{_id}}">
                             <li><input name="submit" type="submit" value="{{fname}}"/></li>
                             <li><a href="#"><i class="dropdown test"></i>{{fname}}</a></li>
+                            <li><a href="#"><i class="dropdown {{_id}}"></i>{{fname}}</a></li>
                             {{/providers}}
                         </ul>
                     </div>
@@ -170,7 +166,7 @@
                 <!--appoiontment time-->
                 <td>{{apptTime}}</td>
                 <!--status-->
-                <td>{{state}}</td>
+                <td class="state" id="state-{{_id}}">{{state}}</td>
                 <td id="button-row-{{_id}}">
                     <button id="{{_id}}-button" class="button button-3d button-mini button-rounded button-green">Sent to provider</button>
                 </td>
@@ -180,7 +176,6 @@
             </tbody>
         </table>
     </div>
-
 
     <!-- Footer
     ============================================= -->
@@ -197,21 +192,27 @@
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document" id="modalCSV">
+    <div class="modal-dialog" role="document" style="top: 235px;">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Upload CSV</h4>
             </div>
-            <div class="modal-body">
-                    <textarea rows="15" cols="50" id="csvVisitor" name="csvVisitor" placeholder="Enter CSV here"></textarea>
-            </div>
-            <!--/need a form here to execute csv via post method-->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <!--<input class="btn custom-button" name="submit" type="submit" href="/addemployees" value="Upload">-->
-            </div>
+            <form method="post" action="addappointments" enctype="application/x-www-form-urlencoded">
+                <div class="modal-body">
+                    <div class="row text-center">
+
+                        <textarea rows="10" cols="35" class="add-email" type="text" name="csvEmployees" placeholder="CSV of Employees EMAILS" required></textarea>
+                    </div>
+                </div>
+                <!--/need a form here to execute csv via post method-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input class="btn custom-button" name="submit" type="submit" href="/addappointments" value="Upload">
+                    <!--<input class="btn custom-button" name="submit" type="submit" href="/addemployees" value="Upload">-->
+                </div>
+            </form>
+
         </div>
     </div>
 </div>

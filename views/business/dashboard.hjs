@@ -100,28 +100,12 @@
 
     </header><!-- #header end -->
 
-    <section id="page-title">
-
-        <div class="container clearfix">
-            <h1>Manage Staff</h1>
-            <ol class="breadcrumb">
-                <li>
-                    <button class="button button-3d button-rounded button-aqua" data-toggle="modal" data-target="#myModal">Upload CSV</button>
-                </li>
-            </ol>
-        </div>
-
-    </section>
 
     <!-- Content
     ============================================= -->
     <section id="content">
 
-
         <div class="content-wrap container clearfix">
-
-
-
             <div id="side-navigation">
                 <div class="body-overlay"></div>
                 <div id="side-panel" class="dark">
@@ -177,6 +161,10 @@
                     </div>-->
 
                     <div id="Add-Employees">
+                        <div class="container clearfix">
+                            <h1>Manage Staff</h1>
+                            <button class="button button-3d button-rounded button-aqua" data-toggle="modal" data-target="#myModal">Upload CSV</button>
+                        </div>
                         <div class="container clearfix">
 
                                 <div class="col_four_fifth divcenter vertical-middle">
@@ -242,7 +230,7 @@
                                 <div class="line-dash"></div>
                             <!--<h3>Currently Registered Staff</h3>-->
                                 <div class="col_four_fifth divcenter middle">
-                                    <table class="table table-striped divcenter">
+                                    <table class="table table-hover">
                                         <thead>
                                         <tr>
                                             <th>Name</th>
@@ -266,11 +254,7 @@
                                                     <input type="hidden" name="emps"  class="form-control" value="{{emps}}" />
                                                     <input type="hidden" name="empID" class="form-control" value="{{_id}}" />
                                                     <div class="btn-group">
-                                                        <button type="button" class="btn dropdown-toggle btn-primary" data-toggle="dropdown">Edit <span class="caret"></span></button>
-                                                        <ul class="dropdown-menu" role="menu">
-                                                            <li><input value="Remove" id="remove" type="submit" style="width: 174px;"></li>
-                                                            <li><a href="#" type="submit">Another action</a></li>
-                                                        </ul>
+                                                        <button value="Remove" id="remove" type="submit" class="button button-3d button-mini button-rounded button-red">Remove</button>
                                                     </div>
                                                 </form>
                                             </td>
@@ -631,8 +615,6 @@
     </div>
 </div>
 
-
-
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document" style="top: 235px;">
@@ -641,11 +623,11 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Upload CSV</h4>
             </div>
+            <form method="post" action="addemployees" enctype="application/x-www-form-urlencoded">
             <div class="modal-body">
                 <div class="row text-center">
-                    <form method="post" action="addemployees" enctype="application/x-www-form-urlencoded">
+
                         <textarea rows="10" cols="35" class="add-email" type="text" name="csvEmployees" placeholder="CSV of Employees EMAILS" required></textarea>
-                    </form>
                 </div>
             </div>
             <!--/need a form here to execute csv via post method-->
@@ -654,6 +636,8 @@
                 <input class="btn custom-button" name="submit" type="submit" href="/addemployees" value="Upload">
                 <!--<input class="btn custom-button" name="submit" type="submit" href="/addemployees" value="Upload">-->
             </div>
+            </form>
+
         </div>
     </div>
 </div>
