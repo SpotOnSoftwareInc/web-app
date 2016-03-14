@@ -223,7 +223,7 @@ module.exports = function (passport) {
             passwordField: 'password',
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
-        function (req, email, password, done) { // callback with email and password from our form
+        function (req, email, password, next) { // callback with email and password from our form
             //console.log('LOCAL-LOGIN');
             var employees = req.db.get('employees');
             employees.findOne({email: email},
@@ -236,10 +236,10 @@ module.exports = function (passport) {
                         console.log("User does not exist");
                     } else if(bcrypt.compareSync(password, employee.password)){
                         console.log("Success");
-                        return done(null, employee);
+                        return next(null, employee);
                     } else {
                         console.log("Failure");
-                        return done(null, "Invalid login");
+                        return next(null, "Invalid login");
                     }
                 }
             );

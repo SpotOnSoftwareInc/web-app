@@ -183,7 +183,7 @@ module.exports = function (passport) {
     });
 
 
-    router.get('/login', login.get);
+    //router.get('/login', login.get);
     router.post('/login', passport.authenticate('local-login'),
         //Direct type of user to correct page upon signup
         function(req, res) {
@@ -193,7 +193,7 @@ module.exports = function (passport) {
             }
             else if (req.user.role === 'saasAdmin') {
                 console.log("Loggin in as SAAS Admin");
-                res.redirect('/' + req.user._id+ '/admin');
+                res.redirect('/' + req.user._id + '/admin');
             }
             else if (req.user.role === 'provider') {
                 console.log("Loggin in as Provider");
