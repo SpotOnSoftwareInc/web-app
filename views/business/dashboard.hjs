@@ -119,9 +119,6 @@
 
 
         <div class="content-wrap container clearfix">
-
-
-
             <div id="side-navigation">
                 <div class="body-overlay"></div>
                 <div id="side-panel" class="dark">
@@ -267,10 +264,6 @@
                                                     <input type="hidden" name="empID" class="form-control" value="{{_id}}" />
                                                     <div class="btn-group">
                                                         <button value="Remove" id="remove" type="submit" class="button button-3d button-mini button-rounded button-red">Remove</button>
-                                                        <!--<button type="button" class="btn dropdown-toggle btn-primary" data-toggle="dropdown">Edit <span class="caret"></span></button>-->
-                                                        <!--<ul class="dropdown-menu" role="menu">-->
-                                                            <!--<li><input value="Remove" id="remove" type="submit" style="width: 174px;"></li>-->
-                                                        <!--</ul>-->
                                                     </div>
                                                 </form>
                                             </td>
@@ -630,8 +623,6 @@
         </div>
     </div>
 </div>
-
-
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
