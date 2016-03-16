@@ -45,7 +45,7 @@
 
 <!-- Took out all unnecessary divs to make consistent with checkin page design -->
 <div class="container container-margin container-checkin">
-    <h1 class="header"> Sorry, we couldn't find and appoitment for you. </h1>
+    <h1 class="header"> Sorry, we couldn't find an appoitment for you. </h1>
     <img class="checkinphoto" src="{{theme}}" alt="">
 </div>
 
