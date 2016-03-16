@@ -34,11 +34,15 @@ module.exports = function (passport) {
             var business = {
                 email: email,
                 password: password,
-                companyName: req.body.companyName,
+                companyName: companyName,
+                companyAddress: '',
                 phone: '',
-                fname: req.body.fname,
-                lname: req.body.lname,
+                fname: fname,
+                //username: username,
+                lname: lname,
                 logo: '',
+                theme: '',
+                billingPlan: '',
                 walkins: false
             };
             if (business.fname === ''       ||
