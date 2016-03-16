@@ -253,6 +253,7 @@
                                                 <form method="post" action="">
                                                     <input type="hidden" name="emps"  class="form-control" value="{{emps}}" />
                                                     <input type="hidden" name="empID" class="form-control" value="{{_id}}" />
+                                                    <input type="hidden" name="callingFunc" class="form-control" value="removeEmployee" />
                                                     <div class="btn-group">
                                                         <button value="Remove" id="remove" type="submit" class="button button-3d button-mini button-rounded button-red">Remove</button>
                                                     </div>
@@ -590,20 +591,25 @@
                     <h4 class="modal-title">Form Builder</h4>
                 </div>
                 <div class="modal-body row">
-                    <div class="col-sm-8">
-                        <form action="">
-                            <textarea name="form-builder-template" id="form-builder-template" cols="10" rows="15"></textarea>
-                        </form>
-                    </div>
 
-                    <div class="col-sm-4 render-form">
-                        <h4 style="color:rgb(102, 102, 102)">Form Preview</h4>
-                        <form id="rendered-form">
-                        </form>
-                        <div class="render-description text-center">
-                            <a id="render-form-button" class="button">Update Preview</a>
+                    <form action="" method="post">
+                        <div class="col-sm-8">
+                            <textarea name="form-builder-template" id="form-builder-template" cols="10" rows="15"></textarea>
+                            <input type="hidden" name="saveData" id="saveData" value="">
+                            <input type="hidden" name="callingFunc"  value="saveForm">
+
+                            <button id="saveButton" class="add btn btn-default">Save Form</button>
                         </div>
-                    </div>
+                        <div class="col-sm-4 render-form">
+                            <h4 style="color:rgb(102, 102, 102)">Form Preview</h4>
+                            <form id="rendered-form">
+
+                            </form>
+                            <div class="render-description text-center">
+                                <a id="render-form-button" class="button">Update Preview</a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                  <div class="modal-footer">
                      <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
@@ -658,14 +664,25 @@
         'use strict';
         var template = document.getElementById('form-builder-template'),
             formContainer = document.getElementById('rendered-form'),
-            renderBtn = document.getElementById('render-form-button');
-        $(template).formBuilder();
+            renderBtn = document.getElementById('render-form-button'),
+            saveBtn = document.getElementById('saveButton'),
+            saveData = document.getElementById('saveData');
+
+        $(template).formBuilder(renderBtn, saveBtn);
 
         $(renderBtn).click(function(e) {
             e.preventDefault();
             $(template).formRender({
                 container: $(formContainer)
             });
+        });
+
+
+        $(saveBtn).click(function(e){
+            $(saveData).attr("value", $(template).val());
+            console.log($(template).val());
+            $(saveBtn).submit();
+            alert("Saved your form");
         });
 
     });

@@ -23,21 +23,27 @@ exports.get = function (req, res) {
 //exports.getLogo
 
 exports.post = function (req, res) {
-    console.log("Post Function for dashboard page to delete employees ");
-    //Removing an employeee
-    console.log(req.body);
-    var myFunction = req.body.myFunction;
-    var eid = req.body.empID.toString();
-    var employees = req.body.emps;
-    var employeeDB = req.db.get('employees');
+    console.log("Post Function for dashboard page ");
+
     var bid = req.user[0].business;
+    console.log(req.body);
+    var myFunction = req.body.callingFunc;
 
-    if(myFunction == 'remove'){
-        console.log('HEEERR');
+
+    if(myFunction == 'saveForm'){
+        console.log('SAVE DATA FROM FORM');
+        console.log(req.body.saveData);
     }
-    //Remove that employee
-    employeeDB.remove({_id: eid});
 
+    if(myFunction == 'removeEmployee'){
+        var employeeDB = req.db.get('employees');
+        var eid = req.body.empID.toString();
+
+        //Remove that employee
+        console.log("REMOVING EMPLOYEE");
+        employeeDB.remove({_id: eid});
+
+    }
     // Re-render all the remaining emps
     res.redirect('../'+ bid +'/dashboard');
 
