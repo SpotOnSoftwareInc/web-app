@@ -531,12 +531,6 @@
 
     </section><!-- #content end -->
 
-    <!-- Footer
-    ============================================= -->
-    <footer id="footer" class="dark">
-
-    </footer><!-- #footer end -->
-
 </div><!-- #wrapper end -->
 
 
@@ -662,13 +656,17 @@
 <script>
     jQuery(document).ready(function($) {
         'use strict';
-        var template = document.getElementById('form-builder-template'),
+        var template      = document.getElementById('form-builder-template'),
             formContainer = document.getElementById('rendered-form'),
-            renderBtn = document.getElementById('render-form-button'),
-            saveBtn = document.getElementById('saveButton'),
-            saveData = document.getElementById('saveData');
+            renderBtn     = document.getElementById('render-form-button'),
+            saveBtn       = document.getElementById('saveButton'),
+            saveData      = document.getElementById('saveData');
 
-        $(template).formBuilder(renderBtn, saveBtn);
+        var options = {
+            save: false
+        };
+
+        $(template).formBuilder(options);
 
         $(renderBtn).click(function(e) {
             e.preventDefault();
@@ -676,7 +674,6 @@
                 container: $(formContainer)
             });
         });
-
 
         $(saveBtn).click(function(e){
             $(saveData).attr("value", $(template).val());
@@ -687,7 +684,7 @@
 
     });
 </script>
-    <script type="text/javascript" src="../js/dashboard.js"></script>
+<script type="text/javascript" src="../js/dashboard.js"></script>
 
 
 </body>

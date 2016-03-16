@@ -11,8 +11,7 @@ exports.get = function (req, res) {
         .on('success', function(employees) {
             console.log(req.user[0]);
             res.render('business/dashboard', {
-                emps: employees,
-                emailz: req.user[0].email,
+                emps: employees, emailz: req.user[0].email,
                 phone: req.user[0].phone,
                 message: req.flash("permission")
             });
@@ -26,7 +25,6 @@ exports.post = function (req, res) {
     console.log("Post Function for dashboard page ");
 
     var bid = req.user[0].business;
-    console.log(req.body);
     var myFunction = req.body.callingFunc;
 
 
