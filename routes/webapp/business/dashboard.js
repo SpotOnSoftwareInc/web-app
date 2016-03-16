@@ -6,7 +6,8 @@ exports.get = function (req, res) {
     var employeeDB = database.get('employees');
     var bid = req.user[0].business;
     console.log("also find business owner ID lol");
-    employeeDB.find( { business: bid , password: { $ne: '' } })
+    //employeeDB.find( { business: bid , password: { $ne: '' } })
+    employeeDB.find( { business: bid  })
         .on('success', function(employees) {
             console.log(req.user[0]);
             res.render('business/dashboard', {

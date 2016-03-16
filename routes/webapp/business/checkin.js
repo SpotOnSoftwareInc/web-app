@@ -49,13 +49,14 @@ exports.post = function(req,res, next) {
     function(err,doc){
         if(!doc){
             console.log("error checking in");
-            res.send("Error checking in, please try again");
+            res.redirect('../' + bid + '/checkinErr');
         }
-        console.log("Doc comming up..");
-        console.log(doc);
+        else{
+            res.redirect('../' + bid + '/done');
+        }
     });
 
-    //res.redirect('../' + bid + '/checkin');
+    //res.redirect('../' + bid + '/done');
 
 };
 
