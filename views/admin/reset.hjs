@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="SemiColonWeb" />
+
+    <!-- Stylesheets
+    ============================================= -->
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../assets/styles/admin.css" type="text/css" />
+    <link rel="stylesheet" href="../css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="../css/font-icons.css" type="text/css" />
+    <link rel="stylesheet" href="../css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="../css/magnific-popup.css" type="text/css" />
+
+    <link rel="stylesheet" href="../css/responsive.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lt IE 9]>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+
+    <!-- External JavaScripts
+    ============================================= -->
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/plugins.js"></script>
+
+    <!-- SLIDER REVOLUTION 5.x SCRIPTS  -->
+    <script type="text/javascript" src="../include/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="../include/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
+    <!-- SLIDER REVOLUTION 5.x CSS SETTINGS -->
+    <link rel="stylesheet" type="text/css" href="../include/rs-plugin/css/settings.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../include/rs-plugin/css/layers.css">
+    <link rel="stylesheet" type="text/css" href="../include/rs-plugin/css/navigation.css">
+
+    <!-- Document Title
+    ============================================= -->
+    <title>Account Retrieval</title>
+
+</head>
+
+<body class="stretched">
+
+<!-- Document Wrapper
+============================================= -->
+<div id="wrapper" class="clearfix">
+
+    <section id="page-title">
+
+        <div class="container clearfix">
+            <h1>iReceptionist</h1>
+            <span>Account Retrieval</span>
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+            </ol>
+        </div>
+
+    </section><!-- #page-title end -->
+
+    <!-- Content
+    ============================================= -->
+    <section id="content">
+
+        <div class="content-wrap">
+
+            <div class="container clearfix">
+
+                <!-- Password Retrieval
+                ============================================= -->
+                <div class="col_half">
+                    <div class="fancy-title title-dotted-border">
+                        <h3>Change your password</h3>
+                    </div>
+                    <!--<div id="contact-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Verification Sent Successfully!"></div>-->
+                    <form class="nobottommargin" id="changepassword-form" name="changepassword-form" action="" method="post">
+                        <div class="form-process"></div>
+                        <div class="clear"></div>
+                        <div class="col_two_third">
+                            <label for="changepassword-form-subject">New Password <small>*</small></label>
+                            <input type="text" id="changepassword-form-subject" name="password" value="{{password}}" class="required sm-form-control" />
+                        </div>
+                        <div class="clear"></div>
+                        <div class="col_two_third">
+                            <label for="changepassword-form-subject">Confirm Password <small>*</small></label>
+                            <input type="text" id="changepassword-form-subject" name="confirmpassword" value="{{confirmpassword}}" class="required sm-form-control" />
+                        </div>
+                        <div class="col_full">
+                            <button name="submit" type="submit" id="submit-button" tabindex="5" value="Submit" class="button button-3d nomargin">Submit</button>
+                        </div>
+                    </form>
+                </div><!-- Password Form End -->
+            </div>
+        </div>
+    </section><!-- #content end -->
+    <!-- Footer Scripts
+============================================= -->
+</div>
+</body>
+</html>

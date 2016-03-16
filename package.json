@@ -33,6 +33,8 @@
     "morgan": "^1.5.1",
     "multer": "^0.1.8",
     "newrelic": "^1.16.4",
+    "nodemailer": "~1.4.0",
+    "nodemailer-smtp-transport":"~1.0.3",
     "passport": "~0.1.17",
     "passport-local": "~0.1.6",
     "plivo-node": "^0.2.5",

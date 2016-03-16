@@ -53,6 +53,7 @@
                     <ul class="tab-nav tab-nav2 center clearfix">
                         <li class="inline-block"><a href="#tab-login">Login</a></li>
                         <li class="inline-block"><a href="#tab-register">Register</a></li>
+                        <li class="inline-block"><a href="#tab-forgotpw">Forgot Password</a></li>
                     </ul>
 
                     <div class="tab-container ">
@@ -76,7 +77,6 @@
 
                                         <div class="col_full nobottommargin">
                                             <button class="button button-3d button-black nomargin" id="login-form-submit" name="login-form-submit" value="login">Login</button>
-                                            <a href="#" class="fright">Forgot Password?</a>
                                         </div>
 
                                     </form>
@@ -128,8 +128,26 @@
                             </div>
                         </div>
 
-                    </div>
+                        <div class="tab-content clearfix" id="tab-forgotpw">
+                            <div class="panel panel-default nobottommargin">
+                                <div class="panel-body" style="padding: 40px;">
+                                    <form id="forgotpw-form" name="forgotpw-form" class="nobottommargin" action="forgotpw" method="post">
 
+                                        <h3>Forgot Password</h3>
+
+                                        <div class="col_full">
+                                            <label for="login-form-email">Email:</label>
+                                            <input type="text" id="login-form-email" name="email" value="{{email}}" class="form-control" placeholder="welcome@email.com" />
+                                        </div>
+
+                                        <div class="col_full nobottommargin">
+                                            <input class="button button-3d button-black nomargin" id="forgotpw-form-submit" name="submit" type="submit" value="Send"/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>

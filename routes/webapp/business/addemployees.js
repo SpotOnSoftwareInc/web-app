@@ -3,6 +3,11 @@ var baby = require('babyparse');
 var async = require('async');
 var sendgrid  = require('sendgrid')('robobetty', 'NoKcE0FGE4bd');
 var ObjectId = require('mongodb').ObjectID;
+var auth = require('../../../lib/auth');
+var bcrypt = require('bcrypt-nodejs');
+var nodemailer = require('nodemailer');
+var smtpTransport = require("nodemailer-smtp-transport");
+
 
  /**
  * Takes a req and res parameters and is inputted into function to get employee, notemployee, and business data.
@@ -26,6 +31,7 @@ exports.get = function(req,res){
                     if(!results) { return next(new Error('Error finding employee'));}
 
                         employeee = results;
+                        console.log(employeee);
                        cb();
 
                 });
@@ -79,7 +85,9 @@ exports.post = function(req,res){
 			    lname = nameArr[1],
                 email = nameArr[2],
                 role = nameArr[3],
-                token = randomToken();
+                token = randomToken(),
+                defaultPW = 'canthackus',
+                password = auth.hashPassword(defaultPW);
 
             employeeDB.insert({
                 business: ObjectId(businessID),
@@ -87,13 +95,38 @@ exports.post = function(req,res){
                 lname: lname,
                 email: email,
                 registrationToken : token,
-                password: '',
+                password: password,
                 phone: '',
                 smsNotify: true,
                 emailNotify: true,
                 //values of role saasAdmin, busAdmin, provider, staff, visitor
                 role: role
             });
+            var transport = nodemailer.createTransport(smtpTransport({
+                service:'gmail',
+                auth : {
+                    user : "ireceptionistcorp@gmail.com",
+                    pass : "sossossos"
+                }
+            }));
+            console.log('BREAKING HERE');
+            var mailOptions = {
+                to: email,
+                from: 'iReceptionistCorp@gmail.com',
+                subject: 'Welcome to iReceptionist',
+                text: 'Hello,\n\n' +
+                'A business admin from ' + businessID + ' has added you as an employee for iReceptionist service\n\n' +
+                'Click the following link to complete setting up your account:\n' +
+                'http://' + req.headers.host + '/reset/' + token + '\n\n' +
+                'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+            };
+            console.log('BREAKING HERE 2');
+            transport.sendMail(mailOptions, function(err) {
+                //req.flash('info', 'An e-mail has been sent to ' + email + ' with further instructions.');
+                    console.log(err);
+                //done(err, 'done');
+            });
+
         }
         res.redirect('../' + req.user[0].business + '/dashboard');
 };

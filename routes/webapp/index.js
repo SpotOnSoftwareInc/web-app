@@ -6,6 +6,7 @@ var landing = require('./admin/landing');
 var register = require('./admin/register');
 var registerprocess = require('./admin/registerprocess');
 var login = require('./admin/login');
+var reset = require('./admin/reset');
 var analytics = require('./admin/analytics');
 
 //Define the controllers for business owner (Person purchasing the product) process
@@ -17,6 +18,11 @@ var formbuilder = require('./business/formbuilder');
 var dashboard = require('./business/dashboard');
 var dashboard2 = require('./business/dashboard2');
 var businesssetting = require('./business/businesssetting');
+var nodemailer = require('nodemailer');
+var smtpTransport = require("nodemailer-smtp-transport");
+var async = require('async');
+var crypto = require('crypto');
+var auth = require('../../lib/auth.js');
 var uploadLogo = require('./business/uploadlogo');
 var uploadTheme = require('./business/uploadtheme');
 //var checkindesign = require('./business/checkindesign');
@@ -73,29 +79,133 @@ module.exports = function (passport) {
     router.get('/registerprocess', registerprocess.get);
     router.post('/registerprocess', registerprocess.post);
 
-    router.get('/login', login.get);
+    router.get('/logout', function(req, res){
+        req.logout();
+        res.redirect('/');
+    });
+
+    router.post('/forgotpw', function(req, res, next){
+        async.waterfall([
+            function(done) {
+                // Generate a unique token
+                crypto.randomBytes(20, function (err, buf) {
+                    var token = buf.toString('hex');
+                    done(err, token);
+                });
+            },function(token, done) {
+                var db = req.db;
+                var employees = db.get('employees');
+
+                // Find user in db and set token and expire time of token
+                employees.findAndModify(
+                    {email: req.body.email},
+                    {
+                        $set: {
+                            resetPasswordToken: token,
+                            resetPasswordExpires: Date.now() + 3600000
+                        }
+                    },
+                    { new: true },
+                    function(err, doc){
+                        if(err || !doc){
+                            res.redirect('/register');
+                        } else {
+                            done(null, token);
+                        }
+                    }
+                );
+            },function(token, done) {
+                // Send a reset password link to the user
+
+                // Login to our email
+                var transport = nodemailer.createTransport(smtpTransport({
+                    service:'gmail',
+                    auth : {
+                        user : "ireceptionistcorp@gmail.com",
+                        pass : "sossossos"
+                    }
+                }));
+
+                // Customize the message and message properties
+                var mailOptions = {
+                    to: req.body.email,
+                    from: 'iReceptionistCorp@gmail.com',
+                    subject: 'Password Reset',
+                    text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+                    'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+                    'http://' + req.headers.host + '/reset/' + token + '\n\n' +
+                    'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+                };
+
+                // Send the user an email
+                transport.sendMail(mailOptions, function(err) {
+                    req.flash('info', 'An e-mail has been sent to ' + req.body.email + ' with further instructions.');
+                    done(err, 'done');
+                });
+            }
+        ],function(err) {
+            if (err) return next(err);
+            res.redirect('/register');
+        });
+    });
+
+    router.post('/reset/:token', function(req, res) {
+        async.waterfall([
+            function(done) {
+                var db = req.db;
+                var employees = db.get('employees');
+                // TODO: Need logic to make sure password and confirm password are the same before moving on
+
+                var pass = auth.hashPassword(req.body.password);
+
+                // Update users password with the new password and invalidate the token and expire time
+                employees.update(
+                    {resetPasswordToken: req.params.token },
+                    {
+                        $set: {
+                            password: pass,
+                            resetPasswordToken: undefined,
+                            resetPasswordExpires: undefined
+                        }
+                    },
+                    function(err, doc){
+                        if(err || ! doc){
+                           // Error: user does not exist
+                        }
+                        // Password reset successfully
+                        res.redirect('/register');
+                    }
+                );
+            }
+        ], function(err) {
+            res.redirect('/');
+        });
+    });
+
+
+    //router.get('/login', login.get);
     router.post('/login', passport.authenticate('local-login'),
         //Direct type of user to correct page upon signup
         function(req, res) {
             if (req.user.role === 'busAdmin') {
                 console.log("Loggin in as Business Admin");
-                res.redirect('/' + req.user._id + '/dashboard');
+                res.redirect('/' + req.user.business + '/dashboard');
             }
             else if (req.user.role === 'saasAdmin') {
                 console.log("Loggin in as SAAS Admin");
-                res.redirect('/' + req.user._id+ '/admin');
+                res.redirect('/' + req.user.business + '/admin');
             }
             else if (req.user.role === 'provider') {
                 console.log("Loggin in as Provider");
-                res.redirect('/' + req.user._id + '/visitorassigned');
+                res.redirect('/' + req.user.business + '/visitorassigned');
             }
             else if (req.user.role === 'staff') {
                 console.log("Loggin in as staff");
-                res.redirect('/' + req.user._id + '/visitor');
+                res.redirect('/' + req.user.business + '/visitor');
             }
             else if (req.user.role === 'visitor') {
                 console.log("Loggin in as visitor");
-                res.redirect('/' + req.user._id + '/checkin');
+                res.redirect('/' + req.user.business + '/checkin');
             }
             else {
                 res.redirect('/register');
@@ -135,7 +245,8 @@ module.exports = function (passport) {
 
     router.get('/:id/getemployees', isLoggedInBusAdmin, getemployees.get);
 
-    router.get('/forgotpassword', forgotpassword.get);
+    router.get('/reset/:token', reset.get);
+
 
     //router.get('/customizetheme', isLoggedInBusAdmin, customizetheme.get);
 

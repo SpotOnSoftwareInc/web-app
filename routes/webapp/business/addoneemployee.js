@@ -79,36 +79,21 @@ exports.post = function(req,res){
     var lname = req.body.lname;
     var email = req.body.email;
     var role = req.body.role;
-    console.log(businessID);
-    //console.log(req);
+    var token = randomToken();
 
-    //for(var i = 0; i < rows.length; i++){
-        //var username = rows[i][0];
-        //console.log(rows[i][0]);
-        //console.log(rows[i][1]);
-        //var email = rows[i][1];
-        //var nameArr = username.split(' ');
-        //var fname = nameArr[0];
-        //console.log(fname);
-        //var lname = nameArr[1];
-        //console.log(lname);
-        //var email = nameArr[2];
-        //console.log(email);
-        //var role = nameArr[3];
-        var token = randomToken();
-        employeeDB.insert({
-            business: ObjectId(businessID),
-            fname: fname,
-            lname: lname,
-            email: email,
-            registrationToken : token,
-            password: '',
-            phone: '',
-            smsNotify: true,
-            emailNotify: true,
-            //values of role saasAdmin, busAdmin, provider, staff, visitor
-            role: role
-        });
+    employeeDB.insert({
+        business: ObjectId(businessID),
+        fname: fname,
+        lname: lname,
+        email: email,
+        registrationToken : token,
+        password: '',
+        phone: '',
+        smsNotify: true,
+        emailNotify: true,
+        //values of role saasAdmin, busAdmin, provider, staff, visitor
+        role: role
+    });
 
 
         //sendgrid.send({
