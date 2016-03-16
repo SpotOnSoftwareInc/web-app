@@ -17,6 +17,11 @@ exports.get = function (req, res, next) {
         }
         var dbBusiness = result;
 
+        if(!dbBusiness.theme){
+            // default theme (BG)
+            dbBusiness.theme = '/images/landing/pika.jpg';
+        }
+
         res.render('business/checkin', {
             theme: dbBusiness.theme
         });
@@ -42,10 +47,15 @@ exports.post = function(req,res, next) {
         }
     },
     function(err,doc){
+        if(!doc){
+            console.log("error checking in");
+            res.send("Error checking in, please try again");
+        }
+        console.log("Doc comming up..");
         console.log(doc);
     });
 
-    res.redirect('../' + bid + '/checkin');
+    //res.redirect('../' + bid + '/checkin');
 
 };
 

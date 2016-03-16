@@ -37,7 +37,7 @@
     </script>
     <title>Check-in!!</title>
 </head>
-
+<body>
 <img src="{{theme}}" id="bg" alt="">
 <script src="https://widget.prudio.com/client.js?appid=d38154d0-f086-4010-bcc4-a7985ea93114" async></script>
 <script src="../javascripts/checkin.js" type="text/javascript"></script>

@@ -32,6 +32,7 @@ var uploadTheme = require('./business/uploadtheme');
 var admin = require('./admin/admin');
 var forgotpassword = require('./business/forgotpassword');
 var checkin = require('./business/checkin');
+var done = require('./business/done');
 
 
 //Define the controllers for provider (Doctors or person to see visitor) process
@@ -260,6 +261,7 @@ module.exports = function (passport) {
 
     //setup the routes for visitor
     router.get('/:id/checkin', isLoggedInVisitor, checkin.get);
+    router.get('/:id/done', isLoggedInVisitor, done.get);
 
     router.post('/:id/checkin', isLoggedInVisitor, checkin.post);
 

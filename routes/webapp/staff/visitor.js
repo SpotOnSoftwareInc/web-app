@@ -36,16 +36,20 @@ exports.get = function (req, res) {
                 }
             }
 
+
+            console.log("hi");
             employeeDB.find( { business: bid4emp, role: 'provider' })
                 .on('success', function(providers) {
 
                     for(i = 0; i < appointments.length; i++) {
                         appointments[i].providers = providers;
+
                     }
 
-                    console.log(appointments);
+                    console.log(providers);
                     res.render('staff/visitor', {
                         appts: appointments,
+                        providerlist: providers,
                         message: req.flash("Fetched all appointments")
                     });
                 })

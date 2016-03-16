@@ -245,8 +245,8 @@
 
                                         {{#emps}}
                                         <tr>
-                                            <td>{{fname}}</td>
-                                            <td>{{lname}}</td>
+                                            <td>{{fname}} {{lname}}</td>
+                                            <td>Employee</td>
                                             <td>{{email}}</td>
                                             <td>{{role}}</td>
                                             <td>
