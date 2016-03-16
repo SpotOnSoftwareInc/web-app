@@ -1,34 +1,32 @@
 exports.get = function (req, res, next) {
     console.log('Get function LANDING');
 
-	req.session.save(function (err) {
+    req.session.save(function (err) {
 
-            if (err) {
+        if (err) {
 
-                return next(err);
-            }
-        });
-
+            return next(err);
+        }
+    });
     res.render('admin/landing', {title: 'Landing Page'});
 };
 
 exports.post = function (req, res, next) {
     console.log('POST function LANDING');
-    //var database =  req.db;
-    //var businessDB = database.get('businesses');
-    var companyName = req.body.companyName;
-    var name = req.body.name;
-    //var nameArr = name.split(' ');
-    //var fname = nameArr[0];
-    //var lname = nameArr[1];
-    var email = req.body.email;
 
-    if (companyName === '' || name === '' || email === '') {
+    var companyName = req.body.companyName,
+        name = req.body.name,
+        nameArr = name.split(' '),
+        fname = nameArr[0],
+        lname = nameArr[1],
+        email = req.body.email;
+    console.log('value of lname = ' + lname);
 
+    if (companyName === '' || fname === '' || lname === undefined || email === '') {
+
+        //req.flash('errorMessage', 'No errors, you\'re doing fine');
         res.redirect('/');
     } else {
-
-
 
         req.session.save(function (err) {
 
