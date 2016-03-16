@@ -106,25 +106,27 @@
                                         <th>Billing Tier</th>
                                         <th>E-Mail</th>
                                         <th>Address</th>
-                                        <th>User Actions</th>
                                         <th>Remove</th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
                                     {{#bizz}}
                                     <tr>
-                                        <td>{{companyName}}</td>
+                                        <td>{{fname}} {{lname}}</td>
                                         <td>{{billingPlan}}</td>
-                                        <td>{{email}}</td>
+                                        <td><a href="mailto:{{email}}?Subject=Hello%20again">{{email}}</a></td>
                                         <td>{{companyAddress}}</td>
-                                        <td><i class="i-circled i-small icon-user"></i></td>
+
                                         <td>
                                             <form method="post" action="">
                                                 <input type="hidden" name="bizzez" class="form-control" value="{{bizz}}" />
                                                 <input type="hidden" name="bizId" class="form-control" value="{{_id}}" />
+                                                <input type="hidden" name="callingFunc" value="remove" />
                                                 <input class="i-circled i-small" value="X" id="remove" type="submit" style="border: 0px;">
                                             </form>
                                         </td>
+
                                     </tr>
                                     {{/bizz}}
                                     </tbody>
