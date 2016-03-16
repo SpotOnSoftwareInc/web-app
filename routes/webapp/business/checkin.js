@@ -3,6 +3,7 @@ var crypto = require('crypto');
 var baby = require('babyparse');
 var async = require('async');
 var sendgrid  = require('sendgrid')('robobetty', 'NoKcE0FGE4bd');
+var twilioClient = require('../business/twilio-client');
 var ObjectId = require('mongodb').ObjectID;
 
 exports.get = function (req, res, next) {
@@ -52,6 +53,9 @@ exports.post = function(req,res, next) {
             res.redirect('../' + bid + '/checkinErr');
         }
         else{
+
+            var messageBody = name +' has checked in!';
+            twilioClient.sendSmsToPhoneNumber('+16018133403', messageBody);
             res.redirect('../' + bid + '/done');
         }
     });

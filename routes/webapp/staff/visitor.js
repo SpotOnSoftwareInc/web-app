@@ -49,6 +49,7 @@ exports.get = function (req, res) {
 
                     res.render('staff/visitor', {
                         appts: appointments,
+                        providers: providers,
                         providerlist: providers,
                         message: req.flash("Fetched all appointments")
                     });

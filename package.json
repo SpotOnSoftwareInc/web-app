@@ -41,6 +41,7 @@
     "plugin": "^0.3.3",
     "sendgrid": "^1.6.0",
     "serve-favicon": "^2.2.0",
+    "twilio": "^2.9.0",
     "underscore": "^1.8.1"
   },
   "devDependencies": {

@@ -146,24 +146,24 @@
                 <!--time-->
                 <td id="{{_id}}-status">{{checkinTime}}</td>
                 <!--assignee-->
-                <td>{{provider}}</td>
-                <!--<td class="asignee">-->
-                    <!--<form method="post" action="" enctype="application/x-www-form-urlencoded">-->
-                    <!--<div class="sort-contacts-bytype-dropdown dropdown">-->
-                        <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">-->
-                            <!--<span class="dropdown-{{_id}}">{{provider}}</span><b class="caret"></b></a>-->
-                        <!--<ul class="dropdown-menu dropdown-menu-right">-->
-                            <!--{{#providers}}-->
-                            <!--<input type="hidden" name="callingFunc" value="changeProv">-->
-                            <!--<input type="hidden" name="vid" value="{{_id}}">-->
-                            <!--<input type="hidden" name="name" value="{{fname}}">-->
-                            <!--<li><i class="dropdown {{_id}}"></i><input name="submit" type="submit" value="{{fname}}"/></li>-->
-                            <!--{{/providers}}-->
-                        <!--</ul>-->
-                    <!--</div>-->
-                    <!--</form>-->
-                <!--</td>-->
-                <!--appoiontment time-->
+                <!--<td>{{provider}}</td>-->
+                <td class="asignee">
+                    <form method="post" action="" enctype="application/x-www-form-urlencoded">
+                    <div class="sort-contacts-bytype-dropdown dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="dropdown-{{_id}}">{{provider}}</span><b class="caret"></b></a>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            {{#providers}}
+                            <input type="hidden" name="callingFunc" value="changeProv">
+                            <input type="hidden" name="vid" value="{{_id}}">
+                            <input type="hidden" name="name" value="{{fname}}">
+                            <li><i class="dropdown {{_id}}"></i><input name="submit" type="submit" value="{{fname}}"/></li>
+                            {{/providers}}
+                        </ul>
+                    </div>
+                    </form>
+                </td>
+                appoiontment time
                 <td>{{apptTime}}</td>
                 <!--status-->
                 <td class="state" id="state-{{_id}}">{{state}}</td>
