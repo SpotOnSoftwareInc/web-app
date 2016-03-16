@@ -37,7 +37,7 @@
         !function(a,b){a("Keen","https://d26b395fwzu5fz.cloudfront.net/3.4.0/keen.min.js",b)}(function(a,b,c){var d,e,f;c["_"+a]={},c[a]=function(b){c["_"+a].clients=c["_"+a].clients||{},c["_"+a].clients[b.projectId]=this,this._config=b},c[a].ready=function(b){c["_"+a].ready=c["_"+a].ready||[],c["_"+a].ready.push(b)},d=["addEvent","setGlobalProperties","trackExternalLink","on"];for(var g=0;g<d.length;g++){var h=d[g],i=function(a){return function(){return this["_"+a]=this["_"+a]||[],this["_"+a].push(arguments),this}};c[a].prototype[h]=i(h)}e=document.createElement("script"),e.async=!0,e.src=b,f=document.getElementsByTagName("script")[0],f.parentNode.insertBefore(e,f)},this);
     </script>
     <style>
-        article, aside, figure, footer, header, hgroup,
+        article, aside, figure, footer, header,
         menu, nav, section { display: block; }
     </style>
 </head>
@@ -319,13 +319,18 @@
                                             <div class="pricing-features">
                                                 <ul>
                                                     <li><strong>Full</strong> Employee integration</li>
-
                                                     <li><strong>10</strong> Form template</li>
-
                                                     <li><strong>10</strong> Active locations</li>
                                                     <li><strong>1 year</strong> License</li>
 
                                                 </ul>
+                                            </div>
+                                            <div class="pricing-action">
+                                                <form action="#" method="post" role="form" class="clearfix">
+                                                    <button value="submit" type="submit" class="button button-3d button-teal button-large" data-toggle="modal" data-target=".pricing-starter">
+                                                        Select Starter
+                                                    </button>
+                                                </form>
                                             </div>
 
                                         </div>
@@ -344,13 +349,17 @@
                                             <div class="pricing-features">
                                                 <ul>
                                                     <li><strong>Full</strong> Employee integration</li>
-
                                                     <li><strong>15</strong> Form templates</li>
-
                                                     <li><strong>50</strong> Active locations</li>
                                                     <li><strong>2 year</strong> License</li>
-
                                                 </ul>
+                                            </div>
+                                            <div class="pricing-action">
+                                                <form action="#" method="post" role="form" class="clearfix">
+                                                    <button value="submit" type="submit" class="button button-3d button-teal button-large" data-toggle="modal" data-target=".pricing-professional">
+                                                        Select Professional
+                                                    </button>
+                                                </form>
                                             </div>
 
                                         </div>
@@ -369,15 +378,19 @@
                                             <div class="pricing-features">
                                                 <ul>
                                                     <li><strong>Full</strong> Access</li>
-
                                                     <li><strong>20</strong> Form templates</li>
-
                                                     <li><strong>1000</strong> Active locations</li>
                                                     <li><strong>3 year</strong> License</li>
 
                                                 </ul>
                                             </div>
-
+                                            <div class="pricing-action">
+                                                <form action="#" method="post" role="form" class="clearfix">
+                                                    <button value="submit" type="submit" class="button button-3d button-teal button-large" data-toggle="modal" data-target=".pricing-enterprise">
+                                                        Select Enterprise
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -437,5 +450,62 @@
 
 
 </section><!-- #content end -->
+
+
+<!-- Paypal Modals -->
+<div class="modal fade pricing-starter" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body div-center center">
+                    <h4>You have selected: <b>Starter</b> at <b>$50.00/mo</b></h4>
+                    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=BKDDL56BJD5NQ" >
+                        <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="Check out with PayPal" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade pricing-professional" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body div-center center">
+                    <h4>You have selected: <b>Professional</b> at <b>$100.00/mo</b>.</h4>
+                    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=BKDDL56BJD5NQ" >
+                        <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="Check out with PayPal" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade pricing-enterprise" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body div-center center">
+                    <h4>You have selected: <b>Enterprise</b> at <b>$200.00/mo</b>.</h4>
+                    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=BKDDL56BJD5NQ" >
+                        <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="Check out with PayPal" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
