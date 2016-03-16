@@ -37,7 +37,7 @@ exports.get = function (req, res) {
             }
 
 
-            console.log("hi");
+
             employeeDB.find( { business: bid4emp, role: 'provider' })
                 .on('success', function(providers) {
 
@@ -46,7 +46,7 @@ exports.get = function (req, res) {
 
                     }
 
-                    console.log(providers);
+
                     res.render('staff/visitor', {
                         appts: appointments,
                         providerlist: providers,
@@ -66,13 +66,11 @@ exports.post = function (req, res) {
     var bid = req.user[0].business.toString();
     var apptTime = req.body.apptTime;
     var provider = req.body.provider;
-    console.log(provider);
     var name = req.body.name;
     var bizInfo = '';
     var callingFunc = req.body.callingFunc;
     var vid = req.body.name;
     console.log(callingFunc);
-    console.log(name);
 
     if (callingFunc == 'insert') {
         appointmentDB.insert({
@@ -90,6 +88,29 @@ exports.post = function (req, res) {
     if (callingFunc == 'changeProv'){
         console.log("in change prov");
 
+    }
+    if (callingFunc == 'sendToProvider'){
+        console.log("MODIFY STATUS WAITING TO CHECKED IN");
+
+        var appointmentDB = req.db.get('appointment');
+        var bid = req.user[0].business.toString();
+        var vid = req.body.vid;
+        var name = req.body.name;
+
+        console.log(vid);
+
+        appointmentDB.findAndModify({
+                query : {_id: vid },
+                update: {
+                    $set: {
+                        state: 'Checked in'
+                    }
+                }
+        },
+        function(err,doc){
+            console.log("doc commign");
+            console.log(doc);
+        });
     }
 
     res.redirect('../'+ bid +'/visitor');

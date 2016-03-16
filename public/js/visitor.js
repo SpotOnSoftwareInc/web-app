@@ -17,15 +17,32 @@ function updateStatus(){
         var curState = curr.innerHTML;
 
         // TODO KURT - Change the Appointment Made to being checked in status
-        if(curState == "Appointment Made"){
+        if(curState == "waiting"){
+            console.log(id);
+            $("#" + button).remove();
+            var zero = '<form id="formVis" method="post" action="" enctype="application/x-www-form-urlencoded">';
+            var one = '<input type="hidden" name="callingFunc" value="sendToProvider">';
+            var two = '<input type="hidden" name="vid" value="' + id + '">';
+            var three = '<button name="visitorName" type="submit" class="button button-3d button-mini button-rounded button-green" value=' + id;
+            var four = ' id="' + id + '-button">Send To Provider</button></form>';
+            var inner = zero + one + two + three + four;
+            $("#button-row-" + id).append(inner);
+        }
+        if(curState == "Appointment Made" || curState == "Checked in"){
             $("#" + button).remove();
             var zero = '<form id="formVis" method="post" action="deleteVisitor" enctype="application/x-www-form-urlencoded">';
             var one = '<button name="visitorName" type="submit" class="button button-3d button-mini button-rounded button-red" value=' + id;
-            var two = ' id="' + id + '-button">Check Out</button></form>';
+            if(curState == "Checked in"){
+                var two = ' id="' + id + '-button">Check Out</button></form>';
+            }
+            else {
+                var two = ' id="' + id + '-button">Delete Appointment</button></form>';
+            }
             var inner = zero  + one + two;
             $("#button-row-" + id).append(inner);
 
             $("#button-row-" + id).on("click", ".button-red", function() {
+                console.log("THIS COMMING UPP");
                 console.log(this);
                 var id = this.id;
                 var res = id.split("-");
@@ -36,6 +53,7 @@ function updateStatus(){
                 });
             });
         }
+
     }
 };
 
