@@ -157,7 +157,7 @@
                             <input type="hidden" name="callingFunc" value="changeProv">
                             <input type="hidden" name="vid" value="{{_id}}">
                             <input type="hidden" name="name" value="{{fname}}">
-                            <li><i class="dropdown {{_id}}"></i><input name="submit" type="submit" value="{{fname}}"/></li>
+                            <li><a href="#"><i class="dropdown {{_id}}"></i>{{fname}}</a></li>
                             {{/providers}}
                         </ul>
                     </div>
