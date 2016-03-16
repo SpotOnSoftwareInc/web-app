@@ -108,7 +108,7 @@
                                         <th>Address</th>
                                         <th>User Actions</th>
                                         <th>Remove</th>
-                                    </tr
+                                    </tr>
                                     </thead>
                                     <tbody>
                                     {{#bizz}}

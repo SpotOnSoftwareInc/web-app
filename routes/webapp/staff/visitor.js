@@ -30,7 +30,7 @@ exports.get = function (req, res) {
 
             var i;
             for(i = 0; i < appointments.length; i++) {
-                console.log(appointments[i].checkinTime);
+
                 if (appointments[i].checkinTime == 0) {
                     appointments[i].checkinTime = 'Not Checked in';
                 }
@@ -39,9 +39,13 @@ exports.get = function (req, res) {
             employeeDB.find( { business: bid4emp, role: 'provider' })
                 .on('success', function(providers) {
 
+                    for(i = 0; i < appointments.length; i++) {
+                        appointments[i].providers = providers;
+                    }
+
+                    console.log(appointments);
                     res.render('staff/visitor', {
                         appts: appointments,
-                        providers :providers,
                         message: req.flash("Fetched all appointments")
                     });
                 })
@@ -62,9 +66,9 @@ exports.post = function (req, res) {
     var name = req.body.name;
     var bizInfo = '';
     var callingFunc = req.body.callingFunc;
-    var vid = req.body.vid;
-
-    console.log(vid);
+    var vid = req.body.name;
+    console.log(callingFunc);
+    console.log(name);
 
     if (callingFunc == 'insert') {
         appointmentDB.insert({
@@ -74,12 +78,13 @@ exports.post = function (req, res) {
             visitor: name,
             businessInfo: bizInfo,
             business: bid,
+            providers: [],
             state: 'Appointment Made'
         });
     }
 
     if (callingFunc == 'changeProv'){
-        console.log(vid);
+        console.log("in change prov");
 
     }
 
