@@ -598,7 +598,7 @@
                             <input type="hidden" name="saveData" id="saveData" value="">
                             <input type="hidden" name="callingFunc"  value="saveForm">
 
-                            <button id="saveButton" class="add btn btn-default">Save Form</button>
+                            <button id="saveButton" class="btn btn-default" type="submit">Save Form</button>
                         </div>
                         <div class="col-sm-4 render-form">
                             <h4 style="color:rgb(102, 102, 102)">Form Preview</h4>

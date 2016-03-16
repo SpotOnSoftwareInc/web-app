@@ -33,6 +33,7 @@ exports.post = function (req, res) {
     if(myFunction == 'saveForm'){
         console.log('SAVE DATA FROM FORM');
         console.log(req.body.saveData);
+        res.redirect('../'+ bid +'/dashboard#Manage-Theme');
     }
 
     if(myFunction == 'removeEmployee'){
@@ -42,9 +43,10 @@ exports.post = function (req, res) {
         //Remove that employee
         console.log("REMOVING EMPLOYEE");
         employeeDB.remove({_id: eid});
+        res.redirect('../'+ bid +'/dashboard');
 
     }
     // Re-render all the remaining emps
-    res.redirect('../'+ bid +'/dashboard');
+
 
 };
