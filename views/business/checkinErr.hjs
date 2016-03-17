@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkin Error</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <!--{{#newrelic}}-->
+    <!--{{{ newrelic.getBrowserTimingHeader }}}-->
+    <!--{{/newrelic}}-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript">  window.setTimeout("location=('checkin');",7000); </script>
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+        color: {{containerText}} !important;
+        }
+
+        .customBG {
+            background-image: url(/images/bg/full/{{bg}});
+        }
+
+        .btn {
+        background-color: {{buttonBg}};
+        border-color: {{buttonBg}};
+        color: {{buttonText}}
+        }
+
+        .container-checkin {
+        background-color: {{containerBg}};
+        }
+    </style>
+</head>
+<body class="customBG">
+
+
+<!-- this nav bar is consistent with PK's navbar
+ <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/">
+            <div id="company-logo">Company Logo</div>
+        </a>
+    </div>
+</nav> -->
+
+<!-- Took out all unnecessary divs to make consistent with checkin page design -->
+<div class="container container-margin container-checkin">
+    <h1 class="header"> Sorry, we couldn't find an appoitment for you. </h1>
+    <img class="checkinphoto" src="{{theme}}" alt="">
+</div>
+
+</body>
+</html>

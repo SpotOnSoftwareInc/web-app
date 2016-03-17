@@ -227,7 +227,7 @@ body:not(.device-touch) .tagcloud a {
 .quick-contact-widget .input-group .form-control { margin-bottom: 0; }
 
 .quick-contact-widget form,
-#template-contactform { position: relative; }
+#changepw-form { position: relative; }
 
 
 /* Newsletter Widget

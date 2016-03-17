@@ -10,6 +10,7 @@ var passport = require('passport');
 var async = require('async');
 var Keen = require("keen-js");
 var favicon = require('serve-favicon');
+//var cloudinary = require('cloudinary').v2;
 var app = express();
 
 global.__base = __dirname + '/';
@@ -26,24 +27,34 @@ console.log('I AM HERE');
 console.log('Connecting to DB: ' + mongoURI);
 var db = monk(mongoURI);
 
+//var cloudinaryURI = process.env.CLOUDINARY_URL;
+//cloudinary.config(cloudinaryURI);
+//cloudinary.config({
+//    cloud_name: 'ha9cind6w',
+//    api_key: '491512592115195',
+//    api_secret: 'U2kBkejmgyq8dEYQ8W72e9enMXA'
+//});
+
 //login config
 var businesses = db.get('businesses');
 var employee = db.get('employees');
 
 //passport functions to Serialize and Deserialize users
-passport.serializeUser(function(user, done) {
-        done(null, user._id);
-    });
+passport.serializeUser(function (user, done) {
+    done(null, user._id);
+});
 
 // used to deserialize the user
 passport.deserializeUser(function (id, done) {
 
-    employee.find({_id: id}, function (err, user){
-            if(err){ done(err);}
+    employee.find({_id: id}, function (err, user) {
+        if (err) {
+            done(err);
+        }
 
-            if(user){
-                done(null,user);
-            }
+        if (user) {
+            done(null, user);
+        }
     });
 });
 
@@ -60,23 +71,32 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 //app.use(express.static(path.join(__dirname, 'static')));  GOLDTEAM
 
+
+
+//app.use(cloudinary({
+//    cloud_name: 'ha9cind6w',
+//    api_key: '491512592115195',
+//    api_secret: 'U2kBkejmgyq8dEYQ8W72e9enMXA'
+//}));
+
 //Not sure what this does but I believe it allows you to upload images
 app.use(multer({
-  dest: __dirname + '/public/images/uploads/',
-  onFileUploadStart: function (file) {
-    console.log(file.mimetype);
-    if (file.mimetype !== 'image/png' && file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg') {
-      return false;
-    } else {
-      console.log(file.fieldname + ' is starting ...');
+    dest: __dirname + '/public/images/uploads/',
+    onFileUploadStart: function (file) {
+        console.log(file.path);
+        console.log(file.mimetype);
+        if (file.mimetype !== 'image/png' && file.mimetype !== 'image/jpg' && file.mimetype !== 'image/jpeg') {
+            return false;
+        } else {
+            console.log(file.fieldname + ' is starting ...');
+        }
+    },
+    onFileUploadData: function (file, data) {
+        console.log(data.length + ' of ' + file.fieldname + ' arrived');
+    },
+    onFileUploadComplete: function (file) {
+        console.log(file.fieldname + ' uploaded to  ' + file.path);
     }
-  },
-  onFileUploadData: function (file, data) {
-    console.log(data.length + ' of ' + file.fieldname + ' arrived');
-  },
-  onFileUploadComplete: function (file) {
-    console.log(file.fieldname + ' uploaded to  ' + file.path);
-  }
 }));
 
 //so... when only using router, for some reason deserialize wont work
@@ -94,7 +114,7 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
 //Access control required for routes and passport
-app.all('*',function(req, res, next) {
+app.all('*', function (req, res, next) {
     res.header('Access-Control-Allow-Origin', 'fonts.googleapis.com');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Origin, X-Requested-With, Accept');
@@ -106,6 +126,7 @@ app.all('*',function(req, res, next) {
 // Make our db accessible to our router
 app.use(function (req, res, next) {
     req.db = db;
+    //req.cloud = cloudinary;
     req.passport = passport;
     req.app = app;
     next();
@@ -119,6 +140,10 @@ app.use('/', webappRoutes);
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
+    res.render('errors/404', {
+        message: err.message,
+        error: err
+    });
     next(err);
 });
 
@@ -131,7 +156,7 @@ if (app.get('env') === development) {
         console.error(err);
         console.error(err.stack);
         res.status(err.status || 500);
-        res.render('error', {
+        res.render('errors/404', {
             message: err.message,
             error: err
         });
@@ -144,7 +169,7 @@ app.use(function (err, req, res) {
     console.error(err);
     console.error(err.stack);
     res.status(err.status || 500);
-    res.render('error', {
+    res.render('errors/404', {
         message: err.message,
         error: {}
     });

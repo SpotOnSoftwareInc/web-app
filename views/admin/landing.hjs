@@ -72,7 +72,7 @@
 
     </style>
     <script type="text/javascript">
-        !function(a,b){a("Keen","https://d26b395fwzu5fz.cloudfront.net/3.4.0/keen.min.js",b)}(function(a,b,c){var d,e,f;c["_"+a]={},c[a]=function(b){c["_"+a].clients=c["_"+a].clients||{},c["_"+a].clients[b.projectId]=this,this._config=b},c[a].ready=function(b){c["_"+a].ready=c["_"+a].ready||[],c["_"+a].ready.push(b)},d=["addEvent","setGlobalProperties","trackExternalLink","on"];for(var g=0;g<d.length;g++){var h=d[g],i=function(a){return function(){return this["_"+a]=this["_"+a]||[],this["_"+a].push(arguments),this}};c[a].prototype[h]=i(h)}e=document.createElement("script"),e.async=!0,e.src=b,f=document.getElementsByTagName("script")[0],f.parentNode.insertBefore(e,f)},this);
+        !function(a,b){a("Keen","https://d26b395fwzu5fz.cloudfront.net/3.4.0/keen.min.js",b)}(function(a,b,c){var d,e,f;c["_"+a]={},c[a]=function(b){c["_"+a].clients=c["_"+a].clients||{},c["_"+a].clients[b.projectId]=this,this._config=b},c[a].ready=function(b){c["_"+a].ready=c["_"+a].ready||[],c["_"+a].ready.push(b)},d=["addEvent","setGlobalProperties","trackExternalLink","on"];for(var g=0;g<d.length;g++){var h=d[g],i=function(a){return function(){return this["_"+a]=this["_"+a]||[],this["_"+a].push(arguments),this}};c[a].prototype[h]=i(h)}e=document.ting a teElement("script"),e.async=!0,e.src=b,f=document.getElementsByTagName("script")[0],f.parentNode.insertBefore(e,f)},this);
     </script>
 </head>
 
@@ -128,20 +128,21 @@
                         <div class="slider-caption slider-caption-center" style="transform: translate(0px, -6.71px); opacity: 1.60401; top: 146.5px;">
                             <h2 data-caption-animate="fadeInUp" class="fadeInUp animated">iReceptionist</h2>
                             <p data-caption-animate="fadeInUp" data-caption-delay="200" class="fadeInUp animated">Creating a streamlined office environment was never so Easy &amp; Interactive.</p>
-                            <form action="#" method="post" role="form" class="landing-wide-form clearfix">
+                            <form id='landing-form' action="#" method="post" role="form" class="landing-wide-form clearfix">
+
                                 <div class="col_four_fifth nobottommargin">
                                     <div class="col_one_third nobottommargin">
-                                        <input type="text" class="form-control input-lg not-dark" value="" placeholder="Your Name*">
+                                        <input id="landing-name" type="text" class="form-control input-lg not-dark" name="name" value="{{name}}" placeholder="First & Last Name*" required>
                                     </div>
                                     <div class="col_one_third nobottommargin">
-                                        <input type="email" class="form-control input-lg not-dark" value="" placeholder="Your Email*">
+                                        <input id="landing-email" type="email" class="form-control input-lg not-dark" name="email" value="{{email}}" placeholder="Your Email*" required>
                                     </div>
                                     <div class="col_one_third col_last nobottommargin">
-                                        <input type="text" class="form-control input-lg not-dark" value="" placeholder="Company Name*">
+                                        <input id="landing-companyName" type="text" class="form-control input-lg not-dark" name="companyName" value="{{companyName}}" placeholder="Company Name*" required>
                                     </div>
                                 </div>
                                 <div class="col_one_fifth col_last nobottommargin">
-                                    <button class="btn btn-lg btn-danger btn-block nomargin" value="submit" type="submit" style="">REGISTER</button>
+                                    <button id="landing-register" class="btn btn-lg btn-danger btn-block nomargin" value="submit" type="submit" style="">REGISTER</button>
                                 </div>
                             </form>
                         </div>
@@ -294,7 +295,7 @@
 
                             <p>Completely redesigned, iReceptionist Reporting gives you all the analytic tools you need to understand your clients and make the right decisions.</p>
 
-                            <a href="#" class="button button-3d button-large">learn more</a>
+                            <!--<a href="#" class="button button-3d button-large">learn more</a>-->
 
                         </div>
 
@@ -353,7 +354,7 @@
                             <div class="col_one_third">
                                 <div class="feature-box fbox-center fbox-bg fbox-light fbox-effect">
                                     <div class="fbox-icon">
-                                        <a href="#"><i class="i-alt">1</i></a>
+                                        <i class="i-alt">1</i>
                                     </div>
                                     <h4>Register your company</h4><span class="subtitle">Build a style and theme that shows off your company's attitute.</span>
                                 </div>
@@ -361,7 +362,7 @@
                             <div class="col_one_third">
                                 <div class="feature-box fbox-center fbox-bg fbox-light fbox-effect">
                                     <div class="fbox-icon">
-                                        <a href="#"><i class="i-alt">2</i></a>
+                                        <i class="i-alt">2</i>
                                     </div>
                                     <h4>Login on your iPad</h4><span class="subtitle">Use your login credentials to launch the iReceptionist. Then just
 					place your iPad in the lobby.</span>
@@ -370,7 +371,7 @@
                             <div class="col_one_third col_last">
                                 <div class="feature-box fbox-center fbox-bg fbox-light fbox-effect">
                                     <div class="fbox-icon">
-                                        <a href="#"><i class="i-alt">3</i></a>
+                                        <i class="i-alt">3</i>
                                     </div>
                                     <h4>Enjoy a streamlined checkin service</h4>
                                         <span class="subtitle">Show your clients a new level of elegance &amp; simplicity.</span>
@@ -409,11 +410,11 @@
                                     </ul>
                                 </div>
                                 <div class="pricing-action">
-                                    <form action="#" method="post" role="form" class="clearfix">
-                                        <button value="submit" type="submit" class="btn btn-danger btn-block btn-lg">
+                                    <!--<form action="#" method="post" role="form" class="clearfix">-->
+                                        <a href="/register" value="submit" type="submit" class="btn btn-danger btn-block btn-lg">
                                             Sign Up
-                                        </button>
-                                    </form>
+                                        </a>
+                                    <!--</form>-->
                                 </div>
                             </div>
 
@@ -440,11 +441,11 @@
                                     </ul>
                                 </div>
                                 <div class="pricing-action">
-                                    <form action="#" method="post" role="form" class="clearfix">
-                                        <button value="submit" type="submit" class="btn btn-danger btn-block btn-lg">
+                                    <!--<form action="#" method="post" role="form" class="clearfix">-->
+                                        <a href="/register" value="submit" type="submit" class="btn btn-danger btn-block btn-lg">
                                             Sign Up
-                                        </button>
-                                    </form>
+                                        </a>
+                                    <!--</form>-->
                                 </div>
                             </div>
 
@@ -471,11 +472,11 @@
                                     </ul>
                                 </div>
                                 <div class="pricing-action">
-                                    <form action="#" method="post" role="form" class="clearfix">
-                                        <button value="submit" type="submit" class="btn btn-danger btn-block btn-lg bgcolor border-color">
+                                    <!--<form action="#" method="post" role="form" class="clearfix">-->
+                                        <a href="/register" value="submit" type="submit" class="btn btn-danger btn-block btn-lg bgcolor border-color">
                                             Sign Up
-                                        </button>
-                                    </form>
+                                        </a>
+                                    <!--</form>-->
                                 </div>
                             </div>
 
@@ -503,11 +504,11 @@
                                     </ul>
                                 </div>
                                 <div class="pricing-action">
-                                    <form action="#" method="post" role="form" class="clearfix">
-                                        <button value="submit" type="submit" class="btn btn-danger btn-block btn-lg">
+                                    <!--<form action="#" method="post" role="form" class="clearfix">-->
+                                        <a href="/register" value="submit" type="submit" class="btn btn-danger btn-block btn-lg">
                                             Sign Up
-                                        </button>
-                                    </form>
+                                        </a>
+                                    <!--</form>-->
                                 </div>
                             </div>
 
@@ -529,11 +530,11 @@
                         </div>
 
                         <div class="center">
-                            <form action="#" method="post" role="form" class="clearfix">
-                                <button value="submit" type="submit"  class="button button-3d button-teal button-xlarge nobottommargin">
+                            <!--<form action="#" method="post" role="form" class="clearfix">-->
+                                <a href="/register" value="submit" type="submit"  class="button button-3d button-teal button-xlarge nobottommargin">
                                     <i class="icon-star3"></i>Start your FREE Trial
-                                </button>
-                            </form>
+                                </a>
+                            <!--</form>-->
                         </div>
 
                     </div>
@@ -626,6 +627,7 @@
 <!-- Footer Scripts
 ============================================= -->
 <script type="text/javascript" src="js/functions.js"></script>
+<script type="text/javascript" src="js/landing.js"></script>
 
 </body>
 </html>

@@ -1,3 +1,69 @@
 tr{
     height: 55px;
 }
+
+.avg-time{
+    font-size: 75px;
+    display: inline-block;
+    left: 30%;
+    position: relative;
+    font-family: 'Oregano', cursive;
+}
+
+#inputProvider{
+    display: inherit;
+    width: 100%;
+    height: 44px;
+    font-size: 15px;
+    padding-left: 10px;;
+}
+
+#visitor-line{
+    clear: both;
+    position: relative;
+    width: 100%;
+    padding: 5px;
+    border-top: 1px solid #EEE;
+}
+
+#addButton{
+    top: 6px;
+}
+
+#addApptButton{
+    top: 18px;
+}
+
+.hr, .min, .sec{
+    display: inline;
+}
+
+#modalCSV{
+    top: 235px;
+}
+
+#csvVisitor{
+    position: relative;
+    left: 40%;
+}
+
+#visitor-table{
+    margin-bottom: 120px;
+}
+
+#time_span{
+    margin-top: 0px;
+}
+
+#searchForm{
+    margin-right: 15px;
+    margin-top: 8px;
+}
+
+#formVis{
+    margin-bottom: 0px;
+}
+
+#logout{
+    font-size: 20px;
+}

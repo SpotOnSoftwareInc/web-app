@@ -3,44 +3,61 @@
  */
 
 function init(){
-    document.getElementById('searchForm').style.marginRight = "15px";
     _bindSearch();
+    updateStatus();
 }
 
-function updateTime(){
-    var t_str = getTime();
-    document.getElementById('time_span').innerHTML = t_str;
-    document.getElementById('time_span').style.marginTop = "0px";
-}
+function updateStatus(){
+    for(var i = 0; i < $(".state").length; i++){
+        var curr = $(".state")[i];
+        // the current user id
+        var id = (curr.id).split("-")[1];
+        var button = id + "-button";
 
-function getTime(){
-    var currentTime = new Date()
-    var hours = currentTime.getHours()
-    var minutes = currentTime.getMinutes()
-    var seconds = currentTime.getSeconds()
-    var what = false;
-    if (seconds < 10){
-        seconds = "0" + seconds
-    }
-    if (minutes < 10){
-        minutes = "0" + minutes
-    }
-    if(hours > 11){
-        hours -= 12;
-        what = true;
-    }
-    var t_str = hours + ":" + minutes + ":" + seconds + " ";
-    if(what){
-        t_str += "PM";
-    } else {
-        t_str += "AM";
-    }
+        var curState = curr.innerHTML;
 
-    return t_str;
-}
+        // TODO KURT - Change the Appointment Made to being checked in status
+        if(curState == "waiting"){
+            console.log(id);
+            $("#" + button).remove();
+            var zero = '<form id="formVis" method="post" action="" enctype="application/x-www-form-urlencoded">';
+            var one = '<input type="hidden" name="callingFunc" value="sendToProvider">';
+            var two = '<input type="hidden" name="vid" value="' + id + '">';
+            var three = '<button name="visitorName" type="submit" class="button button-3d button-mini button-rounded button-green" value=' + id;
+            var four = ' id="' + id + '-button">Send To Provider</button></form>';
+            var inner = zero + one + two + three + four;
+            $("#button-row-" + id).append(inner);
+        }
+        if(curState == "Appointment Made" || curState == "Checked in"){
+            $("#" + button).remove();
+            var zero = '<form id="formVis" method="post" action="deleteVisitor" enctype="application/x-www-form-urlencoded">';
+            var one = '<button name="visitorName" type="submit" class="button button-3d button-mini button-rounded button-red" value=' + id;
+            if(curState == "Checked in"){
+                var two = ' id="' + id + '-button">Check Out</button></form>';
+            }
+            else {
+                var two = ' id="' + id + '-button">Delete Appointment</button></form>';
+            }
+            var inner = zero  + one + two;
+            $("#button-row-" + id).append(inner);
 
-setInterval(updateTime, 1000);
+            $("#button-row-" + id).on("click", ".button-red", function() {
+                console.log("THIS COMMING UPP");
+                console.log(this);
+                var id = this.id;
+                var res = id.split("-");
+                var tar = "tr-" + res[0];
+                $("#" + tar).fadeOut(600, function(){
+                    getTimeDiff(res[0]);
+                    $("#" + tar).remove();
+                });
+            });
+        }
 
+    }
+};
+
+// Binding the search function
 _bindSearch = function(){
     $('#search').click(function() {
             document.getElementById("search").value = "";
@@ -59,6 +76,45 @@ _bindSearch = function(){
                     $(this).show();
             });
         });
+};
+
+// Interval to constantly refresh the page for the time to change
+setInterval(updateTime, 1000);
+
+// Function to update the current time
+function updateTime(){
+    // Update the time
+    document.getElementById('time_span').innerHTML = getTime();
+}
+
+// Function to get the current time
+function getTime(){
+    //
+    var currentTime = new Date();
+    var hours = currentTime.getHours();
+    var minutes = currentTime.getMinutes();
+    var seconds = currentTime.getSeconds();
+    var isNoon = false;
+
+    if (seconds < 10){
+        seconds = "0" + seconds
+    }
+    if (minutes < 10){
+        minutes = "0" + minutes
+    }
+
+    if(hours > 12){
+        hours -= 12;
+        isNoon = true;
+    }
+    var t_str = hours + ":" + minutes + ":" + seconds + " ";
+    if(isNoon){
+        t_str += "PM";
+    } else {
+        t_str += "AM";
+    }
+
+    return t_str;
 }
 
 $('.name').click(function(){
@@ -73,7 +129,7 @@ $('.name').click(function(){
             'value': name
         })
         .appendTo(this);
-    $('#txt_fullname').focus();Å
+    $('#txt_fullname').focus();
 });
 
 $(document).on('blur','#txt_fullname', function(){
@@ -84,10 +140,9 @@ $(document).on('blur','#txt_fullname', function(){
 
 $(".dropdown-menu-right a").click(function() {
     var group = $(this).text();
-    var id = this.closest('ul').id;
-    var res = id.split("-");
-    var str = res[0] + "_dropdown";
-    $('#' + str).text(group);
+    var temp = this.closest(".dropdown").id;
+    var arr = temp.split("-");
+    $('.dropdown-' + arr[1]).text(group);
 });
 
 $(".button-green").click(function() {
@@ -96,14 +151,18 @@ $(".button-green").click(function() {
     var str = res[0] + "-status";
     $(this).fadeOut(onceDone(res));
     var time = getTime();
+    // TODO KURT
+    // Post the current time to the checkInTime variable
     $("#" + str).text(time);
 });
 
 function onceDone(str){
+    console.log("#" + str[0] + "-button");
     $("#" + str[0] + "-button").remove();
-    var one = '<button class="button button-3d button-mini button-rounded button-red"';
-    var two = ' id="' + str[0] + '-button">Check Out</button>';
-    var inner = one + two;
+    var zero = '<form id="formVis" method="post" action="deleteVisitor" enctype="application/x-www-form-urlencoded">';
+    var one = '<button name="visitorName" type="submit" class="button button-3d button-mini button-rounded button-red" value=' + str[0];
+    var two = ' id="' + str[0] + '-button">Check Out</button></form>';
+    var inner = zero  + one + two;
     $("#button-row-" + str[0]).append(inner);
 
     $("#button-row-" + str[0]).on("click", ".button-red", function() {
@@ -116,6 +175,10 @@ function onceDone(str){
         });
     });
 }
+
+// Global variables for keeping track of average
+var count = 1;
+var flag = false;
 
 function getTimeDiff(time){
     var countHr = $(".hr").text();
@@ -165,7 +228,7 @@ function getTimeDiff(time){
         }
     }
 
-    if(curHr > 11){
+    if(curHr > 12){
         curHr -= 12;
     }
     var hrDiff = curHr - hr;
@@ -183,11 +246,12 @@ function getTimeDiff(time){
 function getAvg(old, cur){
     var total = 1 * old + cur;
     var avg = Math.floor(total/count);
+
+    if(avg < 0){
+        avg = 0;
+    }
     return avg;
 }
-
-var count = 1;
-var flag = false;
 
 $(document).ready(init());
 

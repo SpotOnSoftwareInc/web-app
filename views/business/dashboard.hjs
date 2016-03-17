@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../css/font-icons.css" type="text/css" />
     <link rel="stylesheet" href="../css/animate.css" type="text/css" />
     <link rel="stylesheet" href="../css/magnific-popup.css" type="text/css" />
+    <link rel="stylesheet" href="../css/dashboard.css" type="text/css" />
 
     <link rel="stylesheet" href="../css/responsive.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -73,8 +74,8 @@
                 <!-- Logo
                 ============================================= -->
                 <div id="logo">
-                    <a href="#" class="standard-logo side-panel-trigger" data-dark-logo="../images/logo.png"><img src="../images/logo.png" alt=" Logo" style="background: fill;"></a>
-                    <a href="#" class="retina-logo" data-dark-logo="../images/logo.png"><img src="../images/logo.png" alt=" Logo"></a>
+                    <a href="/" class="standard-logo side-panel-trigger" data-dark-logo="{{logo}}"><img src="{{logo}}" alt=" Logo" style="background: fill;"></a>
+                    <a href="/" class="retina-logo" data-dark-logo="{{logo}}"><img src="{{logo}}" alt=" Logo"></a>
                 </div><!-- #logo end -->
 
                 <!-- Primary Navigation
@@ -82,12 +83,9 @@
                 <nav id="primary-menu" class="dark">
 
                     <ul>
-
-                        <li class=""><a href="#"><div>Profile</div></a>
+                        <li><a class="side-panel-trigger" href="#"><div>Tools</div></a>
                         </li>
                         <li class="mega-menu"><a href="/logout"><div>Log Out</div></a>
-                        </li>
-                        <li><a class="side-panel-trigger" href="#"><div>Tools</div></a>
                         </li>
                     </ul>
 
@@ -99,15 +97,12 @@
 
     </header><!-- #header end -->
 
+
     <!-- Content
     ============================================= -->
     <section id="content">
 
-
         <div class="content-wrap container clearfix">
-
-
-
             <div id="side-navigation">
                 <div class="body-overlay"></div>
                 <div id="side-panel" class="dark">
@@ -129,47 +124,12 @@
                                     <li class="side-panel-trigger"><a href="#SMS-and-Email" style="padding: 8px;"><i class="icon-gift"></i>SMS and Email<i class="icon-chevron-right"></i></a></li>
                                     <li class="side-panel-trigger"><a href="#Analytics" style="padding: 8px;"><i class="icon-tint"></i>Analytics<i class="icon-chevron-right"></i></a></li>
                                     <!--<li class="side-panel-trigger"><a href="#Design-Checkin-Page" style="padding: 8px;"><i class="icon-gift"></i>Design Checkin Page<i class="icon-chevron-right"></i></a></li>-->
-
+                                    <li class="side-panel-trigger"><a href="#Settings" style="padding: 8px;"><i class="icon-tint"></i>Settings<i class="icon-chevron-right"></i></a></li>
                                 </ul>
                             </nav>
 
 
                         </div>
-
-                        <div class="widget quick-contact-widget clearfix">
-
-                            <h4>Contact</h4>
-                            <div id="quick-contact-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
-                            <form id="quick-contact-form" name="quick-contact-form" action="../include/quickcontact.php" method="post" class="quick-contact-form nobottommargin">
-                                <div class="form-process"></div>
-                                <input type="text" class="required sm-form-control input-block-level" id="quick-contact-form-name" name="quick-contact-form-name" value="" placeholder="Full Name" />
-                                <input type="text" class="required sm-form-control email input-block-level" id="quick-contact-form-email" name="quick-contact-form-email" value="" placeholder="Email Address" />
-                                <textarea class="required sm-form-control input-block-level short-textarea" id="quick-contact-form-message" name="quick-contact-form-message" rows="4" cols="30" placeholder="Message"></textarea>
-                                <input type="text" class="hidden" id="quick-contact-form-botcheck" name="quick-contact-form-botcheck" value="" />
-                                <button type="submit" id="quick-contact-form-submit" name="quick-contact-form-submit" class="button button-small button-3d nomargin" value="submit">Send Email</button>
-                            </form>
-
-                            <script type="text/javascript">
-
-                                jQuery("#quick-contact-form").validate({
-                                    submitHandler: function(form) {
-                                        jQuery(form).find('.form-process').fadeIn();
-                                        jQuery(form).ajaxSubmit({
-                                            target: '#quick-contact-form-result',
-                                            success: function() {
-                                                jQuery(form).find('.form-process').fadeOut();
-                                                jQuery(form).find('.sm-form-control').val('');
-                                                jQuery('#quick-contact-form-result').attr('data-notify-msg', jQuery('#quick-contact-form-result').html()).html('');
-                                                SEMICOLON.widget.notifications(jQuery('#quick-contact-form-result'));
-                                            }
-                                        });
-                                    }
-                                });
-
-                            </script>
-
-                        </div>
-
                     </div>
 
                 </div>
@@ -199,99 +159,106 @@
 
                     <div id="Add-Employees">
                         <div class="container clearfix">
-
-                            <h1 class="col-padding center notoppadding nobottompadding">Manage Staff</h1>
-
-                            <div class="center nobottomborder">
-                                <h3 class="nobottommargin">Upload a .csv file of your staff's information </h3>
-                                <a href="#"><i class="icon-4x icon-upload"></i></a>
-                                <h3 class="center">Or use Quick Add</h3>
-                                <div class="row text-center" id="regis-container">
-                                    <form method="post" action="addemployees" enctype="application/x-www-form-urlencoded">
-                                        <textarea class="add-email" type="text" name="csvEmployees" placeholder="CSV of Employees EMAILS" required></textarea>
-                                        <input class="btn custom-button" name="submit" type="submit" href="/addemployees" value="Upload">
-                                    </form>
-                                </div>
-                            </div>
+                            <h1>Manage Staff</h1>
+                            <h6>ADD MORE THAN ONE EMPLOYEE USING UPLOAD CSV!</h6>
+                            <button class="button button-3d button-rounded button-aqua" data-toggle="modal" data-target="#myModal">Upload CSV</button>
+                        </div>
+                        <div class="container clearfix">
 
                                 <div class="col_four_fifth divcenter vertical-middle">
 
 
                                     <div class="clear"></div>
 
-                                    <form class="nobottommargin" action="addemployees" method="post">
+                                    <form class="nobottommargin" method="post" action="addoneemployee" enctype="application/x-www-form-urlencoded">
 
                                         <div class="form-process"></div>
 
                                         <div class="col_one_fifth">
-                                            <label for="template-contactform-name">Name</label>
-                                            <input type="text" id="template-contactform-name" name="template-contactform-name"
-                                                   value="{{name}}" class="sm-form-control required" />
+                                            <label for="template-contactform-fname">First Name</label>
+                                            <input type="text" id="template-contactform-fname" name="fname"
+                                                   value="{{fname}}" class="sm-form-control required" />
                                         </div>
 
                                         <div class="col_one_fifth">
-                                            <label for="template-contactform-name">Job Title</label>
-                                            <select class="sm-form-control required">
-                                                <option value="">-- Select One --</option>
-                                                <option value="{{jobTitle}}">Masseuse</option>
-                                                <option value="{{jobTtile}}">Meditation Leader</option>
-                                                <option value="{{jobTitle}}">Yoga Instructor</option>
-                                            </select>
+                                            <label for="template-contactform-lname">Last Name</label>
+                                            <input type="text" id="template-contactform-lname" name="lname"
+                                                   value="{{lname}}" class="sm-form-control required" />
                                         </div>
+
+                                        <!--<div class="col_one_fifth">-->
+                                            <!--<label for="template-contactform-name">Job Title</label>-->
+                                            <!--<select class="sm-form-control required">-->
+                                                <!--<option value="">&#45;&#45; Select One &#45;&#45;</option>-->
+                                                <!--<option value="{{jobTitle}}">Masseuse</option>-->
+                                                <!--<option value="{{jobTtile}}">Meditation Leader</option>-->
+                                                <!--<option value="{{jobTitle}}">Yoga Instructor</option>-->
+                                            <!--</select>-->
+                                        <!--</div>-->
 
                                         <div class="col_one_fifth">
                                             <label for="template-contactform-email">Email</label>
-                                            <input type="email" id="template-contactform-email" name="template-contactform-email" value="{{email}}" class="required email sm-form-control" />
+                                            <input type="email" id="template-contactform-email" name="email" value="{{email}}" class="required email sm-form-control" />
                                         </div>
 
-                                        <div class="col_one_fifth ">
-                                            <label>Permissions</label>
-                                            <select class="sm-form-control required">
-                                                <option value="">-- Select One --</option>
-                                                <option value="{{role}}">Business Owner</option>
-                                                <option value="{{role}}">Provider</option>
-                                                <option value="{{role}}">Receptionist</option>
-                                            </select>
-
+                                        <div class="col_one_fifth" style="top: -18px;">
+                                            <label for="template-contactform-role">Role (busAdmin, provider, staff)</label>
+                                            <input type="text" id="template-contactform-role" name="role" value="{{role}}" class="required email sm-form-control" />
                                         </div>
+                                        <!--<div class="col_one_fifth ">-->
+                                            <!--<label>Permissions</label>-->
+                                            <!--<select class="sm-form-control required">-->
+                                                <!--<option value="">&#45;&#45; Select One &#45;&#45;</option>-->
+                                                <!--<option value="{{role}}">Business Owner</option>-->
+                                                <!--<option value="{{role}}">Provider</option>-->
+                                                <!--<option value="{{role}}">Receptionist</option>-->
+                                            <!--</select>-->
+
+                                        <!--</div>-->
+                                        <!--<div >-->
+                                            <!--<a href="#" type="addemployees" name="addemployees"><i class="icon-3x icon-line2-user-follow icon-align-left"></i></a>-->
+                                        <!--</div>-->
                                         <div class="col_one_fifth col_last pull-left">
-                                            <a href="#" type="addemployees" name="addemployees"><i class="icon-3x icon-line2-user-follow icon-align-left"></i></a>
+                                            <input class="button button-3d button-large button-rounded button-green" name="submit" type="submit" href="/addoneemployee" value="Insert">
                                         </div>
                                     </form>
 
                                 </div>
                                 <div class="clear"></div>
-                                <div class="line"></div>
-                                <h3>Currently Registered Staff</h3>
-                                <div class="col_four_fifth divcenter vertical-middle">
-                                    <table class="table table-striped divcenter">
+                                <div class="line-dash"></div>
+                            <!--<h3>Currently Registered Staff</h3>-->
+                                <div class="col_four_fifth divcenter middle">
+                                    <table class="table table-hover">
                                         <thead>
                                         <tr>
                                             <th>Name</th>
                                             <th>Job Title</th>
                                             <th>Email</th>
                                             <th>Permissions</th>
+                                            <th>Edit</th>
                                         </tr>
                                         </thead>
                                         <tbody>
+
+
+                                        {{#emps}}
                                         <tr>
-                                            <td>Dr. Peter Venkeman</td>
-                                            <td>The Boss</td>
-                                            <td>peter@sos.com</td>
-                                            <td>Business Owner</td>
+                                            <td>{{fname}} {{lname}}</td>
+                                            <td>Employee</td>
+                                            <td>{{email}}</td>
+                                            <td>{{role}}</td>
+                                            <td>
+                                                <form method="post" action="">
+                                                    <input type="hidden" name="emps"  class="form-control" value="{{emps}}" />
+                                                    <input type="hidden" name="empID" class="form-control" value="{{_id}}" />
+                                                    <input type="hidden" name="callingFunc" class="form-control" value="removeEmployee" />
+                                                    <div class="btn-group">
+                                                        <button value="Remove" id="remove" type="submit" class="button button-3d button-mini button-rounded button-red">Remove</button>
+                                                    </div>
+                                                </form>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td>Jane Doe</td>
-                                            <td>Yoga Instructor</td>
-                                            <td>jane@sos.com</td>
-                                            <td>Provider</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jay Gold</td>
-                                            <td>Masseuse</td>
-                                            <td>jay@sos.com</td>
-                                            <td>Provider</td>
-                                        </tr>
+                                        {{/emps}}
                                         </tbody>
                                     </table>
                                 </div>
@@ -343,7 +310,6 @@
                             </div><!-- #theme end -->
                         </div>
                     </div><!-- Visitor Experience end -->
-
                     <div id="Billing-Options">
 
                         <h3>Billing Options</h3>
@@ -482,7 +448,6 @@
                         </div>
 
                     </div>
-
                     <div id="SMS-and-Email">
 
                         <h3>Notifications</h3>
@@ -492,18 +457,69 @@
 
                     <h3>Analytics</h3>
 
+                    </div>
+
+                    <div id="Settings">
+                        <div class="container clearfix">
+                            <div class="col_two_third col_last nobottommargin">
+                                <h3>Settings</h3>
+
+                                <p>Manage your account settings here</p>
+
+                                <form id="register-form" name="register-form" class="nobottommargin" action="dashboard2" method="post">
+
+                                    <div class="col_half">
+                                        <label for="register-form-name">Current E-mail:</label>
+                                        <p id="register-form-name">{{emailz}}</p>
+                                    </div>
+
+                                    <div class="col_half col_last">
+                                        <label for="register-form-email">Phone:</label>
+                                        <p id="register-form-email">{{phone}}</p>
+                                    </div>
+
+                                    <div class="clear"></div>
+
+                                    <div class="col_half">
+                                        <label for="register-form-username">Update E-mail:</label>
+                                        <input type="text" id="register-form-username" name="newEmail" value="" class="form-control" />
+                                    </div>
+
+                                    <div class="col_half col_last">
+                                        <label for="register-form-phone">Update Phone:</label>
+                                        <input type="text" id="register-form-phone" name="newPhone" value="" class="form-control" />
+                                    </div>
+
+                                    <div class="clear"></div>
+
+                                    <div class="col_half">
+                                        <label for="register-form-password">New Password:</label>
+                                        <input type="password" id="register-form-password" name="register-form-password" value="" class="form-control" />
+                                    </div>
+
+                                    <div class="col_half col_last">
+                                        <label for="register-form-repassword">Re-confirm New Password:</label>
+                                        <input type="password" id="register-form-repassword" name="register-form-repassword" value="" class="form-control" />
+                                    </div>
+
+                                    <div class="clear"></div>
+
+                                    <div class="col_full nobottommargin">
+                                        <button type="submit" class="button button-3d button-black nomargin" id="register-form-submit" name="register-form-submit" value="">Update</button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        <div class=" nobottommargin clearfix"></div>
+                        </div>
+
+                    </div>
                 </div>
 
-                    <!--<div id="Design-Checkin-Page">-->
-
-                        <!--<h3>Design Checkin Page</h3>-->
-
-                    <!--</div>-->
-
-
                 </div>
 
-            </div>
+            <div></div>
 
             <script>
                 $(function() {
@@ -511,17 +527,7 @@
                 });
             </script>
 
-
-
-        </div>
-
     </section><!-- #content end -->
-
-    <!-- Footer
-    ============================================= -->
-    <footer id="footer" class="dark">
-
-    </footer><!-- #footer end -->
 
 </div><!-- #wrapper end -->
 
@@ -577,20 +583,25 @@
                     <h4 class="modal-title">Form Builder</h4>
                 </div>
                 <div class="modal-body row">
-                    <div class="col-sm-8">
-                        <form action="">
-                            <textarea name="form-builder-template" id="form-builder-template" cols="10" rows="15"></textarea>
-                        </form>
-                    </div>
 
-                    <div class="col-sm-4 render-form">
-                        <h4 style="color:rgb(102, 102, 102)">Form Preview</h4>
-                        <form id="rendered-form">
-                        </form>
-                        <div class="render-description text-center">
-                            <a id="render-form-button" class="button">Update Preview</a>
+                    <form action="" method="post">
+                        <div class="col-sm-8">
+                            <textarea name="form-builder-template" id="form-builder-template" cols="10" rows="15"></textarea>
+                            <input type="hidden" name="saveData" id="saveData" value="">
+                            <input type="hidden" name="callingFunc"  value="saveForm">
+
+                            <button id="saveButton" class="btn btn-default" type="submit">Save Form</button>
                         </div>
-                    </div>
+                        <div class="col-sm-4 render-form">
+                            <h4 style="color:rgb(102, 102, 102)">Form Preview</h4>
+                            <form id="rendered-form">
+
+                            </form>
+                            <div class="render-description text-center">
+                                <a id="render-form-button" class="button">Update Preview</a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                  <div class="modal-footer">
                      <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
@@ -602,9 +613,33 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document" style="top: 235px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Upload CSV</h4><p>Upload multiple employees at once using a csv formatted file.
+                Formatting is 'FirstName LastName Email Role(provider, staff, or busadmin)'. Each employee needs to be separated by a new line</p>
+            </div>
+            <form method="post" action="addemployees" enctype="application/x-www-form-urlencoded">
+            <div class="modal-body">
+                <div class="row text-center">
 
+                        <textarea rows="10" cols="35" class="add-email" type="text" name="csvEmployees" placeholder="CSV of Employees EMAILS" required></textarea>
+                </div>
+            </div>
+            <!--/need a form here to execute csv via post method-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <input class="btn custom-button" name="submit" type="submit" href="/addemployees" value="Upload">
+                <!--<input class="btn custom-button" name="submit" type="submit" href="/addemployees" value="Upload">-->
+            </div>
+            </form>
 
-
+        </div>
+    </div>
+</div>
 
 
 <!-- Footer Scripts
@@ -620,10 +655,17 @@
 <script>
     jQuery(document).ready(function($) {
         'use strict';
-        var template = document.getElementById('form-builder-template'),
+        var template      = document.getElementById('form-builder-template'),
             formContainer = document.getElementById('rendered-form'),
-            renderBtn = document.getElementById('render-form-button');
-        $(template).formBuilder();
+            renderBtn     = document.getElementById('render-form-button'),
+            saveBtn       = document.getElementById('saveButton'),
+            saveData      = document.getElementById('saveData');
+
+        var options = {
+            save: false
+        };
+
+        $(template).formBuilder(options);
 
         $(renderBtn).click(function(e) {
             e.preventDefault();
@@ -632,8 +674,16 @@
             });
         });
 
-    });
+        $(saveBtn).click(function(e){
+            $(saveData).attr("value", $(template).val());
+            console.log($(template).val());
+            $(saveBtn).submit();
+            alert("Saved your form");
+        });
 
+    });
 </script>
+<script type="text/javascript" src="../js/dashboard.js"></script>
+
 
 </body>

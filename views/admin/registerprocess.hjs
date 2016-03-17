@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="css/animate.css" type="text/css" />
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
 
+    <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="css/responsive.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lt IE 9]>
@@ -25,6 +28,7 @@
     ============================================= -->
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/plugins.js"></script>
+    <script type="text/javascript" src="js/registerprocess.js"></script>
 
     <!-- Document Title
     ============================================= -->
@@ -32,6 +36,10 @@
     <script type="text/javascript">
         !function(a,b){a("Keen","https://d26b395fwzu5fz.cloudfront.net/3.4.0/keen.min.js",b)}(function(a,b,c){var d,e,f;c["_"+a]={},c[a]=function(b){c["_"+a].clients=c["_"+a].clients||{},c["_"+a].clients[b.projectId]=this,this._config=b},c[a].ready=function(b){c["_"+a].ready=c["_"+a].ready||[],c["_"+a].ready.push(b)},d=["addEvent","setGlobalProperties","trackExternalLink","on"];for(var g=0;g<d.length;g++){var h=d[g],i=function(a){return function(){return this["_"+a]=this["_"+a]||[],this["_"+a].push(arguments),this}};c[a].prototype[h]=i(h)}e=document.createElement("script"),e.async=!0,e.src=b,f=document.getElementsByTagName("script")[0],f.parentNode.insertBefore(e,f)},this);
     </script>
+    <style>
+        article, aside, figure, footer, header,
+        menu, nav, section { display: block; }
+    </style>
 </head>
 
 <body>
@@ -70,7 +78,9 @@
                     <div id="ptab1">
 
                         <p>Upload your Logo and Business information to feel at home</p>
-                        <div class="col_one_third tab-content clearfix" id="tab-register">
+
+                        <!-- FORM -->
+                        <div class="col_one_third clearfix">
                             <div class="panel panel-default nobottommargin">
                                 <div class="panel-body" style="padding: 40px;">
                                     <form method="post" action="" enctype="application/x-www-form-urlencoded" id="register-form" name="register-form" class="nobottommargin">
@@ -85,129 +95,227 @@
                                             <input type="text" id="register-form-companyaddress" name="companyAddress" value="{{companyAddress}}" class="form-control" />
                                         </div>
 
-                                        <!--<div class="col_full">-->
-                                            <!--<label for="register-form-companyemail">Email:</label>-->
-                                            <!--<input type="text" id="register-form-companyemail" name="email" value={{email}} class="form-control" />-->
-                                        <!--</div>-->
-
                                         <div class="col_full">
                                             <label for="register-form-phone">Phone Number:</label>
-                                            <input type="text" id="register-form-phone" name="phone" value="" class="form-control" />
+                                            <input type="text" id="register-form-phone" name="phone" value="{{phone}}" class="form-control" />
+                                        </div>
+                                        <div class="col_full nobottommargin">
+                                            <input class="btn btn-primary" name="submit" type="submit" href="/update_business" value="Save">
+
                                         </div>
 
                                     </form>
                                 </div>
                             </div>
                         </div>
+
                         <div
                             class="col_one_fifth">
                         </div>
+
+                        <!-- LOGO -->
                         <div class="row col_last">
                             <div class="col-sm-6 col-md-4">
                                 <div class="thumbnail">
-                                    <img data-src="holder.js/300x200" alt="300x200" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2VlZSI+PC9yZWN0Pjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjE1MCIgeT0iMTAwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjE5cHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MzAweDIwMDwvdGV4dD48L3N2Zz4=" style="display: block;">
-                                    <div class="caption">
+                                  <form method="post" action="uploadlogo" enctype="multipart/form-data" id="register-uploadlogo" name="register-uploadlogo" class="nobottommargin">
+                                      <img id="thumb" data-src={{logo}} src="{{logo}}" alt="your image" style="display: block;"/>
+
+                                      <div class="caption">
                                         <h3>Upload Logo</h3>
-                                        <!--<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>-->
-                                        <a href="#" class="btn btn-primary" role="button">Browse</a> <a href="#" class="btn btn-default" role="button">Save</a>
+                                        <label for="photo_title">Title:</label>
+                                        <div class="form_controls">
+                                            <input id="photo_title" name="title" size="30" type="text" value="" placeholder="Image Title" />
+                                        </div>
+                                        <input type='file' name="userLogo" onchange="readURL(this);" />
+                                        <input class="btn btn-primary" href="/registerprocess" name="submit" type="submit"  value="Save">
                                     </div>
+                                  </form>
                                 </div>
                             </div>
                         </div>
 
                         <a href="#" class="button button-3d nomargin fright tab-linker" rel="2">Continue</a>
+                        <a href="https://slack.com/oauth/authorize?scope=incoming-webhook&client_id=24668639410.24666586243"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
+                        
                     </div>
                     <div id="ptab2">
-                        <h1 class="col-padding notoppadding nobottompadding">Manage Staff</h1>
-
-                        <div class="center nobottomborder">
-                            <h3 class="nobottommargin">Upload a .csv file of your staff's information </h3>
-                            <a href="#"><i class="icon-4x icon-upload"></i></a>
-                            <h3 class="center">Or use Quick Add</h3>
-
-                            <div class="col_four_fifth divcenter vertical-middle">
-
-                                <div class="clear"></div>
-                                <form class="nobottommargin" action="include/sendemail.php" method="post">
-
-                                    <div class="form-process"></div>
-
-                                    <div class="col_one_fifth">
-                                        <label for="template-contactform-name">Name</label>
-                                        <input type="text" id="template-contactform-name" name="template-contactform-name" value="" class="sm-form-control required" />
-                                    </div>
-
-                                    <div class="col_one_fifth">
-                                        <label for="template-contactform-name">Job Title</label>
-                                        <select class="sm-form-control required">
-                                            <option value="">-- Select One --</option>
-                                            <option value="Masseuse">Masseuse</option>
-                                            <option value="Meditation Leader">Meditation Leader</option>
-                                            <option value="Yoga Instructor">Yoga Instructor</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="col_one_fifth">
-                                        <label for="template-contactform-email">Email</label>
-                                        <input type="email" id="template-contactform-email" name="template-contactform-email" value="" class="required email sm-form-control" />
-                                    </div>
-
-                                    <div class="col_one_fifth ">
-                                        <label>Permissions</label>
-                                        <select class="sm-form-control required">
-                                            <option value="">-- Select One --</option>
-                                            <option value="Business Owner">Business Owner</option>
-                                            <option value="Provider">Provider</option>
-                                            <option value="Receptionist">Receptionist</option>
-                                        </select>
-
-                                    </div>
-                                    <div class="col_one_fifth col_last pull-left">
-                                        <a href="#"><i class="icon-3x icon-line2-user-follow icon-align-left"></i></a>
-                                    </div>
-                                </form>
-
+                        <div id="Add-Employees">
+                            <div class="container clearfix">
+                                <h3>Add Employees</h3>
                             </div>
-                            <div class="clear"></div>
-                            <div class="line"></div>
-                            <h3>Currently Registered Staff</h3>
-                            <div class="col_four_fifth divcenter vertical-middle">
-                                <table class="table table-striped divcenter">
-                                    <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Job Title</th>
-                                        <th>Email</th>
-                                        <th>Permissions</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>Dr. Peter Venkeman</td>
-                                        <td>The Boss</td>
-                                        <td>peter@sos.com</td>
-                                        <td>Business Owner</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jane Doe</td>
-                                        <td>Yoga Instructor</td>
-                                        <td>jane@sos.com</td>
-                                        <td>Provider</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jay Gold</td>
-                                        <td>Masseuse</td>
-                                        <td>jay@sos.com</td>
-                                        <td>Provider</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                            <div class="container clearfix">
+
+                                <div class="col_four_fifth divcenter vertical-middle">
+
+
+                                    <div class="clear"></div>
+
+                                    <form class="nobottommargin" action="registerprocess" method="post" enctype="application/x-www-form-urlencoded">
+
+                                        <div class="form-process"></div>
+
+                                        <div class="col_one_fifth">
+                                            <label for="template-contactform-fname">First Name</label>
+                                            <input type="text" id="template-contactform-fname" name="fname"
+                                                   value="{{fname}}" class="sm-form-control required" />
+                                        </div>
+
+                                        <div class="col_one_fifth">
+                                            <label for="template-contactform-lname">Last Name</label>
+                                            <input type="text" id="template-contactform-lname" name="lname"
+                                                   value="{{lname}}" class="sm-form-control required" />
+                                        </div>
+
+                                        <!--<div class="col_one_fifth">-->
+                                        <!--<label for="template-contactform-name">Job Title</label>-->
+                                        <!--<select class="sm-form-control required">-->
+                                        <!--<option value="">&#45;&#45; Select One &#45;&#45;</option>-->
+                                        <!--<option value="{{jobTitle}}">Masseuse</option>-->
+                                        <!--<option value="{{jobTtile}}">Meditation Leader</option>-->
+                                        <!--<option value="{{jobTitle}}">Yoga Instructor</option>-->
+                                        <!--</select>-->
+                                        <!--</div>-->
+
+                                        <div class="col_one_fifth">
+                                            <label for="template-contactform-email">Email</label>
+                                            <input type="email" id="template-contactform-email" name="email" value="{{email}}" class="required email sm-form-control" />
+                                        </div>
+
+                                        <div class="col_one_fifth" style="top: -18px;">
+                                            <label for="template-contactform-role">Role (busAdmin, provider, staff)</label>
+                                            <input type="text" id="template-contactform-role" name="role" value="{{role}}" class="required email sm-form-control" />
+                                        </div>
+                                        <!--<div class="col_one_fifth ">-->
+                                        <!--<label>Permissions</label>-->
+                                        <!--<select class="sm-form-control required">-->
+                                        <!--<option value="">&#45;&#45; Select One &#45;&#45;</option>-->
+                                        <!--<option value="{{role}}">Business Owner</option>-->
+                                        <!--<option value="{{role}}">Provider</option>-->
+                                        <!--<option value="{{role}}">Receptionist</option>-->
+                                        <!--</select>-->
+
+                                        <!--</div>-->
+                                        <!--<div >-->
+                                        <!--<a href="#" type="addemployees" name="addemployees"><i class="icon-3x icon-line2-user-follow icon-align-left"></i></a>-->
+                                        <!--</div>-->
+                                        <div class="col_one_fifth col_last pull-left">
+                                            <!--<input type="hidden" name="callingFunc" value="regproc">-->
+                                            <input class="button button-3d button-large button-rounded button-green" name="callingFunc" type="submit"  value="Insert">
+                                        </div>
+                                    </form>
+
+                                </div>
+                                <div class="clear"></div>
+                                <div class="line-dash"></div>
+                                <!--<h3>Currently Registered Staff</h3>-->
+                                <div class="col_four_fifth divcenter middle">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Job Title</th>
+                                            <th>Email</th>
+                                            <th>Permissions</th>
+                                            <th>Edit</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+
+                                        {{#emps}}
+                                        <tr>
+                                            <td>{{fname}} {{lname}}</td>
+                                            <td>Employee</td>
+                                            <td>{{email}}</td>
+                                            <td>{{role}}</td>
+                                            <td>
+                                                <form method="post" action="">
+                                                    <input type="hidden" name="emps"  class="form-control" value="{{emps}}" />
+                                                    <input type="hidden" name="empID" class="form-control" value="{{_id}}" />
+                                                    <input type="hidden" name="callingFunc" class="form-control" value="removeEmployee" />
+                                                    <div class="btn-group">
+                                                        <button value="Remove" id="remove" type="submit" class="button button-3d button-mini button-rounded button-red">Remove</button>
+                                                    </div>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        {{/emps}}
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                         <a href="#" class="button button-3d nomargin tab-linker" rel="1">Previous</a>
                         <a href="#" class="button button-3d nomargin fright tab-linker" rel="3">Continue</a>
                     </div>
                     <div id="ptab3">
+                        <div id="Manage-Theme">
+
+                            <div class=" nobottommargin clearfix center">
+
+                                <h1 class="center">Visitor Experience</h1>
+
+                                <h3 class="col-padding notoppadding nobottompadding center">
+                                    Select one of our template forms for check-in use, or create a custom one with our form builder.
+                                </h3>
+
+                                <!-- Theme Items
+                                ============================================= -->
+                                <div class="container text-center center">
+                                    <div>
+                                        <a href="#" class="button button-desc button-border button-rounded center"
+                                           data-toggle="modal" data-target="#templateModal">
+                                            <div>Choose Template</div>
+                                        </a>
+
+                                        <a href="#" class="button button-desc button-border button-rounded center"
+                                           data-toggle="modal" data-target="#formBuilderModal">
+                                            <div>Create New Form</div>
+                                        </a>
+                                    </div>
+
+                                    <div class="post-grid grid-2 clearfix">
+                                        <div class="entry clearfix nobottomborder">
+                                            <h4>Upload a background image for your Tablet:</h4>
+
+
+                                            <form method="post" action="uploadtheme" enctype="multipart/form-data" id="register-uploadlogo" name="register-uploadlogo" class="nobottommargin">
+                                                <!--<div class="current-background-image-container">-->
+                                                    <!--&lt;!&ndash; Current background image goes here &ndash;&gt;-->
+                                                    <!--<div class="current-background-image">-->
+                                                        <!--<a href="#" class="button button-medium button-center">Upload New</a>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                                <img id="themeing" class="" data-src={{theme}} src="{{theme}}" alt="your image" style="display: block; width: 50%; margin-left:25%"/>
+
+                                                <div class="caption center">
+                                                    <label for="photo_title">Title:</label>
+                                                    <div class="form_controls text-center">
+                                                        <input id="theme_title" name="title" size="30" type="text" value="" placeholder="Image Title"/>
+                                                        <br /><br />
+                                                        <input type='file' name="userTheme" onchange="readURL(this);" style="margin-left:auto !important; margin-right:auto !important"/>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <hr>
+                                                    <input href="/registerprocess#ptab3" name="submit" type="submit" class="button button-xlarge button-center" value="Save Changes">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="entry clearfix nobottomborder div-center">
+                                            <br><br><br>
+                                            <h4>What your visitors will see:</h4>
+                                            <div class="iframe-wrapper">
+                                                <iframe src='{{checkinFrame}}' class="frame" id="fileframe"></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div><!-- #theme end -->
+                            </div>
+                        </div><!-- Visitor Experience end -->
                         <a href="#" class="button button-3d nomargin tab-linker" rel="2">Previous</a>
                         <a href="#" class="button button-3d nomargin fright tab-linker" rel="4">Continue</a>
                     </div>
@@ -244,13 +352,16 @@
                                             <div class="pricing-features">
                                                 <ul>
                                                     <li><strong>Full</strong> Employee integration</li>
-
                                                     <li><strong>10</strong> Form template</li>
-
                                                     <li><strong>10</strong> Active locations</li>
                                                     <li><strong>1 year</strong> License</li>
 
                                                 </ul>
+                                            </div>
+                                            <div class="pricing-action">
+                                                <button class="button button-3d button-teal button-large" data-toggle="modal" data-target=".pricing-starter">
+                                                    Select Starter
+                                                </button>
                                             </div>
 
                                         </div>
@@ -269,13 +380,15 @@
                                             <div class="pricing-features">
                                                 <ul>
                                                     <li><strong>Full</strong> Employee integration</li>
-
                                                     <li><strong>15</strong> Form templates</li>
-
                                                     <li><strong>50</strong> Active locations</li>
                                                     <li><strong>2 year</strong> License</li>
-
                                                 </ul>
+                                            </div>
+                                            <div class="pricing-action">
+                                                <button value="submit" type="submit" class="button button-3d button-teal button-large" data-toggle="modal" data-target=".pricing-professional">
+                                                    Select Professional
+                                                </button>
                                             </div>
 
                                         </div>
@@ -294,15 +407,17 @@
                                             <div class="pricing-features">
                                                 <ul>
                                                     <li><strong>Full</strong> Access</li>
-
                                                     <li><strong>20</strong> Form templates</li>
-
                                                     <li><strong>1000</strong> Active locations</li>
                                                     <li><strong>3 year</strong> License</li>
 
                                                 </ul>
                                             </div>
-
+                                            <div class="pricing-action">
+                                                <button value="submit" type="submit" class="button button-3d button-teal button-large" data-toggle="modal" data-target=".pricing-enterprise">
+                                                    Select Enterprise
+                                                </button>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -312,10 +427,36 @@
                             <!--<strong>Thank You.</strong> Your order will be processed once we verify the Payment.-->
                         </div>
                         <a href="#" class="button button-3d nomargin tab-linker" rel="4">Previous</a>
-                        <a href="/" class="button button-3d nomargin fright">Checkout</a>
+                        <a href="{{businessdb}}" class="button button-3d nomargin fright">Checkout</a>
                     </div>
                 </div>
             </div>
+
+
+            <script>
+                function readURL(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+
+                        reader.onload = function (e) {
+                            $('#thumb')
+                                .attr('src', e.target.result)
+                                .width(300)
+                                .height(200);
+
+                            $('#themeing')
+                                .attr('src', e.target.result)
+                                .width(250)
+                                .height(180);
+                        };
+
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+//                function chooseFile() {
+//                    $("#fileInput").click();
+//                }
+            </script>
 
             <script>
                 $(function() {
@@ -336,5 +477,88 @@
 
 
 </section><!-- #content end -->
+
+
+<!-- Paypal Modals -->
+<div class="modal fade pricing-starter" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body div-center center">
+                    <h4>You have selected: <b>Starter</b> at <b>$50.00/mo</b></h4>
+
+                    <form class="nobottommargin" method="post" action="" enctype="application/x-www-form-urlencoded">
+                        <input type="hidden" name="callingFunc" value="updatePlan">
+                        <input type="hidden" name="planName" value="starter">
+                        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=BKDDL56BJD5NQ" >
+                            <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="Check out with PayPal" />
+                        </a>
+                        <br /><br />
+                        <div class="modal-footer">
+                            <input class="button button-3d button-teal button-large" data-dismiss="modal" name="submit" type="submit" value="Done">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade pricing-professional" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body div-center center">
+                    <h4>You have selected: <b>Professional</b> at <b>$100.00/mo</b>.</h4>
+                    <form class="nobottommargin" method="post" action="" enctype="application/x-www-form-urlencoded">
+                        <input type="hidden" name="callingFunc" value="updatePlan">
+                        <input type="hidden" name="planName" value="professional">
+                        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=BKDDL56BJD5NQ" >
+                            <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="Check out with PayPal" />
+                        </a>
+                        <br /><br />
+                        <div class="modal-footer">
+                            <input class="button button-3d button-teal button-large" data-dismiss="modal" name="submit" type="submit" value="Done">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade pricing-enterprise" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body div-center center">
+                    <h4>You have selected: <b>Enterprise</b> at <b>$200.00/mo</b>.</h4>
+                    <form class="nobottommargin" method="post" action="" enctype="application/x-www-form-urlencoded">
+                        <input type="hidden" name="callingFunc" value="updatePlan">
+                        <input type="hidden" name="planName" value="enterprise">
+                        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=BKDDL56BJD5NQ" >
+                            <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="Check out with PayPal" />
+                        </a>
+                        <br /><br />
+                        <div class="modal-footer">
+                            <input class="button button-3d button-teal button-large" data-dismiss="modal" name="submit" type="submit" value="Done">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

@@ -46,8 +46,8 @@
             <!-- Logo
             ============================================= -->
             <div id="logo">
-                <a href="#" class="standard-logo side-panel-trigger" data-dark-logo="../images/logo.png"><img src="../images/logo.png" alt=" Logo" style="background: fill;"></a>
-                <a href="#" class="retina-logo" data-dark-logo="../images/logo.png"><img src="../images/logo.png" alt=" Logo"></a>
+                <a href="/" class="standard-logo side-panel-trigger" data-dark-logo="../images/logo.png"><img src="../images/logo.png" alt=" Logo" style="background: fill;"></a>
+                <a href="/" class="retina-logo" data-dark-logo="../images/logo.png"><img src="../images/logo.png" alt=" Logo"></a>
             </div><!-- #logo end -->
 
             <!-- Primary Navigation
@@ -56,8 +56,6 @@
 
                 <ul>
 
-                    <li class=""><a href="#"><div>Profile</div></a>
-                    </li>
                     <li class="mega-menu"><a href="/logout"><div>Log Out</div></a>
                     </li>
                     <!--<li><a class="side-panel-trigger" href="#"><div>Tools</div></a>-->
@@ -105,28 +103,30 @@
                                         <th>Client</th>
                                         <th>Billing Tier</th>
                                         <th>E-Mail</th>
-                                        <th>User Actions</th>
+                                        <th>Address</th>
+                                        <th>Remove</th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    {{#bizz}}
                                     <tr>
-                                        <td>Dental Office</td>
-                                        <td>Free</td>
-                                        <td>dentists@dental.com</td>
-                                        <td><i class="i-circled i-small icon-user"></i><i class="i-circled i-small icon-cog" style="width: 10px; height: 10px;"></i></td>
+                                        <td>{{fname}} {{lname}}</td>
+                                        <td>{{billingPlan}}</td>
+                                        <td><a href="mailto:{{email}}?Subject=Hello%20again">{{email}}</a></td>
+                                        <td>{{companyAddress}}</td>
+
+                                        <td>
+                                            <form method="post" action="">
+                                                <input type="hidden" name="bizzez" class="form-control" value="{{bizz}}" />
+                                                <input type="hidden" name="bizId" class="form-control" value="{{_id}}" />
+                                                <input type="hidden" name="callingFunc" value="remove" />
+                                                <input class="i-circled i-small" value="X" id="remove" type="submit" style="border: 0px;">
+                                            </form>
+                                        </td>
+
                                     </tr>
-                                    <tr>
-                                        <td>Yoga Instructor</td>
-                                        <td>Premium</td>
-                                        <td>yoga@yoga.com</td>
-                                        <td><i class="i-circled i-small icon-ok"></i><i class="i-circled i-small icon-cog" style="width: 10px; height: 10px;"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td>item #3</td>
-                                        <td>billing #3</td>
-                                        <td>contact #3</td>
-                                        <td><i class="i-circled i-small icon-ok"></i><i class="i-circled i-small icon-cog" style="width: 10px; height: 10px;"></i></td>
-                                    </tr>
+                                    {{/bizz}}
                                     </tbody>
                                 </table>
 

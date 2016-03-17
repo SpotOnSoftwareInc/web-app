@@ -1,23 +1,24 @@
-
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
 <head>
 
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="author" content="SemiColonWeb" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="author" content="SemiColonWeb"/>
 
     <!-- Stylesheets
     ============================================= -->
-    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="../css/bootstrap.css" type="text/css" />
-    <link rel="stylesheet" href="../style.css" type="text/css" />
-    <link rel="stylesheet" href="../css/dark.css" type="text/css" />
-    <link rel="stylesheet" href="../css/font-icons.css" type="text/css" />
-    <link rel="stylesheet" href="../css/animate.css" type="text/css" />
-    <link rel="stylesheet" href="../css/magnific-popup.css" type="text/css" />
+    <link
+        href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic"
+        rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="../style.css" type="text/css"/>
+    <link rel="stylesheet" href="../css/dark.css" type="text/css"/>
+    <link rel="stylesheet" href="../css/font-icons.css" type="text/css"/>
+    <link rel="stylesheet" href="../css/animate.css" type="text/css"/>
+    <link rel="stylesheet" href="../css/magnific-popup.css" type="text/css"/>
 
-    <link rel="stylesheet" href="../css/responsive.css" type="text/css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/responsive.css" type="text/css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!--[if lt IE 9]>
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
     <![endif]-->
@@ -31,7 +32,25 @@
     ============================================= -->
     <title>Manage Employees</title>
     <script type="text/javascript">
-        !function(a,b){a("Keen","https://d26b395fwzu5fz.cloudfront.net/3.4.0/keen.min.js",b)}(function(a,b,c){var d,e,f;c["_"+a]={},c[a]=function(b){c["_"+a].clients=c["_"+a].clients||{},c["_"+a].clients[b.projectId]=this,this._config=b},c[a].ready=function(b){c["_"+a].ready=c["_"+a].ready||[],c["_"+a].ready.push(b)},d=["addEvent","setGlobalProperties","trackExternalLink","on"];for(var g=0;g<d.length;g++){var h=d[g],i=function(a){return function(){return this["_"+a]=this["_"+a]||[],this["_"+a].push(arguments),this}};c[a].prototype[h]=i(h)}e=document.createElement("script"),e.async=!0,e.src=b,f=document.getElementsByTagName("script")[0],f.parentNode.insertBefore(e,f)},this);
+        !function (a, b) {
+            a("Keen", "https://d26b395fwzu5fz.cloudfront.net/3.4.0/keen.min.js", b)
+        }(function (a, b, c) {
+            var d, e, f;
+            c["_" + a] = {}, c[a] = function (b) {
+                c["_" + a].clients = c["_" + a].clients || {}, c["_" + a].clients[b.projectId] = this, this._config = b
+            }, c[a].ready = function (b) {
+                c["_" + a].ready = c["_" + a].ready || [], c["_" + a].ready.push(b)
+            }, d = ["addEvent", "setGlobalProperties", "trackExternalLink", "on"];
+            for (var g = 0; g < d.length; g++) {
+                var h = d[g], i = function (a) {
+                    return function () {
+                        return this["_" + a] = this["_" + a] || [], this["_" + a].push(arguments), this
+                    }
+                };
+                c[a].prototype[h] = i(h)
+            }
+            e = document.createElement("script"), e.async = !0, e.src = b, f = document.getElementsByTagName("script")[0], f.parentNode.insertBefore(e, f)
+        }, this);
     </script>
 </head>
 
@@ -39,32 +58,22 @@
 <!-- Content
 		============================================= -->
 <section id="content">
-
     <div class="content-wrap">
-
         <div class="container clearfix">
-
             <h1 class="col-padding notoppadding nobottompadding">Manage Staff</h1>
-
             <div class="center nobottomborder">
                 <h3 class="nobottommargin">Upload a .csv file of your staff's information </h3>
                 <a href="#"><i class="icon-4x icon-upload"></i></a>
                 <h3 class="center">Or use Quick Add</h3>
-
-
                 <div class="col_four_fifth divcenter vertical-middle">
-
-
                     <div class="clear"></div>
                     <form class="nobottommargin" action="../include/sendemail.php" method="post">
-
                         <div class="form-process"></div>
-
                         <div class="col_one_fifth">
                             <label for="template-contactform-name">Name</label>
-                            <input type="text" id="template-contactform-name" name="template-contactform-name" value="" class="sm-form-control required" />
+                            <input type="text" id="template-contactform-name" name="template-contactform-name" value=""
+                                   class="sm-form-control required"/>
                         </div>
-
                         <div class="col_one_fifth">
                             <label for="template-contactform-name">Job Title</label>
                             <select class="sm-form-control required">
@@ -74,12 +83,11 @@
                                 <option value="Yoga Instructor">Yoga Instructor</option>
                             </select>
                         </div>
-
                         <div class="col_one_fifth">
                             <label for="template-contactform-email">Email</label>
-                            <input type="email" id="template-contactform-email" name="template-contactform-email" value="" class="required email sm-form-control" />
+                            <input type="email" id="template-contactform-email" name="template-contactform-email"
+                                   value="" class="required email sm-form-control"/>
                         </div>
-
                         <div class="col_one_fifth ">
                             <label>Permissions</label>
                             <select class="sm-form-control required">
@@ -88,13 +96,11 @@
                                 <option value="Provider">Provider</option>
                                 <option value="Receptionist">Receptionist</option>
                             </select>
-
                         </div>
                         <div class="col_one_fifth col_last pull-left">
                             <a href="#"><i class="icon-3x icon-line2-user-follow icon-align-left"></i></a>
                         </div>
                     </form>
-
                 </div>
                 <div class="clear"></div>
                 <div class="line"></div>
@@ -133,9 +139,7 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 </section><!-- #content end -->
 </body>
 </html>
