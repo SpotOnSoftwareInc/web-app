@@ -56,8 +56,6 @@
 
                 <ul>
 
-                    <li class=""><a href="#"><div>Profile</div></a>
-                    </li>
                     <li class="mega-menu"><a href="/logout"><div>Log Out</div></a>
                     </li>
                     <!--<li><a class="side-panel-trigger" href="#"><div>Tools</div></a>-->
