@@ -348,13 +348,16 @@
                                                     <li><strong>10</strong> Form template</li>
                                                     <li><strong>10</strong> Active locations</li>
                                                     <li><strong>1 year</strong> License</li>
-
                                                 </ul>
                                             </div>
                                             <div class="pricing-action">
-                                                <button class="button button-3d button-teal button-large" data-toggle="modal" data-target=".pricing-starter">
-                                                    Select Starter
-                                                </button>
+                                                <form action="#" method="post" role="form" class="clearfix">
+                                                    <input type="hidden" name="callingFunc" value="updatePlan">
+                                                    <input type="hidden" name="newPlan" value="starter">
+                                                    <button value="submit" type="submit" class="button button-3d button-teal button-large">
+                                                        Select Starter
+                                                    </button>
+                                                </form>
                                             </div>
 
                                         </div>
@@ -379,9 +382,13 @@
                                                 </ul>
                                             </div>
                                             <div class="pricing-action">
-                                                <button value="submit" type="submit" class="button button-3d button-teal button-large" data-toggle="modal" data-target=".pricing-professional">
-                                                    Select Professional
-                                                </button>
+                                                <form action="#" method="post" role="form" class="clearfix">
+                                                    <input type="hidden" name="callingFunc" value="updatePlan">
+                                                    <input type="hidden" name="newPlan" value="professional">
+                                                    <button value="submit" type="submit" class="button button-3d button-teal button-large">
+                                                        Select Professional
+                                                    </button>
+                                                </form>
                                             </div>
 
                                         </div>
@@ -407,9 +414,13 @@
                                                 </ul>
                                             </div>
                                             <div class="pricing-action">
-                                                <button value="submit" type="submit" class="button button-3d button-teal button-large" data-toggle="modal" data-target=".pricing-enterprise">
-                                                    Select Enterprise
-                                                </button>
+                                                <form action="#" method="post" role="form" class="clearfix">
+                                                    <input type="hidden" name="callingFunc" value="updatePlan">
+                                                    <input type="hidden" name="newPlan" value="enterprise">
+                                                    <button value="submit" type="submit" class="button button-3d button-teal button-large">
+                                                        Select Enterprise
+                                                    </button>
+                                                </form>
                                             </div>
                                         </div>
 

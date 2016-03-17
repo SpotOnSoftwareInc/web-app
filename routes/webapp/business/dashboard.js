@@ -21,6 +21,7 @@ exports.get = function (req, res) {
                             emailz: req.user[0].email,
                             phone: req.user[0].phone,
                             logo: '../' + business.logo,
+                            billingPlan: business.billingPlan,
                             message: req.flash("permission")
                         });
                     }
@@ -37,14 +38,32 @@ exports.post = function (req, res) {
     var bid = req.user[0].business;
     var myFunction = req.body.callingFunc;
 
+    console.log('myFunction: ' + myFunction);
 
-    if(myFunction == 'saveForm'){
+    if(myFunction == 'updatePlan'){
+        var newPlan = req.body.newPlan;
+        console.log('Updating billing plan to ' + newPlan);
+        var businessDB = req.db.get('businesses');
+
+        businessDB.findAndModify({
+            query: {_id: bid},
+            update: {
+                $set: {
+                    billingPlan: newPlan
+                }
+            }
+        });
+
+        res.redirect('../'+ bid +'/dashboard#Billing-Options');
+    }
+
+    else if(myFunction == 'saveForm'){
         console.log('SAVE DATA FROM FORM');
         console.log(req.body.saveData);
         res.redirect('../'+ bid +'/dashboard#Manage-Theme');
     }
 
-    if(myFunction == 'removeEmployee'){
+    else if(myFunction == 'removeEmployee'){
         var employeeDB = req.db.get('employees');
         var eid = req.body.empID.toString();
 

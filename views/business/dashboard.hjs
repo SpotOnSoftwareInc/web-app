@@ -27,7 +27,6 @@
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/plugins.js"></script>
 
-
     <!-- Only include on form edit page -->
     <link rel="stylesheet" type="text/css" media="screen" href="../assets/css/form-builder.min.css">
     <!-- Only include on form render page -->
@@ -317,41 +316,10 @@
                             <h2>Change billing plan</h2>
                             <span>Upgrade or dial it back a bit</span>
                             <div class="pricing bottommargin clearfix">
+                                <h4>You are currently subscribed to: <span style="text-transform:uppercase;font-weight:bold">{{billingPlan}}</span>.</h4>
+                                <div class="col-md-4" data-animate="fadeInLeft"  data-delay="250">
 
-                                <div class="col-md-3" data-animate="fadeInLeft">
-
-                                    <div class="pricing-box best-price">
-                                        <div class="pricing-title">
-                                            <h3>Trial</h3>
-                                        </div>
-                                        <div class="pricing-price">
-                                            <span class="price-unit">$</span>0
-                                        </div>
-                                        <div class="pricing-features">
-                                            <ul>
-                                                <li><strong>Full</strong> Employee integration</li>
-
-                                                <li><strong>1</strong> Form template</li>
-
-                                                <li><strong>1</strong> Active location</li>
-                                                <li><strong>14 day</strong> License</li>
-
-                                            </ul>
-                                        </div>
-                                        <div class="pricing-action">
-                                            <form action="#" method="post" role="form" class="clearfix">
-                                                <button value="submit" type="submit" class="btn btn-danger btn-block btn-lg">
-                                                    Current Plan
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="col-md-3" data-animate="fadeInLeft"  data-delay="250">
-
-                                    <div class="pricing-box">
+                                    <div id="starter-box" class="pricing-box">
                                         <div class="pricing-title">
                                             <h3>Starter</h3>
                                         </div>
@@ -361,18 +329,17 @@
                                         <div class="pricing-features">
                                             <ul>
                                                 <li><strong>Full</strong> Employee integration</li>
-
                                                 <li><strong>10</strong> Form template</li>
-
                                                 <li><strong>10</strong> Active locations</li>
                                                 <li><strong>1 year</strong> License</li>
-
                                             </ul>
                                         </div>
                                         <div class="pricing-action">
                                             <form action="#" method="post" role="form" class="clearfix">
+                                                <input type="hidden" name="callingFunc" value="updatePlan">
+                                                <input type="hidden" name="newPlan" value="starter">
                                                 <button value="submit" type="submit" class="btn btn-danger btn-block btn-lg">
-                                                    Upgrade!
+                                                    Change Plan
                                                 </button>
                                             </form>
                                         </div>
@@ -380,9 +347,9 @@
 
                                 </div>
 
-                                <div class="col-md-3" data-animate="fadeInLeft" data-delay="500">
+                                <div class="col-md-4" data-animate="fadeInLeft" data-delay="500">
 
-                                    <div class="pricing-box">
+                                    <div id="professional-box" class="pricing-box">
                                         <div class="pricing-title">
                                             <h3>Professional</h3>
                                         </div>
@@ -392,9 +359,7 @@
                                         <div class="pricing-features">
                                             <ul>
                                                 <li><strong>Full</strong> Employee integration</li>
-
                                                 <li><strong>15</strong> Form templates</li>
-
                                                 <li><strong>50</strong> Active locations</li>
                                                 <li><strong>2 year</strong> License</li>
 
@@ -402,8 +367,10 @@
                                         </div>
                                         <div class="pricing-action">
                                             <form action="#" method="post" role="form" class="clearfix">
-                                                <button value="submit" type="submit" class="btn btn-danger btn-block btn-lg border-color">
-                                                    Upgrade!
+                                                <input type="hidden" name="callingFunc" value="updatePlan">
+                                                <input type="hidden" name="newPlan" value="professional">
+                                                <button value="submit" type="submit" class="btn btn-danger btn-block btn-lg">
+                                                    Change Plan
                                                 </button>
                                             </form>
                                         </div>
@@ -412,9 +379,9 @@
 
                                 </div>
 
-                                <div class="col-md-3" data-animate="fadeInLeft" data-delay="750">
+                                <div class="col-md-4" data-animate="fadeInLeft" data-delay="750">
 
-                                    <div class="pricing-box">
+                                    <div id="enterprise-box" class="pricing-box">
                                         <div class="pricing-title">
                                             <h3>Enterprise</h3>
                                         </div>
@@ -424,9 +391,7 @@
                                         <div class="pricing-features">
                                             <ul>
                                                 <li><strong>Full</strong> Access</li>
-
                                                 <li><strong>20</strong> Form templates</li>
-
                                                 <li><strong>1000</strong> Active locations</li>
                                                 <li><strong>3 year</strong> License</li>
 
@@ -434,8 +399,10 @@
                                         </div>
                                         <div class="pricing-action">
                                             <form action="#" method="post" role="form" class="clearfix">
+                                                <input type="hidden" name="callingFunc" value="updatePlan">
+                                                <input type="hidden" name="newPlan" value="enterprise">
                                                 <button value="submit" type="submit" class="btn btn-danger btn-block btn-lg">
-                                                    Upgrade!
+                                                    Change Plan
                                                 </button>
                                             </form>
                                         </div>
@@ -680,7 +647,14 @@
             $(saveBtn).submit();
             alert("Saved your form");
         });
-
+    });
+</script>
+<script id="topLevel" type="text/x-handlebars-template">
+    Handlebars.registerHelper('ifCond', function(v1, v2, options) {
+    if(v1 === v2) {
+        return options.fn(this);
+    }
+        return options.inverse(this);
     });
 </script>
 <script type="text/javascript" src="../js/dashboard.js"></script>
