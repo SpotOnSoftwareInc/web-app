@@ -34,7 +34,7 @@ exports.get = function (req, res) {
                 .on('success', function(business) {
 
                     var newBusiness = {
-                        businessID: bid,
+                        businessID: business._id,
                         billingPlan: business.billingPlan,
                         companyName: business.companyName,
                         walkins: business.walkins
