@@ -137,90 +137,110 @@
                         <a href="#" class="button button-3d nomargin fright tab-linker" rel="2">Continue</a>
                     </div>
                     <div id="ptab2">
-                        <h1 class="col-padding notoppadding nobottompadding">Manage Staff</h1>
-
-                        <div class="center nobottomborder">
-                            <h3 class="nobottommargin">Upload a .csv file of your staff's information </h3>
-                            <a href="#"><i class="icon-4x icon-upload"></i></a>
-                            <h3 class="center">Or use Quick Add</h3>
-
-                            <div class="col_four_fifth divcenter vertical-middle">
-
-                                <div class="clear"></div>
-                                <form class="nobottommargin" action="include/sendemail.php" method="post">
-
-                                    <div class="form-process"></div>
-
-                                    <div class="col_one_fifth">
-                                        <label for="template-contactform-name">Name</label>
-                                        <input type="text" id="template-contactform-name" name="template-contactform-name" value="" class="sm-form-control required" />
-                                    </div>
-
-                                    <div class="col_one_fifth">
-                                        <label for="template-contactform-name">Job Title</label>
-                                        <select class="sm-form-control required">
-                                            <option value="">-- Select One --</option>
-                                            <option value="Masseuse">Masseuse</option>
-                                            <option value="Meditation Leader">Meditation Leader</option>
-                                            <option value="Yoga Instructor">Yoga Instructor</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="col_one_fifth">
-                                        <label for="template-contactform-email">Email</label>
-                                        <input type="email" id="template-contactform-email" name="template-contactform-email" value="" class="required email sm-form-control" />
-                                    </div>
-
-                                    <div class="col_one_fifth ">
-                                        <label>Permissions</label>
-                                        <select class="sm-form-control required">
-                                            <option value="">-- Select One --</option>
-                                            <option value="Business Owner">Business Owner</option>
-                                            <option value="Provider">Provider</option>
-                                            <option value="Receptionist">Receptionist</option>
-                                        </select>
-
-                                    </div>
-                                    <div class="col_one_fifth col_last pull-left">
-                                        <a href="#"><i class="icon-3x icon-line2-user-follow icon-align-left"></i></a>
-                                    </div>
-                                </form>
-
+                        <div id="Add-Employees">
+                            <div class="container clearfix">
+                                <h3>Add Employees</h3>
                             </div>
-                            <div class="clear"></div>
-                            <div class="line"></div>
-                            <h3>Currently Registered Staff</h3>
-                            <div class="col_four_fifth divcenter vertical-middle">
-                                <table class="table table-striped divcenter">
-                                    <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Job Title</th>
-                                        <th>Email</th>
-                                        <th>Permissions</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>Dr. Peter Venkeman</td>
-                                        <td>The Boss</td>
-                                        <td>peter@sos.com</td>
-                                        <td>Business Owner</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jane Doe</td>
-                                        <td>Yoga Instructor</td>
-                                        <td>jane@sos.com</td>
-                                        <td>Provider</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Jay Gold</td>
-                                        <td>Masseuse</td>
-                                        <td>jay@sos.com</td>
-                                        <td>Provider</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                            <div class="container clearfix">
+
+                                <div class="col_four_fifth divcenter vertical-middle">
+
+
+                                    <div class="clear"></div>
+
+                                    <form class="nobottommargin" action="registerprocess" method="post" enctype="application/x-www-form-urlencoded">
+
+                                        <div class="form-process"></div>
+
+                                        <div class="col_one_fifth">
+                                            <label for="template-contactform-fname">First Name</label>
+                                            <input type="text" id="template-contactform-fname" name="fname"
+                                                   value="{{fname}}" class="sm-form-control required" />
+                                        </div>
+
+                                        <div class="col_one_fifth">
+                                            <label for="template-contactform-lname">Last Name</label>
+                                            <input type="text" id="template-contactform-lname" name="lname"
+                                                   value="{{lname}}" class="sm-form-control required" />
+                                        </div>
+
+                                        <!--<div class="col_one_fifth">-->
+                                        <!--<label for="template-contactform-name">Job Title</label>-->
+                                        <!--<select class="sm-form-control required">-->
+                                        <!--<option value="">&#45;&#45; Select One &#45;&#45;</option>-->
+                                        <!--<option value="{{jobTitle}}">Masseuse</option>-->
+                                        <!--<option value="{{jobTtile}}">Meditation Leader</option>-->
+                                        <!--<option value="{{jobTitle}}">Yoga Instructor</option>-->
+                                        <!--</select>-->
+                                        <!--</div>-->
+
+                                        <div class="col_one_fifth">
+                                            <label for="template-contactform-email">Email</label>
+                                            <input type="email" id="template-contactform-email" name="email" value="{{email}}" class="required email sm-form-control" />
+                                        </div>
+
+                                        <div class="col_one_fifth" style="top: -18px;">
+                                            <label for="template-contactform-role">Role (busAdmin, provider, staff)</label>
+                                            <input type="text" id="template-contactform-role" name="role" value="{{role}}" class="required email sm-form-control" />
+                                        </div>
+                                        <!--<div class="col_one_fifth ">-->
+                                        <!--<label>Permissions</label>-->
+                                        <!--<select class="sm-form-control required">-->
+                                        <!--<option value="">&#45;&#45; Select One &#45;&#45;</option>-->
+                                        <!--<option value="{{role}}">Business Owner</option>-->
+                                        <!--<option value="{{role}}">Provider</option>-->
+                                        <!--<option value="{{role}}">Receptionist</option>-->
+                                        <!--</select>-->
+
+                                        <!--</div>-->
+                                        <!--<div >-->
+                                        <!--<a href="#" type="addemployees" name="addemployees"><i class="icon-3x icon-line2-user-follow icon-align-left"></i></a>-->
+                                        <!--</div>-->
+                                        <div class="col_one_fifth col_last pull-left">
+                                            <!--<input type="hidden" name="callingFunc" value="regproc">-->
+                                            <input class="button button-3d button-large button-rounded button-green" name="callingFunc" type="submit"  value="Insert">
+                                        </div>
+                                    </form>
+
+                                </div>
+                                <div class="clear"></div>
+                                <div class="line-dash"></div>
+                                <!--<h3>Currently Registered Staff</h3>-->
+                                <div class="col_four_fifth divcenter middle">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Job Title</th>
+                                            <th>Email</th>
+                                            <th>Permissions</th>
+                                            <th>Edit</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+
+                                        {{#emps}}
+                                        <tr>
+                                            <td>{{fname}} {{lname}}</td>
+                                            <td>Employee</td>
+                                            <td>{{email}}</td>
+                                            <td>{{role}}</td>
+                                            <td>
+                                                <form method="post" action="">
+                                                    <input type="hidden" name="emps"  class="form-control" value="{{emps}}" />
+                                                    <input type="hidden" name="empID" class="form-control" value="{{_id}}" />
+                                                    <input type="hidden" name="callingFunc" class="form-control" value="removeEmployee" />
+                                                    <div class="btn-group">
+                                                        <button value="Remove" id="remove" type="submit" class="button button-3d button-mini button-rounded button-red">Remove</button>
+                                                    </div>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        {{/emps}}
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                         <a href="#" class="button button-3d nomargin tab-linker" rel="1">Previous</a>
