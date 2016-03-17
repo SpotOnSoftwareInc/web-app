@@ -1,4 +1,6 @@
 var auth = require('../../../lib/auth');
+var Keen = require("keen-js");
+
 
 exports.get = function (req, res) {
     console.log('Get function dashboard');
@@ -39,7 +41,7 @@ exports.get = function (req, res) {
                     };
 // This sends the above data to Keen and records it as an event.
                     keenClient.addEvent("newBusiness", newBusiness);
-                    
+
                 });
 
 // This builds a query that when executed will get the average time spent in the last hour from the "time_spent" collection.
