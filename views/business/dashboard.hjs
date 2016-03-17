@@ -160,6 +160,7 @@
                     <div id="Add-Employees">
                         <div class="container clearfix">
                             <h1>Manage Staff</h1>
+                            <h6>ADD MORE THAN ONE EMPLOYEE USING UPLOAD CSV!</h6>
                             <button class="button button-3d button-rounded button-aqua" data-toggle="modal" data-target="#myModal">Upload CSV</button>
                         </div>
                         <div class="container clearfix">
@@ -618,7 +619,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Upload CSV</h4>
+                <h4 class="modal-title" id="myModalLabel">Upload CSV</h4><p>Upload multiple employees at once using a csv formatted file.
+                Formatting is 'FirstName LastName Email Role(provider, staff, or busadmin)'. Each employee needs to be separated by a new line</p>
             </div>
             <form method="post" action="addemployees" enctype="application/x-www-form-urlencoded">
             <div class="modal-body">
