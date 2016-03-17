@@ -271,34 +271,43 @@
                                             <div>Create New Form</div>
                                         </a>
                                     </div>
-                                    <hr>
-                                    <h3>Upload a background image for your Tablet:</h3>
-                                    <form method="post" action="uploadtheme" enctype="multipart/form-data" id="register-uploadlogo" name="register-uploadlogo" class="nobottommargin">
-                                        <!--<div class="current-background-image-container">-->
-                                            <!--&lt;!&ndash; Current background image goes here &ndash;&gt;-->
-                                            <!--<div class="current-background-image">-->
-                                                <!--<a href="#" class="button button-medium button-center">Upload New</a>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                        <img id="themeing" data-src={{theme}} src="{{theme}}" alt="your image" style="display: block; width: 50%; "/>
 
-                                        <div class="caption center">
-                                            <label for="photo_title">Title:</label>
-                                            <div class="form_controls text-center">
-                                                <input id="theme_title" name="title" size="30" type="text" value="" placeholder="Image Title"/>
-                                                <input type='file' name="userTheme" onchange="readURL(this);" style="text-align:center !important;"/>
+                                    <div class="post-grid grid-2 clearfix">
+                                        <div class="entry clearfix nobottomborder">
+                                            <h4>Upload a background image for your Tablet:</h4>
+
+
+                                            <form method="post" action="uploadtheme" enctype="multipart/form-data" id="register-uploadlogo" name="register-uploadlogo" class="nobottommargin">
+                                                <!--<div class="current-background-image-container">-->
+                                                    <!--&lt;!&ndash; Current background image goes here &ndash;&gt;-->
+                                                    <!--<div class="current-background-image">-->
+                                                        <!--<a href="#" class="button button-medium button-center">Upload New</a>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                                <img id="themeing" class="" data-src={{theme}} src="{{theme}}" alt="your image" style="display: block; width: 50%; margin-left:25%"/>
+
+                                                <div class="caption center">
+                                                    <label for="photo_title">Title:</label>
+                                                    <div class="form_controls text-center">
+                                                        <input id="theme_title" name="title" size="30" type="text" value="" placeholder="Image Title"/>
+                                                        <br /><br />
+                                                        <input type='file' name="userTheme" onchange="readURL(this);" style="margin-left:auto !important; margin-right:auto !important"/>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <hr>
+                                                    <input href="/registerprocess#ptab3" name="submit" type="submit" class="button button-xlarge button-center" value="Save Changes">
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="entry clearfix nobottomborder div-center">
+                                            <br><br><br>
+                                            <h4>What your visitors will see:</h4>
+                                            <div class="iframe-wrapper">
+                                                <iframe src='{{checkinFrame}}' class="frame" id="fileframe"></iframe>
                                             </div>
                                         </div>
-                                        <div>
-                                            <hr>
-                                            <input href="/registerprocess#ptab3" name="submit" type="submit" class="button button-xlarge button-center" value="Save Changes">
-                                        </div>
-                                    </form>
-                                    <p>What your visitors will see:</p>
-                                    <div>
-                                        <iframe src='{{checkinFrame}}' style="width: 800px; height: 500px;" id="fileframe"></iframe>
                                     </div>
-
 
 
 

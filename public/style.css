@@ -13277,3 +13277,29 @@ body:not(.no-transition) #wrapper,
     border-bottom:1px solid #eeeeee;
     padding:0 10px;
 }
+
+.iframe-wrapper {
+    width: 320px;
+    height: 192px;
+    margin-left:auto;
+    margin-right:auto;
+    padding: 0;
+    overflow: hidden;
+}
+
+.frame {
+    width: 1280px;
+    height: 786px;
+    border: 0;
+    -ms-transform: scale(0.25);
+    -moz-transform: scale(0.25);
+    -o-transform: scale(0.25);
+    -webkit-transform: scale(0.25);
+    transform: scale(0.25);
+
+    -ms-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
