@@ -135,6 +135,8 @@
                         </div>
 
                         <a href="#" class="button button-3d nomargin fright tab-linker" rel="2">Continue</a>
+                        <a href="https://slack.com/oauth/authorize?scope=incoming-webhook&client_id=24668639410.24666586243"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
+                        
                     </div>
                     <div id="ptab2">
                         <div id="Add-Employees">
