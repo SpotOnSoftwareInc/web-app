@@ -132,6 +132,9 @@
 
                             </div>
                             <div class="tab-content clearfix" id="tabs-10">
+                                <div id="newBusiness-count-chart"></div>
+
+
                                 <div class="col_half" id="lineChart" style="opacity: 0;">
                                     <h3 class="center">Client Growth Chart</h3>
                                     <canvas id="lineChartCanvas" width="547" height="300"></canvas>
