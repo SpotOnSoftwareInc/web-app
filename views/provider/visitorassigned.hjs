@@ -28,7 +28,7 @@
 
     <!-- Document Title
     ============================================= -->
-    <title>Vistors</title>
+    <title>Visitors</title>
 
 </head>
 
@@ -69,18 +69,8 @@
 <section id="page-title">
 
     <div class="container clearfix">
-        <h1>Check-ins</h1>
+        <h1>Your Visitors</h1>
         <ol class="breadcrumb">
-            <li>
-                <span> Avg wait time :
-                    <span class="hr" style="display: inline">0</span> hr
-                    <span class="min" style="display: inline">0</span> min
-                    <span class="sec" style="display: inline">0</span> sec
-                </span>
-            </li>
-            <li>
-            <p>     </p>
-            </li>
             <div class="searchSpan pull-left">
                 <form class="search-form" id="searchForm">
                     <input id="search" class="gate form-control search-input" type="text" placeholder="Search...">
@@ -90,91 +80,26 @@
         </ol>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document" style="top: 235px;">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Upload CSV</h4>
-                </div>
-                <div class="modal-body">
-                    <span>Enter your CSV:</span>
-                    <textarea rows="15" cols="50" style="position: relative;left: 40%;">Upload your CSV here
-                    </textarea>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </section>
 
 <div class="container clearfix">
-    <table class="table table-hover">
+    <table class="table table-hover" id="visitor-table">
         <thead>
         <tr>
             <th>Name</th>
-            <th>Time</th>
-            <th>Assignee</th>
+            <th>Arrival Time</th>
             <th>Appointment</th>
-            <th>Check In</th>
         </tr>
         </thead>
         <tbody id="all">
-        <tr id="tr-mark">
-            <td class="name" id="mark">Mark Darmadi</td>
-            <td id="mark-status"></td>
-            <td class="asignee">
-                <div class="sort-contacts-bytype-dropdown dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="mark-sort"><span id="mark_dropdown" class="dropdown-label">Dr. Peter Parker</span><b class="caret"></b></a>
-                    <ul class="dropdown-menu dropdown-menu-right" id="mark-toggle">
-                        <li><a href="#"><i class="dropdown test"></i>Dr. Test test</a></li>
-                        <li><a href="#"><i class="dropdown peter"></i>Dr. Peter Parker</a></li>
-                        <li><a href="#"><i class="dropdown richard"></i>Dr. Richard Best</a></li>
-                    </ul>
-                </div>
-            </td>
-            <td>5:12 PM</td>
-            <td id="button-row-mark"><button class="button button-3d button-mini button-rounded button-green" id="mark-button">Checkin</button></td>
+        {{#appts}}
+        <tr id="tr-{{_id}}">
+            <td>{{visitor}}</td>
+            <td>{{checkinTime}}</td>
+            <td>{{apptTime}}</td>
         </tr>
-        <tr id="tr-kurt">
-            <td class="name" id="kurt">Kurt Coban</td>
-            <td id="kurt-status"></td>
-            <td class="asignee">
-                <div class="sort-contacts-bytype-dropdown dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="kurt-sort"><span id="kurt_dropdown" class="dropdown-label">Dr. Peter Parker</span><b class="caret"></b></a>
-                    <ul class="dropdown-menu dropdown-menu-right" id="kurt-toggle">
-                        <li><a href="#"><i class="dropdown test"></i>Dr. Test test</a></li>
-                        <li><a href="#"><i class="dropdown peter"></i>Dr. Peter Parker</a></li>
-                        <li><a href="#"><i class="dropdown richard"></i>Dr. Richard Best</a></li>
-                    </ul>
-                </div>
+        {{/appts}}
 
-            </td>
-            <td>4:46 PM</td>
-            <td id="button-row-kurt"><button class="button button-3d button-mini button-rounded button-green"id="kurt-button">Checkin</button></td>
-        </tr>
-        <tr id="tr-sam">
-            <td class="name" id="sam">Sammy Sant</td>
-            <td id="sam-status"></td>
-            <td class="asignee">
-                <div class="sort-contacts-bytype-dropdown dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="sam-sort"><span id="sam_dropdown" class="dropdown-label">Dr. Peter Parker</span><b class="caret"></b></a>
-                    <ul class="dropdown-menu dropdown-menu-right" id="sam-toggle">
-                        <li><a href="#"><i class="dropdown test"></i>Dr. Test test</a></li>
-                        <li><a href="#"><i class="dropdown peter"></i>Dr. Peter Parker</a></li>
-                        <li><a href="#"><i class="dropdown richard"></i>Dr. Richard Best</a></li>
-                    </ul>
-                </div>
-
-            </td>
-            <td>4:21 AM</td>
-            <td id="button-row-sam"><button class="button button-3d button-mini button-rounded button-green"id="sam-button">Checkin</button></td>
-        </tr>
         </tbody>
     </table>
 </div>

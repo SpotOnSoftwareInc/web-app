@@ -163,7 +163,7 @@
                     </div>
                     </form>
                 </td>
-                appoiontment time
+                <!--appoiontment time-->
                 <td>{{apptTime}}</td>
                 <!--status-->
                 <td class="state" id="state-{{_id}}">{{state}}</td>

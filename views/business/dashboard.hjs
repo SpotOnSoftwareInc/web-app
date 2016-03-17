@@ -74,8 +74,8 @@
                 <!-- Logo
                 ============================================= -->
                 <div id="logo">
-                    <a href="#" class="standard-logo side-panel-trigger" data-dark-logo="../images/logo.png"><img src="../images/logo.png" alt=" Logo" style="background: fill;"></a>
-                    <a href="#" class="retina-logo" data-dark-logo="../images/logo.png"><img src="../images/logo.png" alt=" Logo"></a>
+                    <a href="/" class="standard-logo side-panel-trigger" data-dark-logo="../images/logo.png"><img src="../images/logo.png" alt=" Logo" style="background: fill;"></a>
+                    <a href="/" class="retina-logo" data-dark-logo="../images/logo.png"><img src="../images/logo.png" alt=" Logo"></a>
                 </div><!-- #logo end -->
 
                 <!-- Primary Navigation
@@ -83,9 +83,6 @@
                 <nav id="primary-menu" class="dark">
 
                     <ul>
-
-                        <li class=""><a href="#"><div>Profile</div></a>
-                        </li>
                         <li><a class="side-panel-trigger" href="#"><div>Tools</div></a>
                         </li>
                         <li class="mega-menu"><a href="/logout"><div>Log Out</div></a>
@@ -531,12 +528,6 @@
 
     </section><!-- #content end -->
 
-    <!-- Footer
-    ============================================= -->
-    <footer id="footer" class="dark">
-
-    </footer><!-- #footer end -->
-
 </div><!-- #wrapper end -->
 
 
@@ -662,13 +653,17 @@
 <script>
     jQuery(document).ready(function($) {
         'use strict';
-        var template = document.getElementById('form-builder-template'),
+        var template      = document.getElementById('form-builder-template'),
             formContainer = document.getElementById('rendered-form'),
-            renderBtn = document.getElementById('render-form-button'),
-            saveBtn = document.getElementById('saveButton'),
-            saveData = document.getElementById('saveData');
+            renderBtn     = document.getElementById('render-form-button'),
+            saveBtn       = document.getElementById('saveButton'),
+            saveData      = document.getElementById('saveData');
 
-        $(template).formBuilder(renderBtn, saveBtn);
+        var options = {
+            save: false
+        };
+
+        $(template).formBuilder(options);
 
         $(renderBtn).click(function(e) {
             e.preventDefault();
@@ -676,7 +671,6 @@
                 container: $(formContainer)
             });
         });
-
 
         $(saveBtn).click(function(e){
             $(saveData).attr("value", $(template).val());
@@ -687,7 +681,7 @@
 
     });
 </script>
-    <script type="text/javascript" src="../js/dashboard.js"></script>
+<script type="text/javascript" src="../js/dashboard.js"></script>
 
 
 </body>
