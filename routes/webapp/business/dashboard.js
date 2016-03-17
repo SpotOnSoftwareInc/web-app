@@ -3,18 +3,28 @@ var auth = require('../../../lib/auth');
 exports.get = function (req, res) {
     console.log('Get function dashboard');
     var database = req.db;
-    var employeeDB = database.get('employees');
-    var bid = req.user[0].business;
+    var employeeDB = database.get('employees'),
+        businessDB = database.get('businesses'),
+        bid = req.user[0].business;
     console.log("also find business owner ID lol");
+
     //employeeDB.find( { business: bid , password: { $ne: '' } })
     employeeDB.find( { business: bid  })
         .on('success', function(employees) {
             console.log(req.user[0]);
-            res.render('business/dashboard', {
-                emps: employees, emailz: req.user[0].email,
-                phone: req.user[0].phone,
-                message: req.flash("permission")
-            });
+
+            businessDB.findById(bid)
+                .on('success', function(business) {
+
+                        res.render('business/dashboard', {
+                            emps: employees,
+                            emailz: req.user[0].email,
+                            phone: req.user[0].phone,
+                            logo: '../' + business.logo,
+                            message: req.flash("permission")
+                        });
+                    }
+                )
 
         });
 };

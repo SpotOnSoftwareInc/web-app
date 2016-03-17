@@ -24,31 +24,33 @@ exports.get = function (req, res) {
     //employeeDB.find( { business: bid , password: { $ne: '' } })
     employeeDB.find( { business: bid  })
         .on('success', function(employees) {
-            console.log(req.user[0]);
-            res.render('admin/registerprocess', {
-                emps: employees,
-                fname: req.user[0].fname,
-                lname: req.user[0].lnae,
-                emailz: req.user[0].email,
-                phone: req.user[0].phone,
-                message: req.flash("permission")
-            });
+            //console.log(req.user[0]);
+            businessDB.findById(bid)
+                .on('success', function(newBiz) {
+                    res.render('admin/registerprocess', {
+                        companyName: newBiz.companyName,
+                        businessdb: '/' + newBiz._id + '/dashboard',
+                        checkinFrame: '/' + newBiz._id + '/checkin',
+                        companyAddress: newBiz.companyAddress,
+                        phone: newBiz.phone,
+                        theme: newBiz.theme,
+                        emps: employees,
+                        fname: req.user[0].fname,
+                        lname: req.user[0].lnae,
+                        emailz: req.user[0].email,
+                        logo: newBiz.logo
+
+                    });
+                });
+            //res.render('admin/registerprocess', {
+            //
+            //    phone: req.user[0].phone,
+            //    message: req.flash("permission")
+            //});
 
         });
 
-    //businessDB.findById(bid)
-    //    .on('success', function(newBiz) {
-    //        res.render('admin/registerprocess', {
-    //            companyName: newBiz.companyName,
-    //            businessdb: '/' + newBiz._id + '/dashboard',
-    //            checkinFrame: '/' + newBiz._id + '/checkin',
-    //            companyAddress: newBiz.companyAddress,
-    //            phone: newBiz.phone,
-    //            theme: newBiz.theme,
-    //            logo: newBiz.logo
-    //
-    //        });
-    //    });
+;
 };
 
 exports.post = function (req, res) {
