@@ -2,9 +2,17 @@
  * Created by Darmadoo on 2/16/16.
  */
 
+var prevHr = 0;
+var prevMin = 0;
+var prevSec = 0;
+
 function init(){
     _bindSearch();
     updateStatus();
+    $(".hr").text(prevHr);
+    $(".min").text(prevMin);
+    $(".sec").text(prevSec);
+    console.log(prevHr + " " + prevMin + " " + prevSec);
 }
 
 function updateStatus(){
@@ -16,7 +24,6 @@ function updateStatus(){
 
         var curState = curr.innerHTML;
 
-        // TODO KURT - Change the Appointment Made to being checked in status
         if(curState == "waiting"){
             console.log(id);
             $("#" + button).remove();
@@ -31,24 +38,34 @@ function updateStatus(){
         if(curState == "Appointment Made" || curState == "Checked in"){
             $("#" + button).remove();
             var zero = '<form id="formVis" method="post" action="deleteVisitor" enctype="application/x-www-form-urlencoded">';
-            var one = '<button name="visitorName" type="submit" class="button button-3d button-mini button-rounded button-red" value=' + id;
             if(curState == "Checked in"){
+                var one = '<button name="visitorName" type="submit" class="button button-3d button-mini button-rounded button-red" value=' + id;
                 var two = ' id="' + id + '-button">Check Out</button></form>';
             }
             else {
+                var one = '<button name="visitorName" type="submit" class="button button-3d button-mini button-rounded button-brown" value=' + id;
                 var two = ' id="' + id + '-button">Delete Appointment</button></form>';
             }
             var inner = zero  + one + two;
             $("#button-row-" + id).append(inner);
 
             $("#button-row-" + id).on("click", ".button-red", function() {
-                console.log("THIS COMMING UPP");
                 console.log(this);
                 var id = this.id;
                 var res = id.split("-");
                 var tar = "tr-" + res[0];
                 $("#" + tar).fadeOut(600, function(){
                     getTimeDiff(res[0]);
+                    $("#" + tar).remove();
+                });
+            });
+
+            $("#button-row-" + id).on("click", ".button-brown", function() {
+                console.log(this);
+                var id = this.id;
+                var res = id.split("-");
+                var tar = "tr-" + res[0];
+                $("#" + tar).fadeOut(600, function(){
                     $("#" + tar).remove();
                 });
             });
@@ -139,7 +156,7 @@ $(document).on('blur','#txt_fullname', function(){
 });
 
 $(".dropdown-menu-right a").click(function() {
-    var group = $(this).text();
+    var group = this.text;
     var temp = this.closest(".dropdown").id;
     var arr = temp.split("-");
     $('.dropdown-' + arr[1]).text(group);
@@ -186,6 +203,12 @@ function getTimeDiff(time){
     var countSec = $(".sec").text();
 
     var temp = $("#" + time + "-status").text();
+    console.log(countHr + " " + countMin + " " + countSec);
+    console.log(temp);
+    if(temp == "Not Checked in"){
+        temp = "0:0:0";
+    }
+
     var split = temp.split(":");
     var hr = split[0];
     var min = split[1];
@@ -241,6 +264,12 @@ function getTimeDiff(time){
     $(".hr").text(finHr);
     $(".min").text(finMin);
     $(".sec").text(finSec);
+
+    prevHr = finHr;
+    prevMin = finMin;
+    prevSec = finSec;
+    console.log("INSIDE");
+    console.log(prevHr + " " + prevMin + " " + prevSec);
 }
 
 function getAvg(old, cur){
