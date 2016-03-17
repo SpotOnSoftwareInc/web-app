@@ -13303,3 +13303,13 @@ body:not(.no-transition) #wrapper,
     -webkit-transform-origin: 0 0;
     transform-origin: 0 0;
 }
+
+.form_controls {
+    display:inline-block;
+    margin: 0 1%;
+}
+
+input[name="userLogo"], input[name="userTheme"] {
+    width: 200px;
+    margin-bottom:2em;
+}

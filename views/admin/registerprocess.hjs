@@ -77,11 +77,11 @@
                 <div>
                     <div id="ptab1">
 
-                        <p>Upload your Logo and Business information to feel at home</p>
+                        <h4>Upload your Logo and Business information to feel at home.</h4>
 
                         <!-- FORM -->
                         <div class="col_one_third clearfix">
-                            <div class="panel panel-default nobottommargin">
+                            <div class="panel panel-default">
                                 <div class="panel-body" style="padding: 40px;">
                                     <form method="post" action="" enctype="application/x-www-form-urlencoded" id="register-form" name="register-form" class="nobottommargin">
 
@@ -99,8 +99,8 @@
                                             <label for="register-form-phone">Phone Number:</label>
                                             <input type="text" id="register-form-phone" name="phone" value="{{phone}}" class="form-control" />
                                         </div>
-                                        <div class="col_full nobottommargin">
-                                            <input class="btn btn-primary" name="submit" type="submit" href="/update_business" value="Save">
+                                        <div class="col_full center nobottommargin">
+                                            <input class="button button-small button-teal" name="submit" type="submit" href="/update_business" value="Save">
 
                                         </div>
 
@@ -109,39 +109,36 @@
                             </div>
                         </div>
 
-                        <div
-                            class="col_one_fifth">
-                        </div>
+                        <div class="col_one_fifth"></div>
 
                         <!-- LOGO -->
                         <div class="row col_last">
                             <div class="col-sm-6 col-md-4">
-                                <div class="thumbnail">
-                                  <form method="post" action="uploadlogo" enctype="multipart/form-data" id="register-uploadlogo" name="register-uploadlogo" class="nobottommargin">
-                                      <img id="thumb" data-src={{logo}} src="{{logo}}" alt="your image" style="display: block;"/>
+                                <div class="thumbnail" style="padding:15px;">
+                                    <form method="post" action="uploadlogo" enctype="multipart/form-data" id="register-uploadlogo" name="register-uploadlogo" class="nobottommargin">
+                                        <img id="thumb" data-src={{logo}} src="{{logo}}" alt="your image" style="display: block;"/>
 
-                                      <div class="caption">
-                                        <h3>Upload Logo</h3>
-                                        <label for="photo_title">Title:</label>
-                                        <div class="form_controls">
-                                            <input id="photo_title" name="title" size="30" type="text" value="" placeholder="Image Title" />
+                                        <div class="caption logo-upload center">
+                                            <h3>Upload Logo</h3>
+                                            <label for="photo_title">Title:</label>
+                                            <div class="form_controls">
+                                                <input id="photo_title" name="title" size="30" type="text" value="" placeholder="Image Title" />
+                                            </div>
+                                            <input type='file' name="userLogo" onchange="readURL(this);" class="divcenter" />
+                                            <input class="button button-small button-teal" href="/registerprocess" name="submit" type="submit"  value="Save">
                                         </div>
-                                        <input type='file' name="userLogo" onchange="readURL(this);" />
-                                        <input class="btn btn-primary" href="/registerprocess" name="submit" type="submit"  value="Save">
-                                    </div>
-                                  </form>
+                                    </form>
                                 </div>
                             </div>
                         </div>
 
                         <a href="#" class="button button-3d nomargin fright tab-linker" rel="2">Continue</a>
-                        <a href="https://slack.com/oauth/authorize?scope=incoming-webhook&client_id=24668639410.24666586243"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
-                        
+
                     </div>
                     <div id="ptab2">
                         <div id="Add-Employees">
                             <div class="container clearfix">
-                                <h3>Add Employees</h3>
+                                <h4>Add employees, each with their own set of permissions.</h4>
                             </div>
                             <div class="container clearfix">
 
@@ -185,22 +182,10 @@
                                             <label for="template-contactform-role">Role (busAdmin, provider, staff)</label>
                                             <input type="text" id="template-contactform-role" name="role" value="{{role}}" class="required email sm-form-control" />
                                         </div>
-                                        <!--<div class="col_one_fifth ">-->
-                                        <!--<label>Permissions</label>-->
-                                        <!--<select class="sm-form-control required">-->
-                                        <!--<option value="">&#45;&#45; Select One &#45;&#45;</option>-->
-                                        <!--<option value="{{role}}">Business Owner</option>-->
-                                        <!--<option value="{{role}}">Provider</option>-->
-                                        <!--<option value="{{role}}">Receptionist</option>-->
-                                        <!--</select>-->
-
-                                        <!--</div>-->
-                                        <!--<div >-->
-                                        <!--<a href="#" type="addemployees" name="addemployees"><i class="icon-3x icon-line2-user-follow icon-align-left"></i></a>-->
-                                        <!--</div>-->
                                         <div class="col_one_fifth col_last pull-left">
                                             <!--<input type="hidden" name="callingFunc" value="regproc">-->
-                                            <input class="button button-3d button-large button-rounded button-green" name="callingFunc" type="submit"  value="Insert">
+                                            <br />
+                                            <input class="button button-small button-rounded button-teal" name="callingFunc" type="submit"  value="Quick Add">
                                         </div>
                                     </form>
 
@@ -216,7 +201,7 @@
                                             <th>Job Title</th>
                                             <th>Email</th>
                                             <th>Permissions</th>
-                                            <th>Edit</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -251,13 +236,11 @@
                     <div id="ptab3">
                         <div id="Manage-Theme">
 
-                            <div class=" nobottommargin clearfix center">
+                            <div class=" nobottommargin clearfix">
 
-                                <h1 class="center">Visitor Experience</h1>
-
-                                <h3 class="col-padding notoppadding nobottompadding center">
+                                <h4 class="col-padding notoppadding nobottompadding">
                                     Select one of our template forms for check-in use, or create a custom one with our form builder.
-                                </h3>
+                                </h4>
 
                                 <!-- Theme Items
                                 ============================================= -->
@@ -276,7 +259,7 @@
 
                                     <div class="post-grid grid-2 clearfix">
                                         <div class="entry clearfix nobottomborder">
-                                            <h4>Upload a background image for your Tablet:</h4>
+                                            <h4>Now upload a background image for your Tablet:</h4>
 
 
                                             <form method="post" action="uploadtheme" enctype="multipart/form-data" id="register-uploadlogo" name="register-uploadlogo" class="nobottommargin">
@@ -289,16 +272,18 @@
                                                 <img id="themeing" class="" data-src={{theme}} src="{{theme}}" alt="your image" style="display: block; width: 50%; margin-left:25%"/>
 
                                                 <div class="caption center">
+                                                    <br />
                                                     <label for="photo_title">Title:</label>
-                                                    <div class="form_controls text-center">
+                                                    <div class="form_controls">
                                                         <input id="theme_title" name="title" size="30" type="text" value="" placeholder="Image Title"/>
-                                                        <br /><br />
-                                                        <input type='file' name="userTheme" onchange="readURL(this);" style="margin-left:auto !important; margin-right:auto !important"/>
                                                     </div>
+                                                    <br /><br />
+                                                    <input type='file' name="userTheme" onchange="readURL(this);" style="margin-left:auto !important; margin-right:auto !important"/>
+
                                                 </div>
                                                 <div>
                                                     <hr>
-                                                    <input href="/registerprocess#ptab3" name="submit" type="submit" class="button button-xlarge button-center" value="Save Changes">
+                                                    <input href="/registerprocess#ptab3" name="submit" type="submit" class="button button-small button-teal button-center" value="Save Changes">
                                                 </div>
                                             </form>
                                         </div>
@@ -320,7 +305,15 @@
                         <a href="#" class="button button-3d nomargin fright tab-linker" rel="4">Continue</a>
                     </div>
                     <div id="ptab4">
-                        <p></p>
+                        <h4>Authorize iReceptionist to connect your entire office digitally.</h4>
+                        <div class="center">
+                            <a href="https://slack.com/oauth/authorize?scope=incoming-webhook&client_id=24668639410.24666586243">
+                                <img alt="Add to Slack" height="40" width="139"
+                                     src="https://platform.slack-edge.com/img/add_to_slack.png"
+                                     srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x,
+                                        https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" />
+                            </a>
+                        </div>
                         <a href="#" class="button button-3d nomargin tab-linker" rel="3">Previous</a>
                         <a href="#" class="button button-3d nomargin fright tab-linker" rel="5">Continue</a>
                     </div>
