@@ -29,7 +29,7 @@
     <script src='../js/cloudinary/js/jquery.iframe-transport.js' type='text/javascript'></script>
     <script src='../js/cloudinary/js/jquery.fileupload.js' type='text/javascript'></script>
     <script src='../js/cloudinary/js/jquery.cloudinary.js' type='text/javascript'></script>
-    <title>Checkin</title>
+    <title>Admin - Home</title>
 
 
     <script type="text/javascript">
@@ -43,18 +43,56 @@
 <script src="../javascripts/checkin.js" type="text/javascript"></script>
 <link rel="stylesheet" href="../css/checkin.css" type="text/css" />
 
-<form method="post" action="" enctype="application/x-www-form-urlencoded" >
+<form method="post" action="" enctype="application/x-www-form-urlencoded">
     <div>
-        <p>  <input type="text" name="name" value="{{name}}" placeholder="John Smith" id="text1"/>  </p>
+        <p>  <input type="{{form1.hidden}}" name="{{form1.label}}" value="{{form1.label}}" id="text1"/>  </p>
     </div>
+
     <div>
-        <p>  <input type="text" name="phone" value="{{phone}}" placeholder="123-456-7890"  id="text2"/>  </p>
+        <p>  <input type="{{form2.hidden}}" name="{{form2.label}}" value="{{form2.label}}"  id="text2"/>  </p>
     </div>
+
+    <div>
+        <p>  <input type="{{form3.hidden}}" name="{{form3.label}}" value="{{form3.label}}" id="text3"/>  </p>
+    </div>
+
+    <div>
+        <p>  <input type="{{form4.hidden}}" name="{{form4.label}}" value="{{form4.label}}"  id="text4"/>  </p>
+    </div>
+
+
     <div>
     <input type="submit" class="button" data-toggle="modal" data-target=".bs-example-modal-lg" value="Check in" id="button1">
+
+    <!-- Large modal -->
+    <!--<button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>-->
+
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-body">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Checked in!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Thank you checking in!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<form method="post" action="" enctype="application/x-www-form-urlencoded">-->
+        <!--<input type="text" name="name" value="{{name}}" placeholder="John Smith"/>-->
+        <!--<input type="text" name="phone" value="{{phone}}" placeholder="123-456-7890"/>-->
+        <!--<input class="btn custom-button" type="submit" value="checkin" href="/checkin" name="submit">-->
+    <!--</form>-->
+
+    <script type="text/javascript">
+        $('[data-toggle=popover]').popover();
+    </script>
 </div>
 </form>
-
 
 <!-- Footer Scripts
     ============================================= -->

@@ -34,15 +34,20 @@ module.exports = function (passport) {
             var business = {
                 email: email,
                 password: password,
-                companyName: req.body.companyName,
+                companyName: companyName,
                 companyAddress: '',
                 phone: '',
-                fname: req.body.fname,
-                lname: req.body.lname,
-                logo: '/images/logo.png',
-                theme: '/images/landing/epic.jpg',
-                billingPlan: 'trial',
-                walkins: false
+                fname: fname,
+                //username: username,
+                lname: lname,
+                logo: '',
+                theme: '',
+                billingPlan: '',
+                walkins: false,
+                form1: form1,
+                form2: form2,
+                form3: form3,
+                form4: form4 // where a form looks like: {hidden:bool,label:'labelName',password:bool}
             };
             if (business.fname === ''       ||
                 business.companyName === '' ||
@@ -92,8 +97,7 @@ module.exports = function (passport) {
             emailNotify: true,
             role: 'busAdmin',
             resetPasswordToken: undefined,
-            resetPasswordExpires: undefined,
-            billingTier: 'Trial'
+            resetPasswordExpires: undefined
         };
         console.log("Adding Employee: ");
         console.log(employee);
