@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var multer = require('multer');
 var passport = require('passport');
 var async = require('async');
-var Keen = require("keen-js");
+var Keen = require('keen-js');
 var favicon = require('serve-favicon');
 //var cloudinary = require('cloudinary').v2;
 var app = express();
@@ -27,13 +27,6 @@ console.log('I AM HERE');
 console.log('Connecting to DB: ' + mongoURI);
 var db = monk(mongoURI);
 
-//var cloudinaryURI = process.env.CLOUDINARY_URL;
-//cloudinary.config(cloudinaryURI);
-//cloudinary.config({
-//    cloud_name: 'ha9cind6w',
-//    api_key: '491512592115195',
-//    api_secret: 'U2kBkejmgyq8dEYQ8W72e9enMXA'
-//});
 
 //login config
 var businesses = db.get('businesses');
@@ -72,6 +65,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use(express.static(path.join(__dirname, 'static')));  GOLDTEAM
 
 
+//var cloudinaryURI = process.env.CLOUDINARY_URL;
+//cloudinary.config(cloudinaryURI);
+//cloudinary.config({
+//    cloud_name: 'ha9cind6w',
+//    api_key: '491512592115195',
+//    api_secret: 'U2kBkejmgyq8dEYQ8W72e9enMXA'
+//});
+//var keenURL = process.env.KEEN_API_URL || development;
+//Keen.config(keenURL);
+//
+//
+//app.use(Keen ({
+//    projectId: "56d8ada66f31a21ff3cdf3fe", // String (required always)
+//    writeKey: "3fbb21b09ead3c8385954e5f55014437e0ec8e7f1d63a39fe2ea98f8f857b68fc48d364d51e466e0700ad5b4bde78d173bc9780d8ab04a9400f2b7a7d63803911525ea41af7e835de8b9771a8d9c92efda4f36d52073c32736d6e43fa7b094fb", // String (required for sending)
+//    readKey: "98ce462342fedd3711bdf057a830e24e76bf6b5251cefc7b015bccfb21e674fd7487ee2883a49acd70cf4691bfa1c66adc3e0fd886459645233f0aa10ce59317ae9104b16443383728475d96863438074baac8dafa53aef7b39887c6d4805e47"      // String (required for querying)
+//}));
+//app.use(Keen(   ))
 
 //app.use(cloudinary({
 //    cloud_name: 'ha9cind6w',

@@ -26,11 +26,9 @@
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/plugins.js"></script>
     <script type="text/javascript" src="../js/admin.js"></script>
-    <!-- cloudinary library -->
-    <script src='../js/cloudinary/js/jquery.ui.widget.js' type='text/javascript'></script>
-    <script src='../js/cloudinary/js/jquery.iframe-transport.js' type='text/javascript'></script>
-    <script src='../js/cloudinary/js/jquery.fileupload.js' type='text/javascript'></script>
-    <script src='../js/cloudinary/js/jquery.cloudinary.js' type='text/javascript'></script>
+    <script type="text/javascript">
+        !function(a,b){a("Keen","https://d26b395fwzu5fz.cloudfront.net/3.4.0/keen.min.js",b)}(function(a,b,c){var d,e,f;c["_"+a]={},c[a]=function(b){c["_"+a].clients=c["_"+a].clients||{},c["_"+a].clients[b.projectId]=this,this._config=b},c[a].ready=function(b){c["_"+a].ready=c["_"+a].ready||[],c["_"+a].ready.push(b)},d=["addEvent","setGlobalProperties","trackExternalLink","on"];for(var g=0;g<d.length;g++){var h=d[g],i=function(a){return function(){return this["_"+a]=this["_"+a]||[],this["_"+a].push(arguments),this}};c[a].prototype[h]=i(h)}e=document.createElement("script"),e.async=!0,e.src=b,f=document.getElementsByTagName("script")[0],f.parentNode.insertBefore(e,f)},this);
+    </script>
     <title>Admin - Home</title>
 </head>
 <body class="stretched">
@@ -341,7 +339,28 @@
         </div>
     </section>
 </div>
+<script type="text/javascript">
+    var client = new Keen({
+        projectId: "56d8ada66f31a21ff3cdf3fe", // String (required always)
+        writeKey: "3fbb21b09ead3c8385954e5f55014437e0ec8e7f1d63a39fe2ea98f8f857b68fc48d364d51e466e0700ad5b4bde78d173bc9780d8ab04a9400f2b7a7d63803911525ea41af7e835de8b9771a8d9c92efda4f36d52073c32736d6e43fa7b094fb", // String (required for sending)
+        readKey: "98ce462342fedd3711bdf057a830e24e76bf6b5251cefc7b015bccfb21e674fd7487ee2883a49acd70cf4691bfa1c66adc3e0fd886459645233f0aa10ce59317ae9104b16443383728475d96863438074baac8dafa53aef7b39887c6d4805e47"      // String (required for querying)
+
+        // protocol: "https",         // String (optional: https | http | auto)
+        // host: "api.keen.io/3.0",   // String (optional)
+        // requestType: "jsonp"       // String (optional: jsonp, xhr, beacon)
+    });
+    Keen.ready(function() {
+        var metric = new Keen.Query("newBusiness", {
+            analysisType: "count",
+            timeframe: "this_1_month"
+        });
+
+        client.draw(metric, document.getElementById("newBusiness-count-chart"), {
+            chartType: "metric",
+            label: "Count of Businesses"
+        });
+    });
+</script>
 <script type="text/javascript" src="../js/functions.js"></script>
-<script src="../js/cloudinary/js/testing.js" type="text/javascript"></script>
 </body>
 </html>
