@@ -18,6 +18,17 @@ exports.get = function (req, res, next) {
         }
         var dbBusiness = result;
 
+        /*
+         * When getting data for checkin.hjs, need to get the form objects to display fields.
+         * A form object looks like:
+         *      {
+         *          hidden: boolean,
+         *          label: 'string',
+         *          password: boolean
+         *      }
+         *   where hidden determines if the input should be flagged hidden or text (might need to change this to
+         *      string with values "hidden" or "text" for HTML to not be dumb
+         */
         dbBusiness.form1 = result.form1;
         dbBusiness.form2 = result.form2;
         dbBusiness.form3 = result.form3;
