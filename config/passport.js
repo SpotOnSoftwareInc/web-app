@@ -43,7 +43,11 @@ module.exports = function (passport) {
                 logo: '',
                 theme: '',
                 billingPlan: '',
-                walkins: false
+                walkins: false,
+                form1: form1,
+                form2: form2,
+                form3: form3,
+                form4: form4 // where a form looks like: {hidden:bool,label:'labelName',password:bool}
             };
             if (business.fname === ''       ||
                 business.companyName === '' ||

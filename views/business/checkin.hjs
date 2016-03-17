@@ -45,12 +45,19 @@
 
 <form method="post" action="" enctype="application/x-www-form-urlencoded">
     <div>
-        <p>  <input type="text" name="name" value="{{name}}" placeholder="John Smith" id="text1"/>  </p>
+        <p>  <input type="{{form1.hidden}}" name="{{form1.label}}" value="{{form1.label}}" id="text1"/>  </p>
     </div>
 
+    <div>
+        <p>  <input type="{{form2.hidden}}" name="{{form2.label}}" value="{{form2.label}}"  id="text2"/>  </p>
+    </div>
 
     <div>
-        <p>  <input type="text" name="phone" value="{{phone}}" placeholder="123-456-7890"  id="text2"/>  </p>
+        <p>  <input type="{{form3.hidden}}" name="{{form3.label}}" value="{{form3.label}}" id="text3"/>  </p>
+    </div>
+
+    <div>
+        <p>  <input type="{{form4.hidden}}" name="{{form4.label}}" value="{{form4.label}}"  id="text4"/>  </p>
     </div>
 
 
