@@ -251,7 +251,6 @@
                                             <div>Create New Form</div>
                                         </a>
                                     </div>
-
                                     <hr>
                                     <h3>Upload a background image for your Tablet:</h3>
                                     <form method="post" action="uploadtheme" enctype="multipart/form-data" id="register-uploadlogo" name="register-uploadlogo" class="nobottommargin">
@@ -276,7 +275,10 @@
                                         </div>
                                     </form>
                                     <p>What your visitors will see:</p>
-                                    <iframe src='{{checkinFrame}}'></iframe>
+                                    <div>
+                                        <iframe src='{{checkinFrame}}' style="width: 800px; height: 500px;" id="fileframe"></iframe>
+                                    </div>
+
 
 
 
@@ -413,8 +415,8 @@
 
                             $('#themeing')
                                 .attr('src', e.target.result)
-                                .width(420)
-                                .height(280);
+                                .width(250)
+                                .height(180);
                         };
 
                         reader.readAsDataURL(input.files[0]);
