@@ -1,5 +1,5 @@
 // Test Cases
-// Testing is done with Jasmine
+// Testing is done with Jasmine (and Karma)
 // Bug Reporting: On Excel, Bug, File, Line Number, Function, Result of the Bug, Possible Solutions
 describe ("test cases", function(){
 
@@ -142,19 +142,33 @@ describe ("test cases", function(){
 	// Test Variables
 
 	it("password from existing username", function () {
-		expect(true).toBe(true);
+		var testAccount = { "Amy Jones", "applecider@yahoo.com", "NewCompany" };
+
+		// Checks if the username exists
+		setFixtures($('#login-form-email').val(newRedirect_00.indexOf(1)));
+
+		$('#forgotpw-form-submit').trigger("click");
+		expect($('#login-form-email')).toHaveValue(subAccount.indexOf(1));
+		//expect(true).toBe(true);
 	});
 
 	it("password from non-existing username", function () {
-		expect(true).toBe(true);
+		var testAccount = { "Amy Jones", "blahblah@yahoo.com", "NewCompany" };
+
+		// Checks if the username exists
+		setFixtures($('#login-form-email').val(newRedirect_00.indexOf(1)));
+
+		$('#forgotpw-form-submit').trigger("click");
+		expect($('#login-form-email')).toHaveValue(null);
+		//expect(true).toBe(true);
 	});
 
-	it("existing username", function () {
+	/*it("existing username", function () {
 		expect(true).toBe(true);
 	});
 
 	it("non-existing username", function () {
 		expect(true).toBe(true);
-	});
+	});*/
 });
 
