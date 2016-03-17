@@ -17,48 +17,50 @@ exports.get = function (req, res) {
     console.log("also find business owner ID lol");
 
     //employeeDB.find( { business: bid , password: { $ne: '' } })
-    employeeDB.find( { business: bid  })
-        .on('success', function(employees) {
-            console.log(req.user[0]);
+    employeeDB.find({business: bid})
+        .on('success', function (employees) {
+                console.log(req.user[0]);
 
-            //var startDateObject = new Date();
-            //var startTime = startDateObject.getTime();
+                //var startDateObject = new Date();
+                //var startTime = startDateObject.getTime();
 
-            //var endDateObject = new Date();
-            //var endTime = endDateObject.getTime();
-            //var timeSpent =  endTime - startTime;
+                //var endDateObject = new Date();
+                //var endTime = endDateObject.getTime();
+                //var timeSpent =  endTime - startTime;
 
 
+                businessDB.findById(bid)
+                    .on('success', function (business) {
 
-            businessDB.findById(bid)
-                .on('success', function(business) {
-
-                    var newBusiness = {
-                        businessID: business._id,
-                        billingPlan: business.billingPlan,
-                        companyName: business.companyName,
-                        walkins: business.walkins
-                    };
+                        console.log(business);
+                        var newBusiness = {
+                            businessID: business._id,
+                            billingPlan: business.billingPlan,
+                            companyName: business.companyName,
+                            walkins: business.walkins
+                        };
 // This sends the above data to Keen and records it as an event.
-                    keenClient.addEvent("newBusiness", newBusiness);
+                        keenClient.addEvent("newBusiness", newBusiness);
 
-                });
-
-// This builds a query that when executed will get the average time spent in the last hour from the "time_spent" collection.
-
-            //timeFrame how long you want to track the data
-
-                res.render('business/dashboard', {
+                        res.render('business/dashboard', {
                             emps: employees,
                             emailz: req.user[0].email,
                             phone: req.user[0].phone,
                             logo: '../' + business.logo,
                             message: req.flash("permission")
                         });
-                    }
-                )
 
-        };
+                    });
+
+// This builds a query that when executed will get the average time spent in the last hour from the "time_spent" collection.
+
+                //timeFrame how long you want to track the data
+
+
+            }
+        )
+
+};
 
 //exports.getLogo
 
