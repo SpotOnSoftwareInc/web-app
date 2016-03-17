@@ -40,6 +40,7 @@ exports.post = function(req,res, next) {
     var appointmentDB = req.db.get('appointment'),
         bid = req.user[0].business.toString(),
         name = req.body.name,
+        phone = req.body.phone,
         curtime = getTime();
 
         console.log(name);
@@ -61,6 +62,10 @@ exports.post = function(req,res, next) {
 
             var messageBody = name +' has checked in!';
             twilioClient.sendSmsToPhoneNumber('+16018133403', messageBody);
+
+            if(!phone){
+                phone = 'No Phone entered';
+            }
 
             var dd = {text: "A new customer [" + name + "] with phone number: [" + phone + "] just checked in!"};
             slack.send(dd);
