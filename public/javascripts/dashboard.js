@@ -4,8 +4,6 @@ $(function(){
   $(startTime);
   $(table);
   $(poll);
-
-
 });
 
 function dateToString(date) {
@@ -55,11 +53,11 @@ function checkTime(i) {
 }
 
 function table() {
-  
+
     var cols,$btn;
 
     $.get('/api/employee/'+eid+'/appointments/today', function( data ){
-        
+
         var count = 0;
         //empty's the table
         $('#tblBody').empty();
@@ -102,7 +100,7 @@ function table() {
                      $btn.click(function() {
                         $.ajax({
                             url: '/api/appointments/'+x+'/state',
-                            type: 'PUT',
+                            type: 'PUT'
                          });
                     });
 
@@ -153,7 +151,7 @@ function getAppDate(date){
     appTime = hoursPM+':'+minutesPM + ' PM';
   }
 
-  return appTime;  
+  return appTime;
 }
 
 // JQuery Insert Row
