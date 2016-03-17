@@ -18,13 +18,22 @@ exports.get = function (req, res, next) {
         }
         var dbBusiness = result;
 
-        if(!dbBusiness.theme){
+        dbBusiness.form1 = result.form1;
+        dbBusiness.form2 = result.form2;
+        dbBusiness.form3 = result.form3;
+        dbBusiness.form4 = result.form4;
+
+        if(!dbBusiness.theme) {
             // default theme (BG)
             dbBusiness.theme = '/images/landing/pika.jpg';
         }
 
         res.render('business/checkin', {
-            theme: dbBusiness.theme
+            theme: dbBusiness.theme,
+            form1: result.form1,
+            form2: result.form2,
+            form3: result.form3,
+            form4: result.form4
         });
     });
 };
@@ -34,14 +43,27 @@ exports.post = function(req,res, next) {
 
     var appointmentDB = req.db.get('appointment');
     var bid = req.user[0].business.toString();
-    var name = req.body.name;
-    console.log(name);
+    var dataFromForm1 = req.body.form1;
+    var dataFromForm2 = req.body.form2;
+    var dataFromForm3 = req.body.form3;
+    var dataFromForm4 = req.body.form4;
+    console.log(dataFromForm1);
+    console.log(dataFromForm2);
+    console.log(dataFromForm3);
+    console.log(dataFromForm);
     var curtime = getTime();
 
+    /*
+     * dataFromForm1-4 should be the strings/data provided as inputs to the different form fields in business
+     */
     appointmentDB.findAndModify({
-        query : {business: bid, visitor: name },
+        query : {business: bid, visitor: form1 },
         update: {
             $set: {
+                form1: form1,
+                form2: form2,
+                form3: form3,
+                form4: form4,
                 checkinTime: curtime,
                 state: 'waiting'
             }
