@@ -15,7 +15,7 @@
 //    });
 //};
 var async = require('async');
-
+var twilioClient = require('../business/twilio-client');
 
 exports.get = function (req, res) {
     console.log('Get function VisitorQueue');
@@ -36,8 +36,6 @@ exports.get = function (req, res) {
                 }
             }
 
-
-
             employeeDB.find( { business: bid4emp, role: 'provider' })
                 .on('success', function(providers) {
 
@@ -45,7 +43,6 @@ exports.get = function (req, res) {
                         appointments[i].providers = providers;
 
                     }
-
 
                     res.render('staff/visitor', {
                         appts: appointments,
@@ -60,7 +57,8 @@ exports.get = function (req, res) {
 
 
 exports.post = function (req, res) {
-    console.log("making appointment");
+    console.log("post function for visitor appointment");
+    //on appointment made, text & email confirmation to visitor
 
     var appointmentDB = req.db.get('appointment');
 
@@ -74,6 +72,11 @@ exports.post = function (req, res) {
     console.log(callingFunc);
 
     if (callingFunc == 'insert') {
+        console.log("INSERTING APPOINTMENT");
+        var messageBody = 'Hi ' + name +', your appointment at ' + apptTime + ' with ' + provider + ' has been made!';
+
+        twilioClient.sendSmsToPhoneNumber('+19089073401', messageBody);
+
         appointmentDB.insert({
             checkinTime: 0,
             provider: provider,
@@ -84,6 +87,7 @@ exports.post = function (req, res) {
             providers: [],
             state: 'Appointment Made'
         });
+
     }
 
     if (callingFunc == 'changeProv'){
@@ -98,7 +102,6 @@ exports.post = function (req, res) {
         var vid = req.body.vid;
         var name = req.body.name;
 
-        console.log(vid);
 
         appointmentDB.findAndModify({
                 query : {_id: vid },
@@ -109,8 +112,8 @@ exports.post = function (req, res) {
                 }
         },
         function(err,doc){
-            console.log("doc commign");
-            console.log(doc);
+            //console.log("doc commign");
+            //console.log(doc);
         });
     }
 

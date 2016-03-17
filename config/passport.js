@@ -92,7 +92,8 @@ module.exports = function (passport) {
             emailNotify: true,
             role: 'busAdmin',
             resetPasswordToken: undefined,
-            resetPasswordExpires: undefined
+            resetPasswordExpires: undefined,
+            billingTier: 'Trial'
         };
         console.log("Adding Employee: ");
         console.log(employee);
