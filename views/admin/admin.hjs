@@ -46,8 +46,8 @@
             <!-- Logo
             ============================================= -->
             <div id="logo">
-                <a href="#" class="standard-logo side-panel-trigger" data-dark-logo="../images/logo.png"><img src="../images/logo.png" alt=" Logo" style="background: fill;"></a>
-                <a href="#" class="retina-logo" data-dark-logo="../images/logo.png"><img src="../images/logo.png" alt=" Logo"></a>
+                <a href="/" class="standard-logo side-panel-trigger" data-dark-logo="../images/logo.png"><img src="../images/logo.png" alt=" Logo" style="background: fill;"></a>
+                <a href="/" class="retina-logo" data-dark-logo="../images/logo.png"><img src="../images/logo.png" alt=" Logo"></a>
             </div><!-- #logo end -->
 
             <!-- Primary Navigation
