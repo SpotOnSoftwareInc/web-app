@@ -6,6 +6,9 @@ var sendgrid  = require('sendgrid')('robobetty', 'NoKcE0FGE4bd');
 var twilioClient = require('../business/twilio-client');
 var ObjectId = require('mongodb').ObjectID;
 
+var Slack = require('node-slack');
+var slack = new Slack('https://hooks.slack.com/services/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');
+
 exports.get = function (req, res, next) {
     console.log("get function checkin");
 
@@ -24,6 +27,7 @@ exports.get = function (req, res, next) {
         }
 
         res.render('business/checkin', {
+
             theme: dbBusiness.theme
         });
     });
@@ -35,6 +39,7 @@ exports.post = function(req,res, next) {
     var appointmentDB = req.db.get('appointment');
     var bid = req.user[0].business.toString();
     var name = req.body.name;
+    var phone = req.body.phone;
     console.log(name);
     var curtime = getTime();
 
@@ -56,14 +61,16 @@ exports.post = function(req,res, next) {
 
             var messageBody = name +' has checked in!';
             twilioClient.sendSmsToPhoneNumber('+16018133403', messageBody);
+
+            var dd = {text: "A new customer [" + name + "] with phone number: [" + phone + "] just checked in!"};
+            slack.send(dd);
             res.redirect('../' + bid + '/done');
         }
     });
 
-    //res.redirect('../' + bid + '/done');
+
 
 };
-
 
 
 function getTime(){
