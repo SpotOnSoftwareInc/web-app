@@ -26,6 +26,7 @@
     ============================================= -->
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/plugins.js"></script>
+    <script type="text/javascript" src="js/registerprocess.js"></script>
 
 
     <!-- Only include on form edit page -->
@@ -121,7 +122,7 @@
                                     <li class="side-panel-trigger"><a href="#Add-Employees" style="padding: 8px;"><i class="icon-magic"></i>Add Employees<i class="icon-chevron-right"></i></a></li>
                                     <li class="side-panel-trigger"><a href="#Billing-Options" style="padding: 8px;"><i class="icon-gift"></i>Billing Options<i class="icon-chevron-right"></i></a></li>
                                     <li class="side-panel-trigger"><a href="#Manage-Theme" style="padding: 8px;"><i class="icon-gift"></i>Visitor Experience<i class="icon-chevron-right"></i></a></li>
-                                    <li class="side-panel-trigger"><a href="#SMS-and-Email" style="padding: 8px;"><i class="icon-gift"></i>SMS and Email<i class="icon-chevron-right"></i></a></li>
+
                                     <li class="side-panel-trigger"><a href="#Analytics" style="padding: 8px;"><i class="icon-tint"></i>Analytics<i class="icon-chevron-right"></i></a></li>
                                     <!--<li class="side-panel-trigger"><a href="#Design-Checkin-Page" style="padding: 8px;"><i class="icon-gift"></i>Design Checkin Page<i class="icon-chevron-right"></i></a></li>-->
                                     <li class="side-panel-trigger"><a href="#Settings" style="padding: 8px;"><i class="icon-tint"></i>Settings<i class="icon-chevron-right"></i></a></li>
@@ -270,46 +271,67 @@
 
                     <div id="Manage-Theme">
 
-                        <div class=" nobottommargin clearfix">
+                    <div class=" nobottommargin clearfix center">
 
-                            <h1 class="center">Visitor Experience</h1>
+                        <h1 class="center">Visitor Experience</h1>
 
-                            <h3 class="col-padding notoppadding nobottompadding center">
-                                Select one of our template forms for check-in use, or create a custom one with our form builder.
-                            </h3>
+                        <h3 class="col-padding notoppadding nobottompadding center">
+                            Select one of our template forms for check-in use, or create a custom one with our form builder.
+                        </h3>
 
-                            <!-- Theme Items
-                            ============================================= -->
-                            <div class="container text-center">
-                                <div>
-                                    <a href="#" class="button button-desc button-border button-rounded center"
-                                       data-toggle="modal" data-target="#templateModal">
-                                        <div>Choose Template</div>
-                                    </a>
+                        <!-- Theme Items
+                        ============================================= -->
+                        <div class="container text-center center">
+                            <div>
+                                <a href="#" class="button button-desc button-border button-rounded center"
+                                   data-toggle="modal" data-target="#templateModal">
+                                    <div>Choose Template</div>
+                                </a>
 
-                                    <a href="#" class="button button-desc button-border button-rounded center"
-                                       data-toggle="modal" data-target="#formBuilderModal">
-                                        <div>Create New Form</div>
-                                    </a>
+                                <a href="#" class="button button-desc button-border button-rounded center"
+                                   data-toggle="modal" data-target="#formBuilderModal">
+                                    <div>Create New Form</div>
+                                </a>
+                            </div>
+
+                            <div class="post-grid grid-2 clearfix">
+                                <div class="entry clearfix nobottomborder">
+                                    <h4>Upload a background image for your Tablet:</h4>
+
+
+                                    <form method="post" action="../uploadtheme" enctype="multipart/form-data" id="register-uploadlogo" name="register-uploadlogo" class="nobottommargin">
+
+                                        <img id="themeing" class="" data-src={{theme}} src="{{theme}}" alt="your image" style="display: block; width: 50%; margin-left:25%"/>
+
+                                        <div class="caption center">
+                                            <label >Title:</label>
+                                            <div class="form_controls text-center">
+                                                <input id="theme_title" name="title" size="30" type="text" value="" placeholder="Image Title"/>
+                                                <br /><br />
+                                                <input type='file' name="userTheme" onchange="readURL(this);" style="margin-left:auto !important; margin-right:auto !important"/>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <hr>
+                                            <input type="hidden" name="callingFunc" value="dashboard">
+                                            <input name="submit" type="submit" class="button button-xlarge button-center" value="Save Changes">
+                                        </div>
+                                    </form>
                                 </div>
-
-                                <hr>
-                                <h3>Upload a background image:</h3>
-
-                                <div class="current-background-image-container">
-                                    <!-- Current background image goes here -->
-                                    <div class="current-background-image">
-                                        <a href="#" class="button button-medium button-center">Upload New</a>
+                                <div class="entry clearfix nobottomborder div-center">
+                                    <br><br><br>
+                                    <h4>What your visitors will see:</h4>
+                                    <div class="iframe-wrapper">
+                                        <iframe src='{{checkinFrame}}' class="frame" id="fileframe"></iframe>
                                     </div>
                                 </div>
+                            </div>
 
-                                <div>
-                                <hr>
-                                <a href="#" class="button button-xlarge button-center"><i class="icon-save"></i>Save Changes</a>
-                                </div>
-                            </div><!-- #theme end -->
-                        </div>
-                    </div><!-- Visitor Experience end -->
+
+
+                        </div><!-- #theme end -->
+                    </div>
+                </div><!-- Visitor Experience end -->
                     <div id="Billing-Options">
 
                         <h3>Billing Options</h3>
@@ -448,11 +470,6 @@
                         </div>
 
                     </div>
-                    <div id="SMS-and-Email">
-
-                        <h3>Notifications</h3>
-
-                    </div>
                     <div id="Analytics">
 
                     <h3>Analytics</h3>
@@ -462,7 +479,7 @@
                     <div id="Settings">
                         <div class="container clearfix">
                             <div class="col_two_third col_last nobottommargin">
-                                <h3>Settings</h3>
+                                <h2>Settings</h2>
 
                                 <p>Manage your account settings here</p>
 
@@ -510,6 +527,47 @@
 
                                 </form>
 
+                                <br>
+                                <!-- LOGO -->
+                                <div class="col_full">
+                                    <div class="col_full">
+                                        <div class="thumbnail">
+                                            <form method="post" action="../uploadlogo" enctype="multipart/form-data" id="register-uploadlogo" name="register-uploadlogo" class="nobottommargin">
+                                                <img id="thumb" data-src={{logo}} src="{{logo}}" alt="your image" style="display: block;"/>
+
+                                                <div class="caption">
+                                                    <h3>Upload Logo</h3>
+                                                    <label for="photo_title">Title:</label>
+                                                    <div class="form_controls">
+                                                        <input id="photo_title" name="title" size="30" type="text" value="" placeholder="Image Title" />
+                                                    </div>
+                                                    <input type='file' name="userLogo" onchange="readURL(this);" />
+                                                    <input type="hidden" name="callingFunc" value="dashboard">
+                                                    <input class="btn btn-primary" href="/registerprocess" name="submit" type="submit"  value="Save">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="container clearfix postcontent">
+                                    <div class="col_half ">
+                                        <div class="fancy-title title-border topmargin">
+                                            <h3>Text SMS</h3>
+                                        </div>
+                                        <a href="#" class="button button-3d button-small button-rounded button-lime">Yes</a>
+                                        <a href="#" class="button button-3d button-small button-rounded button-red">no</a>
+                                    </div>
+                                    <div class="col_half col_last">
+                                        <div class="fancy-title title-border topmargin">
+                                            <h3>Email</h3>
+                                        </div>
+                                        <a href="#" class="button button-3d button-small button-rounded button-lime">Yes</a>
+                                        <a href="#" class="button button-3d button-small button-rounded button-red">no</a>
+                                    </div>
+
+                                </div>
+
                             </div>
                         <div class=" nobottommargin clearfix"></div>
                         </div>
@@ -520,6 +578,30 @@
                 </div>
 
             <div></div>
+            <script>
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#thumb')
+                            .attr('src', e.target.result)
+                            .width(300)
+                            .height(200);
+
+                        $('#themeing')
+                            .attr('src', e.target.result)
+                            .width(250)
+                            .height(180);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            //                function chooseFile() {
+            //                    $("#fileInput").click();
+            //                }
+        </script>
 
             <script>
                 $(function() {

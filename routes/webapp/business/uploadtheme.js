@@ -9,6 +9,8 @@ exports.post = function(req, res, next){
     var db = req.db;
     var businesses = db.get('businesses');
     var businessID = req.user[0].business;
+    var callingFunc = req.body.callingFunc;
+
     if(req.files.userTheme){
 
         businesses.updateById(businessID, {
@@ -21,7 +23,13 @@ exports.post = function(req, res, next){
                 if (err) {
                     return next(err);
                 }
-                res.redirect('/registerprocess#ptab3');
+                if(callingFunc == "dashboard"){
+                    res.redirect('/' + businessID + '/dashboard#Manage-Theme');
+                }
+                else{
+                    res.redirect('/registerprocess#ptab3');
+                }
+
             }
 
         );
@@ -35,11 +43,21 @@ exports.post = function(req, res, next){
                 }
 
                 if(results.logo){
-                    res.redirect('/registerprocess#ptab3');
+                    if(callingFunc == "dashboard"){
+                        res.redirect('/' + businessID + '/dashboard#Manage-Theme');
+                    }
+                    else{
+                        res.redirect('/registerprocess#ptab3');
+                    }
 
                 }
                 else{
-                    res.redirect('/registerprocess#ptab3');
+                    if(callingFunc == "dashboard"){
+                        res.redirect('/' + businessID + '/dashboard#Manage-Theme');
+                    }
+                    else{
+                        res.redirect('/registerprocess#ptab3');
+                    }
                 }
             }
         );

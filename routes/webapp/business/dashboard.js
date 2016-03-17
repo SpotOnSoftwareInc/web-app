@@ -20,7 +20,9 @@ exports.get = function (req, res) {
                             emps: employees,
                             emailz: req.user[0].email,
                             phone: req.user[0].phone,
-                            logo: '../' + business.logo,
+                            theme: business.theme,
+                            logo: business.logo,
+                            checkinFrame: '/' + business._id + '/checkin',
                             message: req.flash("permission")
                         });
                     }
@@ -55,6 +57,5 @@ exports.post = function (req, res) {
 
     }
     // Re-render all the remaining emps
-
 
 };
