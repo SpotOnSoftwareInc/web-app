@@ -158,4 +158,4 @@ function getTime(){
     }
 
     return t_str;
-}}
+}};
