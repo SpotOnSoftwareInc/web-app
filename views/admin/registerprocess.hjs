@@ -326,11 +326,9 @@
                                                 </ul>
                                             </div>
                                             <div class="pricing-action">
-                                                <form action="#" method="post" role="form" class="clearfix">
-                                                    <button value="submit" type="submit" class="button button-3d button-teal button-large" data-toggle="modal" data-target=".pricing-starter">
-                                                        Select Starter
-                                                    </button>
-                                                </form>
+                                                <button class="button button-3d button-teal button-large" data-toggle="modal" data-target=".pricing-starter">
+                                                    Select Starter
+                                                </button>
                                             </div>
 
                                         </div>
@@ -355,11 +353,9 @@
                                                 </ul>
                                             </div>
                                             <div class="pricing-action">
-                                                <form action="#" method="post" role="form" class="clearfix">
-                                                    <button value="submit" type="submit" class="button button-3d button-teal button-large" data-toggle="modal" data-target=".pricing-professional">
-                                                        Select Professional
-                                                    </button>
-                                                </form>
+                                                <button value="submit" type="submit" class="button button-3d button-teal button-large" data-toggle="modal" data-target=".pricing-professional">
+                                                    Select Professional
+                                                </button>
                                             </div>
 
                                         </div>
@@ -385,11 +381,9 @@
                                                 </ul>
                                             </div>
                                             <div class="pricing-action">
-                                                <form action="#" method="post" role="form" class="clearfix">
-                                                    <button value="submit" type="submit" class="button button-3d button-teal button-large" data-toggle="modal" data-target=".pricing-enterprise">
-                                                        Select Enterprise
-                                                    </button>
-                                                </form>
+                                                <button value="submit" type="submit" class="button button-3d button-teal button-large" data-toggle="modal" data-target=".pricing-enterprise">
+                                                    Select Enterprise
+                                                </button>
                                             </div>
                                         </div>
 
@@ -462,9 +456,19 @@
                 </div>
                 <div class="modal-body div-center center">
                     <h4>You have selected: <b>Starter</b> at <b>$50.00/mo</b></h4>
-                    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=BKDDL56BJD5NQ" >
-                        <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="Check out with PayPal" />
-                    </a>
+
+                    <form class="nobottommargin" method="post" action="" enctype="application/x-www-form-urlencoded">
+                        <input type="hidden" name="callingFunc" value="updatePlan">
+                        <input type="hidden" name="planName" value="starter">
+                        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=BKDDL56BJD5NQ" >
+                            <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="Check out with PayPal" />
+                        </a>
+                        <br /><br />
+                        <div class="modal-footer">
+                            <input class="button button-3d button-teal button-large" data-dismiss="modal" name="submit" type="submit" value="Done">
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>
@@ -480,9 +484,17 @@
                 </div>
                 <div class="modal-body div-center center">
                     <h4>You have selected: <b>Professional</b> at <b>$100.00/mo</b>.</h4>
-                    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=BKDDL56BJD5NQ" >
-                        <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="Check out with PayPal" />
-                    </a>
+                    <form class="nobottommargin" method="post" action="" enctype="application/x-www-form-urlencoded">
+                        <input type="hidden" name="callingFunc" value="updatePlan">
+                        <input type="hidden" name="planName" value="professional">
+                        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=BKDDL56BJD5NQ" >
+                            <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="Check out with PayPal" />
+                        </a>
+                        <br /><br />
+                        <div class="modal-footer">
+                            <input class="button button-3d button-teal button-large" data-dismiss="modal" name="submit" type="submit" value="Done">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -498,9 +510,17 @@
                 </div>
                 <div class="modal-body div-center center">
                     <h4>You have selected: <b>Enterprise</b> at <b>$200.00/mo</b>.</h4>
-                    <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=BKDDL56BJD5NQ" >
-                        <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="Check out with PayPal" />
-                    </a>
+                    <form class="nobottommargin" method="post" action="" enctype="application/x-www-form-urlencoded">
+                        <input type="hidden" name="callingFunc" value="updatePlan">
+                        <input type="hidden" name="planName" value="enterprise">
+                        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_subscr-find&alias=BKDDL56BJD5NQ" >
+                            <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/checkout-logo-large.png" alt="Check out with PayPal" />
+                        </a>
+                        <br /><br />
+                        <div class="modal-footer">
+                            <input class="button button-3d button-teal button-large" data-dismiss="modal" name="submit" type="submit" value="Done">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
