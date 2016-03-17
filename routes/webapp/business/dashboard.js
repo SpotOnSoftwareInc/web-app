@@ -58,8 +58,7 @@ exports.get = function (req, res) {
                     }
                 )
 
-        });
-};
+        };
 
 //exports.getLogo
 
