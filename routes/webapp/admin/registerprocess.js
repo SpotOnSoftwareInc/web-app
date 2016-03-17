@@ -60,6 +60,10 @@ exports.post = function (req, res) {
     var phone = req.body.phone;
 
     var callingFunc = req.body.callingFunc;
+    var form1 = req.body.form1;
+    var form2 = req.body.form2;
+    var form3 = req.body.form3;
+    var form4 = req.body.form4;
     var planName = req.body.planName;
 
     var businessDB = req.db.get('businesses');
@@ -102,6 +106,21 @@ exports.post = function (req, res) {
             update: {
                 $set: {
                     plan: planName
+                }
+            }
+        });
+    }
+    /* User selecting updating forms */
+    else if( callingFunc == 'updateForms') {
+        //console.log('**Updating plan');
+        businessDB.findAndModify({
+            query: {_id: bid},
+            update: {
+                $set: {
+                    form1: form1,
+                    form2: form2,
+                    form3: form3,
+                    form4: form4
                 }
             }
         });

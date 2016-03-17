@@ -42,7 +42,7 @@ module.exports = function (passport) {
                 logo: '/images/logo.png',
                 theme: '/images/landing/epic.jpg',
                 billingPlan: 'trial',
-                walkins: false
+                walkins: false,
                 form1: {hidden:false,label:'Name',password:false},
                 form2: {hidden:false,label:'Phone',password:true},
                 form3: {hidden:true,label:'form3',password:false},
