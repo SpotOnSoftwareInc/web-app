@@ -35,13 +35,54 @@ exports.post = function (req, res) {
     console.log("Post Function for dashboard page ");
 
     var bid = req.user[0].business;
+    var db = req.db;
+    var businesses = db.get('businesses');
     var myFunction = req.body.callingFunc;
 
 
     if(myFunction == 'saveForm'){
         console.log('SAVE DATA FROM FORM');
         console.log(req.body.saveData);
-        res.redirect('../'+ bid +'/dashboard#Manage-Theme');
+
+        var form1 = {hidden: true, label: '', password: false};
+        var form2 = {hidden: true, label: '', password: false};
+        var form3 = {hidden: true, label: '', password: false};
+        var form4 = {hidden: true, label: '', password: false};
+
+        form1.hidden = req.body.form1Hidden;
+        form2.hidden = req.body.form2Hidden;
+        form3.hidden = req.body.form3Hidden;
+        form4.hidden = req.body.form4Hidden;
+
+        form1.label = req.body.form1Label;
+        form2.label = req.body.form2Label;
+        form3.label = req.body.form3Label;
+        form4.label = req.body.form4Label;
+
+        form1.password = req.body.form1Password;
+        form2.password = req.body.form2Password;
+        form3.password = req.body.form3Password;
+        form4.password = req.body.form4Password;
+
+        console.log(form1);
+        console.log(form2);
+        console.log(form3);
+        console.log(form4);
+
+        businesses.findById(bid, function (err, result) {
+            if (err) {
+                return next(err);
+            }
+            businesses.update({_id:bid}, {
+                //writes in database
+                $set :{
+                    form1: form1,
+                    form2: form2,
+                    form3: form3,
+                    form4: form4
+                }
+            });
+        });
     }
 
     if(myFunction == 'removeEmployee'){

@@ -136,7 +136,7 @@
 
                         <a href="#" class="button button-3d nomargin fright tab-linker" rel="2">Continue</a>
                         <a href="https://slack.com/oauth/authorize?scope=incoming-webhook&client_id=24668639410.24666586243"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
-                        
+
                     </div>
                     <div id="ptab2">
                         <div id="Add-Employees">
@@ -556,6 +556,58 @@
                     </form>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="formBuilderModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Form Builder</h4>
+                </div>
+                <div class="modal-body row">
+
+                    <form action="" method="post">
+                        <div class="">
+                            <input type="hidden" name="saveData" id="saveData" value="">
+                            <input type="hidden" name="callingFunc"  value="updateForm">
+
+                            <div>
+                                <input type="checkbox" name="form1Hidden" value="">
+                                <input type="text" name="form1Label" value="">
+                                <input type="checkbox" name="form1Password" value="">
+                            </div>
+
+                            <div>
+                                <input type="checkbox" name="form2Hidden" value="">
+                                <input type="text" name="form2Label" value="">
+                                <input type="checkbox" name="form2Password" value="">
+                            </div>
+
+                            <div>
+                                <input type="checkbox" name="form3Hidden" value="">
+                                <input type="text" name="form3Label" value="">
+                                <input type="checkbox" name="form3Password" value="">
+                            </div>
+
+                            <div>
+                                <input type="checkbox" name="form4Hidden" value="">
+                                <input type="text" name="form4Label" value="">
+                                <input type="checkbox" name="form4Password" value="">
+                            </div>
+
+                            <input class="btn btn-default" type="submit" value="Save Form">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

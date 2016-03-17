@@ -113,6 +113,32 @@ exports.post = function (req, res) {
     /* User selecting updating forms */
     else if( callingFunc == 'updateForms') {
         //console.log('**Updating plan');
+
+        var form1 = {hidden: true, label: '', password: false};
+        var form2 = {hidden: true, label: '', password: false};
+        var form3 = {hidden: true, label: '', password: false};
+        var form4 = {hidden: true, label: '', password: false};
+
+        form1.hidden = req.body.form1Hidden;
+        form2.hidden = req.body.form2Hidden;
+        form3.hidden = req.body.form3Hidden;
+        form4.hidden = req.body.form4Hidden;
+
+        form1.label = req.body.form1Label;
+        form2.label = req.body.form2Label;
+        form3.label = req.body.form3Label;
+        form4.label = req.body.form4Label;
+
+        form1.password = req.body.form1Password;
+        form2.password = req.body.form2Password;
+        form3.password = req.body.form3Password;
+        form4.password = req.body.form4Password;
+
+        console.log(form1);
+        console.log(form2);
+        console.log(form3);
+        console.log(form4);
+
         businessDB.findAndModify({
             query: {_id: bid},
             update: {
