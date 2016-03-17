@@ -5,9 +5,9 @@ var Keen = require("keen-js");
 exports.get = function (req, res) {
     console.log('Get function dashboard');
     var keenClient = new Keen({
-        projectId: "56d8ada66f31a21ff3cdf3fe", // String (required always)
-        writeKey: "3fbb21b09ead3c8385954e5f55014437e0ec8e7f1d63a39fe2ea98f8f857b68fc48d364d51e466e0700ad5b4bde78d173bc9780d8ab04a9400f2b7a7d63803911525ea41af7e835de8b9771a8d9c92efda4f36d52073c32736d6e43fa7b094fb", // String (required for sending)
-        readKey: "98ce462342fedd3711bdf057a830e24e76bf6b5251cefc7b015bccfb21e674fd7487ee2883a49acd70cf4691bfa1c66adc3e0fd886459645233f0aa10ce59317ae9104b16443383728475d96863438074baac8dafa53aef7b39887c6d4805e47"      // String (required for querying)
+        projectId: "56d9241090e4bd6b6a39c7f0", // String (required always)
+        writeKey: "80eeef9d584cd35dc2c70785b0b55d3bb55255b1e0f9734a5351f5c9bbc0c609041fd912891e4a0198ec9624a995c3997ef8475b16c8883481b44ff74e6505f8aedb056c910af2732eef1d53435ca42b17c265ddfd06dbb1193b9ac9345434d3", // String (required for sending)
+        readKey: "07272285601cf3434496fb641854e9c377b292c3c71a6b8d47a6dd0130d20bae5d72653b454acdf92748e661c3d20956385b423fed6fc7f890e8816148fbe45b1012330967027675d998d3653d1f890ac796036dddbc48e4dc553a8f491ca70c"      // String (required for querying)
     });
 
     var database = req.db;

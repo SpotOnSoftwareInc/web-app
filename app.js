@@ -125,8 +125,10 @@ app.use(passport.session()); // persistent login sessions
 
 //Access control required for routes and passport
 app.all('*', function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'https://api.keen.io:443, fonts.googleapis.com');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    //res.header('Access-Control-Allow-Origin', 'https://api.keen.io:443, fonts.googleapis.com');
+    //res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Origin, X-Requested-With, Accept');
     res.header('Access-Control-Allow-Credentials', true);
     res.header('Access-Control-Allow-withCredentials', true);
