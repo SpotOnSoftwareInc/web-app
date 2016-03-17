@@ -21,25 +21,14 @@ exports.get = function (req, res) {
 exports.post = function (req, res) {
     console.log("Post Function for admin page to delete functions ");
     //Removing a user
-    console.log(req.body);
     var bid = req.body.bizId.toString();
-    var businesses = req.body.bizzes;
-
-    var database = req.db;
-    var businessDB = database.get('businesses');
+    var businessDB = req.db.get('businesses');
 
     businessDB.remove({_id: bid});
 
     businessDB.find()
         .on('success', function(businesses) {
-
-            console.log(businesses);
-
-            res.render('admin/admin', {
-                bizz: businesses,
-                message: req.flash("permission")
-            });
-
+            res.redirect('admin/admin');
         });
 
 };

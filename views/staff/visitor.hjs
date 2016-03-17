@@ -73,6 +73,7 @@
 
         <div class="container clearfix">
             <h1>Check-ins</h1>
+            <p>Insert multiple appointments using upload CSV</p>
             <ol class="breadcrumb">
                 <li>
                     <button class="button button-3d button-rounded button-aqua" data-toggle="modal" data-target="#myModal">Upload CSV</button>
@@ -163,7 +164,7 @@
                     </div>
                     </form>
                 </td>
-                appoiontment time
+                <!--appoiontment time-->
                 <td>{{apptTime}}</td>
                 <!--status-->
                 <td class="state" id="state-{{_id}}">{{state}}</td>
@@ -198,10 +199,11 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Upload CSV</h4>
             </div>
+            <p>Upload multiple appointments at once using a csv formatted file. Formatting is 'FirstName LastName Time(12:20PM/AM)
+                FirstNameOfProvider LastNameOfProvider'. Each appointment needs to be separated by a new line</p>
             <form method="post" action="addappointments" enctype="application/x-www-form-urlencoded">
                 <div class="modal-body">
                     <div class="row text-center">
-
                         <textarea rows="10" cols="35" class="add-email" type="text" name="csvEmployees" placeholder="CSV of Employees EMAILS" required></textarea>
                     </div>
                 </div>
