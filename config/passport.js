@@ -44,10 +44,11 @@ module.exports = function (passport) {
                 theme: '',
                 billingPlan: '',
                 walkins: false,
-                form1: form1,
-                form2: form2,
-                form3: form3,
-                form4: form4 // where a form looks like: {hidden:bool,label:'labelName',password:bool}
+                form1: {hidden:false,label:'Name',password:false},
+                form2: {hidden:false,label:'Phone',password:true},
+                form3: {hidden:true,label:'form3',password:false},
+                form4: {hidden:true,label:'form4',password:false}
+                // where a form looks like: {hidden:bool,label:'labelName',password:bool}
             };
             if (business.fname === ''       ||
                 business.companyName === '' ||
