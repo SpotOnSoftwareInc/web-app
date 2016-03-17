@@ -1,8 +1,11 @@
 var crypto = require('crypto');
 var baby = require('babyparse');
 var async = require('async');
-var sendgrid  = require('sendgrid')('robobetty', 'NoKcE0FGE4bd');
 var ObjectId = require('mongodb').ObjectID;
+var auth = require('../../../lib/auth');
+var bcrypt = require('bcrypt-nodejs');
+var nodemailer = require('nodemailer');
+var smtpTransport = require("nodemailer-smtp-transport");
 
 /**
  * Takes a req and res parameters and is inputted into function to get employee, notemployee, and business data.
@@ -72,14 +75,16 @@ exports.post = function(req,res){
     console.log('breaks here add one employee');
     //var parsed = baby.parse(req.body.csvEmployees);
     //var rows = parsed.data;
-    var database =  req.db;
-    var employeeDB = database.get('employees');
-    var businessID = req.user[0].business.toString();
-    var fname = req.body.fname;
-    var lname = req.body.lname;
-    var email = req.body.email;
-    var role = req.body.role;
-    var token = randomToken();
+    var database =  req.db,
+        employeeDB = database.get('employees'),
+        businessID = req.user[0].business.toString(),
+        fname = req.body.fname,
+        lname = req.body.lname,
+        email = req.body.email,
+        role = req.body.role,
+        defaultPW = 'canthackus',
+        password = auth.hashPassword(defaultPW),
+        token = randomToken();
 
     employeeDB.insert({
         business: ObjectId(businessID),
@@ -87,7 +92,7 @@ exports.post = function(req,res){
         lname: lname,
         email: email,
         registrationToken : token,
-        password: '',
+        password: password,
         phone: '',
         smsNotify: true,
         emailNotify: true,
@@ -95,23 +100,34 @@ exports.post = function(req,res){
         role: role
     });
 
+    var transport = nodemailer.createTransport(smtpTransport({
+        service:'gmail',
+        auth : {
+            user : "ireceptionistcorp@gmail.com",
+            pass : "sossossos"
+        }
+    }));
+    console.log('BREAKING HERE');
+    var mailOptions = {
+        to: email,
+        from: 'iReceptionistCorp@gmail.com',
+        subject: 'Welcome to iReceptionist',
+        text: 'Hello,\n\n' +
+        'A business admin from ' + businessID + ' has added you as an employee for iReceptionist service\n\n' +
+        'Click the following link to complete setting up your account:\n' +
+        'http://' + req.headers.host + '/reset/' + token + '\n\n' +
+        'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+    };
+    console.log('BREAKING HERE 2');
+    transport.sendMail(mailOptions, function(err) {
+        //req.flash('info', 'An e-mail has been sent to ' + email + ' with further instructions.');
+        console.log(err);
+        //done(err, 'done');
+    });
 
-        //sendgrid.send({
-        //to: email,
-        //from: 'test@localhost',
-        //subject: 'Employee Signup',
-        //text: 'Hello ' + username + ',\n\n' + 'Please click on the following link, or paste this into your browser to complete sign-up the process: \n\n' +
-        //'http://robobetty-dev.herokuapp.com/employeeregister?token=' + token
-        //},
-        //function(err){
-        //    if (err) {
-        //        return next(err);
-        //    }
-        //  });
-    //}
     res.redirect('../' + req.user[0].business + '/dashboard');
     //res.redirect('/');
-}
+};
 
 
 function randomToken() {

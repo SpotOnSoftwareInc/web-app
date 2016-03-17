@@ -1,7 +1,6 @@
 var crypto = require('crypto');
 var baby = require('babyparse');
 var async = require('async');
-var sendgrid  = require('sendgrid')('robobetty', 'NoKcE0FGE4bd');
 var ObjectId = require('mongodb').ObjectID;
 var auth = require('../../../lib/auth');
 var bcrypt = require('bcrypt-nodejs');

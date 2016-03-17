@@ -35,10 +35,13 @@ module.exports = function (passport) {
                 email: email,
                 password: password,
                 companyName: req.body.companyName,
+                companyAddress: '',
                 phone: '',
                 fname: req.body.fname,
                 lname: req.body.lname,
-                logo: '',
+                logo: '/images/logo.png',
+                theme: '/images/landing/epic.jpg',
+                billingPlan: 'trial',
                 walkins: false
             };
             if (business.fname === ''       ||
