@@ -111,7 +111,7 @@ exports.post = function (req, res) {
         });
     }
     /* User selecting updating forms */
-    else if( callingFunc == 'updateForms') {
+    else if( callingFunc == 'updateForm') {
         //console.log('**Updating plan');
 
         var form1 = {hidden: true, label: '', password: false};
@@ -119,20 +119,20 @@ exports.post = function (req, res) {
         var form3 = {hidden: true, label: '', password: false};
         var form4 = {hidden: true, label: '', password: false};
 
-        form1.hidden = req.body.form1Hidden;
-        form2.hidden = req.body.form2Hidden;
-        form3.hidden = req.body.form3Hidden;
-        form4.hidden = req.body.form4Hidden;
+        form1.hidden = req.body.form1Hidden ? false : true;
+        form2.hidden = req.body.form2Hidden ? false : true;
+        form3.hidden = req.body.form3Hidden ? false : true;
+        form4.hidden = req.body.form4Hidden ? false : true;
 
         form1.label = req.body.form1Label;
         form2.label = req.body.form2Label;
         form3.label = req.body.form3Label;
         form4.label = req.body.form4Label;
 
-        form1.password = req.body.form1Password;
-        form2.password = req.body.form2Password;
-        form3.password = req.body.form3Password;
-        form4.password = req.body.form4Password;
+        form1.password = req.body.form1Password ? true : false;
+        form2.password = req.body.form2Password ? true : false;
+        form3.password = req.body.form3Password ? true : false;
+        form4.password = req.body.form4Password ? true : false;
 
         console.log(form1);
         console.log(form2);

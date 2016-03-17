@@ -577,7 +577,7 @@
 <div class="modal fade" id="formBuilderModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-body">
-         <div class="modal-content">
+            <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title">Form Builder</h4>
@@ -587,42 +587,38 @@
                     <form action="" method="post">
                         <div class="">
                             <input type="hidden" name="saveData" id="saveData" value="">
-                            <input type="hidden" name="callingFunc"  value="saveForm">
+                            <input type="hidden" name="callingFunc"  value="updateForm">
 
                             <div>
-                                <input type="checkbox" name="form1Hidden" value="">
-                                <input type="text" name="form1Label" value="">
-                                <input type="checkbox" name="form1Password" value="">
+                                <input type="checkbox" name="form1Hidden" value="true">
+                                <input type="text" name="form1Label" placeholder="Field Name (e.g. Address)" value="">
+                                <input type="checkbox" name="form1Password" value="true">
                             </div>
 
                             <div>
-                                <input type="checkbox" name="form2Hidden" value="">
-                                <input type="text" name="form2Label" value="">
-                                <input type="checkbox" name="form2Password" value="">
+                                <input type="checkbox" name="form2Hidden" value="true">
+                                <input type="text" name="form2Label" placeholder="Field Name (e.g. Address)" value="">
+                                <input type="checkbox" name="form2Password" value="true">
                             </div>
 
                             <div>
-                                <input type="checkbox" name="form3Hidden" value="">
-                                <input type="text" name="form3Label" value="">
-                                <input type="checkbox" name="form3Password" value="">
+                                <input type="checkbox" name="form3Hidden" value="true">
+                                <input type="text" name="form3Label" placeholder="Field Name (e.g. Address)" value="">
+                                <input type="checkbox" name="form3Password" value="true">
                             </div>
 
                             <div>
-                                <input type="checkbox" name="form4Hidden" value="">
-                                <input type="text" name="form4Label" value="">
-                                <input type="checkbox" name="form4Password" value="">
+                                <input type="checkbox" name="form4Hidden" value="true">
+                                <input type="text" name="form4Label" placeholder="Field Name (e.g. Address)" value="">
+                                <input type="checkbox" name="form4Password" value="true">
                             </div>
 
-                            <input class="btn btn-default" type="submit">Save Form</input>
+                            <input class="btn btn-default" type="submit" value="Save Form">
                         </div>
                     </form>
                 </div>
-                 <div class="modal-footer">
-                     <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
-                 </div>
-                </div>
-
             </div>
+
         </div>
     </div>
 </div>

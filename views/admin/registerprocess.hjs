@@ -576,35 +576,32 @@
                             <input type="hidden" name="callingFunc"  value="updateForm">
 
                             <div>
-                                <input type="checkbox" name="form1Hidden" value="">
-                                <input type="text" name="form1Label" value="">
-                                <input type="checkbox" name="form1Password" value="">
+                                <input type="checkbox" name="form1Hidden" value="true">
+                                <input type="text" name="form1Label" placeholder="Field Name (e.g. Address)" value="">
+                                <input type="checkbox" name="form1Password" value="true">
                             </div>
 
                             <div>
-                                <input type="checkbox" name="form2Hidden" value="">
-                                <input type="text" name="form2Label" value="">
-                                <input type="checkbox" name="form2Password" value="">
+                                <input type="checkbox" name="form2Hidden" value="true">
+                                <input type="text" name="form2Label" placeholder="Field Name (e.g. Address)" value="">
+                                <input type="checkbox" name="form2Password" value="true">
                             </div>
 
                             <div>
-                                <input type="checkbox" name="form3Hidden" value="">
-                                <input type="text" name="form3Label" value="">
-                                <input type="checkbox" name="form3Password" value="">
+                                <input type="checkbox" name="form3Hidden" value="true">
+                                <input type="text" name="form3Label" placeholder="Field Name (e.g. Address)" value="">
+                                <input type="checkbox" name="form3Password" value="true">
                             </div>
 
                             <div>
-                                <input type="checkbox" name="form4Hidden" value="">
-                                <input type="text" name="form4Label" value="">
-                                <input type="checkbox" name="form4Password" value="">
+                                <input type="checkbox" name="form4Hidden" value="true">
+                                <input type="text" name="form4Label" placeholder="Field Name (e.g. Address)" value="">
+                                <input type="checkbox" name="form4Password" value="true">
                             </div>
 
-                            <input class="btn btn-default" type="submit" value="Save Form">
+                            <input class="btn btn-default" type="submit" data-dismiss="modal" value="Save Form">
                         </div>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
                 </div>
             </div>
 
