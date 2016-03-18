@@ -28,7 +28,7 @@ exports.post = function (req, res) {
 
     businessDB.find()
         .on('success', function(businesses) {
-            res.redirect('admin/admin');
+            res.redirect('/admin');
         });
 
 };

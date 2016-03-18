@@ -216,8 +216,8 @@ module.exports = function (passport) {
 
         });
 
-    router.get('/:id/admin', isLoggedInSaaSAdmin, admin.get);
-    router.post('/:id/admin', isLoggedInSaaSAdmin, admin.post);
+    router.get('/admin', isLoggedInSaaSAdmin, admin.get);
+    router.post('/admin', isLoggedInSaaSAdmin, admin.post);
 
     //Setup the routes for business owner (Person purchasing the product)
     //router.get('/uploadlogo', uploadLogo.get);
