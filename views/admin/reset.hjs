@@ -79,12 +79,12 @@
                         <div class="clear"></div>
                         <div class="col_two_third">
                             <label for="changepassword-form-subject">New Password <small>*</small></label>
-                            <input type="text" id="changepassword-form-subject" name="password" value="{{password}}" class="required sm-form-control" />
+                            <input type="password" id="changepassword-form-subject" name="password" value="{{password}}" class="required sm-form-control" />
                         </div>
                         <div class="clear"></div>
                         <div class="col_two_third">
                             <label for="changepassword-form-subject">Confirm Password <small>*</small></label>
-                            <input type="text" id="changepassword-form-subject" name="confirmpassword" value="{{confirmpassword}}" class="required sm-form-control" />
+                            <input type="password" id="changepassword-form-subject" name="confirmpassword" value="{{confirmpassword}}" class="required sm-form-control" />
                         </div>
                         <div class="col_full">
                             <button name="submit" type="submit" id="submit-button" tabindex="5" value="Submit" class="button button-3d nomargin">Submit</button>
