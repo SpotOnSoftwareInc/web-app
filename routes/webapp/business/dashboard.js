@@ -23,7 +23,7 @@ exports.get = function (req, res) {
                             theme: business.theme,
                             logo: business.logo,
                             checkinFrame: '/' + business._id + '/checkin',
-
+                            checkinPage: '/' + business._id + '/checkin',
                             billingPlan: business.billingPlan,
                             message: req.flash("permission")
                         });
