@@ -239,27 +239,15 @@
                             <div class=" nobottommargin clearfix">
 
                                 <h4 class="col-padding notoppadding nobottompadding">
-                                    Select one of our template forms for check-in use, or create a custom one with our form builder.
+                                    Upload a background image for your office's tablet.
                                 </h4>
 
                                 <!-- Theme Items
                                 ============================================= -->
                                 <div class="container text-center center">
-                                    <div>
-                                        <a href="#" class="button button-desc button-border button-rounded center"
-                                           data-toggle="modal" data-target="#templateModal">
-                                            <div>Choose Template</div>
-                                        </a>
-
-                                        <a href="#" class="button button-desc button-border button-rounded center"
-                                           data-toggle="modal" data-target="#formBuilderModal">
-                                            <div>Create New Form</div>
-                                        </a>
-                                    </div>
-
                                     <div class="post-grid grid-2 clearfix">
                                         <div class="entry clearfix nobottomborder">
-                                            <h4>Now upload a background image for your Tablet:</h4>
+                                            <h4></h4>
 
 
                                             <form method="post" action="uploadtheme" enctype="multipart/form-data" id="register-uploadlogo" name="register-uploadlogo" class="nobottommargin">
@@ -297,7 +285,7 @@
                                     </div>
 
 
-
+                                    <h5>Once registered, you can create custom forms for check in.</h5>
                                 </div><!-- #theme end -->
                             </div>
                         </div><!-- Visitor Experience end -->
