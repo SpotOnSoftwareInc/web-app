@@ -476,6 +476,7 @@
                                 </div>
 
                                 <div class="container clearfix postcontent">
+                                    <h4>Select how you want to notify your employees upon patient checkin</h4>
                                     <div class="col_half ">
                                         <div class="fancy-title title-border topmargin">
                                             <h3>Text SMS</h3>
