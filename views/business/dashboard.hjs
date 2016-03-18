@@ -282,14 +282,9 @@
                             ============================================= -->
                             <div class="container text-center">
                                 <div>
-                                    <a href="#" class="button button-desc button-border button-rounded center"
-                                       data-toggle="modal" data-target="#templateModal">
-                                        <div>Choose Template</div>
-                                    </a>
-
-                                    <a href="#" class="button button-desc button-border button-rounded center"
+                                    <a href="#" class="button button-desc button-teal button-rounded center"
                                        data-toggle="modal" data-target="#formBuilderModal">
-                                        <div>Create New Form</div>
+                                        <div>Customize Form</div>
                                     </a>
                                 </div>
 
@@ -584,37 +579,66 @@
                 </div>
                 <div class="modal-body row">
 
-                    <form action="" method="post">
-                        <div class="">
+                    <form action="dashboard" method="post" style="width:70%; margin-left:15%;">
+                        <table class="table table-hover">
                             <input type="hidden" name="saveData" id="saveData" value="">
                             <input type="hidden" name="callingFunc"  value="updateForm">
+                            <thead>
+                            <tr>
+                                <th>Enable Field</th>
+                                <th>Field Name</th>
+                                <th>Private?</th>
+                            </tr>
+                            </thead>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="form1Hidden" value="true">
+                                </td>
+                                <td>
+                                    <input type="text" name="form1Label" placeholder="Field Name (e.g. Address)" value="">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="form1Password" value="true">
+                                </td>
+                            </tr>
 
-                            <div>
-                                <input type="checkbox" name="form1Hidden" value="true">
-                                <input type="text" name="form1Label" placeholder="Field Name (e.g. Address)" value="">
-                                <input type="checkbox" name="form1Password" value="true">
-                            </div>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="form2Hidden" value="true">
+                                </td>
+                                <td>
+                                    <input type="text" name="form2Label" placeholder="Field Name (e.g. Address)" value="">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="form2Password" value="true">
+                                </td>
+                            </tr>
 
-                            <div>
-                                <input type="checkbox" name="form2Hidden" value="true">
-                                <input type="text" name="form2Label" placeholder="Field Name (e.g. Address)" value="">
-                                <input type="checkbox" name="form2Password" value="true">
-                            </div>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="form3Hidden" value="true">
+                                </td>
+                                <td>
+                                    <input type="text" name="form3Label" placeholder="Field Name (e.g. Address)" value="">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="form3Password" value="true">
+                                </td>
+                            </tr>
 
-                            <div>
-                                <input type="checkbox" name="form3Hidden" value="true">
-                                <input type="text" name="form3Label" placeholder="Field Name (e.g. Address)" value="">
-                                <input type="checkbox" name="form3Password" value="true">
-                            </div>
-
-                            <div>
-                                <input type="checkbox" name="form4Hidden" value="true">
-                                <input type="text" name="form4Label" placeholder="Field Name (e.g. Address)" value="">
-                                <input type="checkbox" name="form4Password" value="true">
-                            </div>
-
-                            <input class="btn btn-default" type="submit" value="Save Form">
-                        </div>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="form4Hidden" value="true">
+                                </td>
+                                <td>
+                                    <input type="text" name="form4Label" placeholder="Field Name (e.g. Address)" value="">
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="form4Password" value="true">
+                                </td>
+                            </tr>
+                        </table>
+                        <input class="button button-teal" type="submit" data-dismiss="modal" value="Save Form">
                     </form>
                 </div>
             </div>

@@ -263,14 +263,9 @@
                                 ============================================= -->
                                 <div class="container text-center center">
                                     <div>
-                                        <a href="#" class="button button-desc button-border button-rounded center"
-                                           data-toggle="modal" data-target="#templateModal">
-                                            <div>Choose Template</div>
-                                        </a>
-
-                                        <a href="#" class="button button-desc button-border button-rounded center"
+                                        <a href="#" class="button button-desc button-teal button-rounded button-med center"
                                            data-toggle="modal" data-target="#formBuilderModal">
-                                            <div>Create New Form</div>
+                                            <div>Customize Form</div>
                                         </a>
                                     </div>
 
@@ -280,12 +275,6 @@
 
 
                                             <form method="post" action="uploadtheme" enctype="multipart/form-data" id="register-uploadlogo" name="register-uploadlogo" class="nobottommargin">
-                                                <!--<div class="current-background-image-container">-->
-                                                    <!--&lt;!&ndash; Current background image goes here &ndash;&gt;-->
-                                                    <!--<div class="current-background-image">-->
-                                                        <!--<a href="#" class="button button-medium button-center">Upload New</a>-->
-                                                    <!--</div>-->
-                                                <!--</div>-->
                                                 <img id="themeing" class="" data-src={{theme}} src="{{theme}}" alt="your image" style="display: block; width: 50%; margin-left:25%"/>
 
                                                 <div class="caption center">
