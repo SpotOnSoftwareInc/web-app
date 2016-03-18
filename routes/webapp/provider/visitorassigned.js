@@ -7,15 +7,16 @@ exports.get = function (req, res) {
     var apptDB = database.get('appointment');
 
     var bid = req.user[0].business.toString();
-    var fullName = req.user[0].fname;
+    var fullName = req.user[0].fname + " " + req.user[0].lname;
 
     console.log("Provider: " + fullName);
     console.log("Business: " + bid);
 
     //apptDB.find( { business: bid }, { provider: fullName }, {state: 'Waiting'} )
-    apptDB.find( { $and: [ { business: bid }, { provider: fullName }, {state: 'Waiting'} ] } )
+    apptDB.find( { $and: [ { business: bid }, { provider: fullName }, {state: 'waiting'} ] } )
         .on('success', function(appointments) {
 
+            console.log(appointments);
             res.render('provider/visitorassigned', {
                 appts: appointments,
                 message: req.flash("Fetched all appointments")

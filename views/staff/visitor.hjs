@@ -111,7 +111,7 @@
                     <input id="inputProvider" list="template-contactform-provider" name="provider">
                     <datalist id="template-contactform-provider">
                         {{#providerlist}}
-                        <option value="{{fname}}">
+                        <option value="{{fname}} {{lname}}">
                         {{/providerlist}}
 
                     </datalist>
