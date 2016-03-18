@@ -254,7 +254,7 @@ module.exports = function (passport) {
                         return done(null, employee);
                     } else {
                         console.log("Failure");
-                        return done(null, false, password);
+                        return done(null, employee);
                     }
                 }
             );
