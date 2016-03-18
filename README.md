@@ -3,7 +3,7 @@ Heroku : spotonsoftware-gold.herokuapp.com
 
 Documentation; Google Drive link
 
-https://drive.google.com/folderviewid=0BwhOfvM3JNM6bGZRMnZRd3Zjb2s
+https://drive.google.com/folderview?id=0BwhOfvM3JNM6bGZRMnZRd3Zjb2s&usp=sharing
 
 First Run
 ----------------------------
