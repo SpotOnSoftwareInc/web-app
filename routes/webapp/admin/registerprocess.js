@@ -50,7 +50,7 @@ exports.get = function (req, res) {
 
         });
 
-
+;
 };
 
 exports.post = function (req, res) {
@@ -67,6 +67,7 @@ exports.post = function (req, res) {
 
 
     if(callingFunc == 'Insert'){
+        console.log("HI");
         var database = req.db,
             employeeDB = database.get('employees'),
             businessID = req.user[0].business.toString(),

@@ -128,7 +128,7 @@
     </div>
 
     <div class="container clearfix">
-        <table class="table table-hover" id="visitor-table">
+        <table class="table table-hover sortable" id="visitor-table">
             <thead>
             <tr>
                 <th>Name</th>
@@ -150,7 +150,7 @@
                 <!--<td>{{provider}}</td>-->
                 <td class="asignee">
                     <form method="post" action="" enctype="application/x-www-form-urlencoded">
-                    <div class="sort-contacts-bytype-dropdown dropdown">
+                    <div class="sort-contacts-bytype-dropdown dropdown" id="found-{{_id}}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <span class="dropdown-{{_id}}">{{provider}}</span><b class="caret"></b></a>
                         <ul class="dropdown-menu dropdown-menu-right">
@@ -224,5 +224,6 @@
 ============================================= -->
 <script type="text/javascript" src="../js/visitor.js"></script>
 <script type="text/javascript" src="../js/functions.js"></script>
+<script type="text/javascript" src="../js/sorttable.js"></script>
 
 </html>
