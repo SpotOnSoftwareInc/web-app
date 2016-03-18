@@ -4,4 +4,6 @@ exports.post = function (req, res) {
 
     console.log(req);
     aptDB.remove({_id: name});
+
+    res.redirect('../' + req.user[0].business + '/visitor');
 };
